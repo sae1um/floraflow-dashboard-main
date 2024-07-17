@@ -1,0 +1,9 @@
+Discuss what is the 3rd gauge, Light level? Water? Co2?
+
+Set boundaries for humidity and light level
+
+
+Fetch greenhouses every {X} seconds
+Line Chart fill area
+Add name to line chart Header
+{selectedGreenhouse.outGreenhousename}
