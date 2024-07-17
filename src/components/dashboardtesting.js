@@ -70,7 +70,6 @@ export default function DashBoard() {
       const response = await axios.get(CHART_API, {
         params: {id: greenhouseId}
       });
-      // console.log(response.data);
       setChartData(response.data);
     }catch(err){
       console.log(`Error: ${err}`);
@@ -237,7 +236,7 @@ export default function DashBoard() {
       {/* Line Graph */}
       <div class=" col-span-3">
         <Box className="bg-neutral-100 p-4 rounded-xl h-auto w-full">
-          <h3 className="font-bold text-center">{`${selectedGreenhouse.outGreenhousename} - Hourly Data`}</h3>
+          <h3 className="font-bold text-center">{selectedGreenhouse? `${selectedGreenhouse.outGreenhousename} - Hourly Data` : "Select a Greenhouse"}</h3>
           <LineGraph data={chartData}/>
         </Box>
       </div>
