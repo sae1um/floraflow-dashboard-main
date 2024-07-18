@@ -8,6 +8,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler
 } from "chart.js";
 
 ChartJS.register(
@@ -17,11 +18,15 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 );
 
 export const LineGraph = ({ data }) => {
-  const options = {};
+  const options = {
+    responsive: true,
+    // maintainAspectRatio: false
+  };
 
   const chartData = {
     labels: data.map(item => item.formatted_time),
@@ -29,12 +34,12 @@ export const LineGraph = ({ data }) => {
       {
         label: "Temperature",
         data: data.map(item => item.temperature),
-        borderColor: "#e63762",
+        borderColor: "#e63762"
       },
       {
         label: "Humidity",
         data: data.map(item => item.humidity),
-        borderColor: "#f2a734"
+        borderColor: "#f2a734", 
       }
     ],
   };
