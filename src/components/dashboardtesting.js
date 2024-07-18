@@ -237,7 +237,7 @@ export default function DashBoard() {
       <div class=" col-span-3">
         <Box className="bg-neutral-100 p-4 rounded-xl h-auto w-full">
           <h3 className="font-bold text-center">{selectedGreenhouse? `${selectedGreenhouse.outGreenhousename} - Hourly Data` : "Select a Greenhouse"}</h3>
-          <LineGraph data={chartData}/>
+          <LineGraph data={chartData} className="w-full"/>
         </Box>
       </div>
       {/* Quick Access greenhouses */}
