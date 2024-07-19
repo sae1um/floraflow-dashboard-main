@@ -6,7 +6,7 @@ const {
   addDataToDatabase,
   getGreenhouseChartData,
 } = require("../dbqueries");
-const { extractGreenhouseData, extractChartData } = require("../extractions");
+const { extractGreenhouseData } = require("../extractions");
 
 const PORT = 3003;
 const corsOptions = {
