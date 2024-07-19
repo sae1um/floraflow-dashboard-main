@@ -59,7 +59,7 @@ app.get("/api/updateSensor", (req, res) => {
   const humidity = query.humidity;
   const light = query.light;
   const waterLevel = query.waterlevel;
-  // console.log(sensorId, temperature, humidity, light, waterLevel);
+  console.log(sensorId, temperature, humidity, light, waterLevel);
 
   try {
     addDataToDatabase(sensorId, temperature, humidity, light, waterLevel);
