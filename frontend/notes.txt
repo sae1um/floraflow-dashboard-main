@@ -1,0 +1,13 @@
+Discuss what is the 3rd gauge, Light level? Water? Co2?
+
+Set boundaries for humidity and light level
+
+Fetch greenhouses every {X} seconds
+Line Chart fill area
+
+
+--HOSTING--
+https://googiehost.com/signup.html (MySQL)
+https://aws.amazon.com/getting-started/hands-on/create-mysql-db/ (MySQL)
+Netlify (FrontEnd)
+https://www.digitalocean.com/community/tutorials/deploying-a-node-app-to-digital-ocean (Backend)
