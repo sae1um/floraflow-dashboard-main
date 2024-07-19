@@ -4,5 +4,7 @@
     "express": "^4.19.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.10.3"
+  },"scripts": {
+    "start": "node routes/server.js"
   }
 }
