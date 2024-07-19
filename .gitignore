@@ -24,3 +24,5 @@ yarn-debug.log*
 yarn-error.log*
 
 /backend/routes/mysqldump.sql
+
+node_modules/
