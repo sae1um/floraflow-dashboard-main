@@ -1,5 +1,4 @@
 const { getRooms, getGreenhouseData } = require("./dbqueries");
-const fs = require("fs")
 
 // const filePath = "../chartData.json";
 // let chartFile = fs.readFileSync(filePath, "utf-8");
