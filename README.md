@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# FloraFlow - By UTC (Godswill)
+<p align="center">
+	<img src="https://github.com/sae1um/floraflow-dashboard-main/blob/main/Group%201.png" alt="FloraFlow Logo">
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Project Overview
+This project is part of a work experience program at UTC Sheffield Olympic Legacy Park. The goal was to create a dashboard to monitor mini-greenhouses equipped with various sensors. These greenhouses, built by my teacher, are placed around the school and at his home. The dashboard allows anyone to access real-time data from these greenhouses and, in the future, will enable control over the environmental conditions within them. This project, along with others, will be featured in a project showcase room for visitors. Check out more info [here](http://bit.ly/UTCOLPCompShowcase)
+<p align="center">
+	<a href="https://github.com/sae1um/floraflow-dashboard-main"><img src="https://see.fontimg.com/api/renderfont4/m2PBm/eyJyIjoiZnMiLCJoIjozNiwidyI6MTAwMCwiZnMiOjM2LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/UmVwb3NpdG9yeQ/cf-gerrion-bold.png" alt="Repositories text image"></a>
+	<a><img src="https://see.fontimg.com/api/renderfont4/woBmx/eyJyIjoiZnMiLCJoIjo2LCJ3IjoxMDAwLCJmcyI6NiwiZmdjIjoiI0ZGRkZGRiIsImJnYyI6IiNGRkZGRkYiLCJ0IjoxfQ/c3BhY2U/cf-gerrion-semibold.png" alt="Deployment text image"></a>
+	<a href="https://floraflow.netlify.app/"><img src="https://see.fontimg.com/api/renderfont4/m2PBm/eyJyIjoiZnMiLCJoIjozNiwidyI6MTAwMCwiZnMiOjM2LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/RGVwbG95bWVudA/cf-gerrion-bold.png"></a>
+</p>
 
-## Available Scripts
+## Contents
+-   [Technologies Used](#technologies-used)
+-   [Project Setup](#project-setup)
+- [Current State](#current-state)
+-   [Deployment](#deployment)
+-   [Future Plans](#future-plans)
+-   [Closing](#closing)
+### Technologies Used
+## Frontend
+- **React**: I already had a little experience using React. which made it easier to develop the dashboard.
+	- Used to create a component based dashboard
+- **Axios**: This was my first time using Axios, but it is well-regarded for making client side http requests, and wanted to learn how to use it.
+- **ChartJS**: Previously used ChartJS for another project, found it straightforward for creating interactive charts.
+- **MUI Gauges**: A library of components, I used the gauge components to display information from the greenhouses
 
-In the project directory, you can run:
+## Backend
+- **Node.js**: Node.js is a robust platform for building server-side applications, and it uses JavaScript, which I am already familiar with.
+- **Express**: Minimal and flexible framework that provides a robust set of features for web and mobile applications.
 
-### `npm start`
+## Database
+- **MySQL**: Powerful and widely-used database management system that fits will with the project requirements. The alpha version of the dashboard used SQL with PHPMyAdmin, when I took over the project I switched to MySQL
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Project Setup
+### Backend Packages: 
+- Express
+- Mysql2
+- DotEnv
+- Cors
+**To install:**
+`npm i express mysql2 dotenv cors`
+ ### Frontend Packages: 
+- ReactJs
+- React-Router-Dom
+- Axios
+- Mui (X-charts, Material, Icons and all other dependencies can be found in package.json)
+- React-Icons
+- ChartJs
+- ClassNames 
+- TailwindCSS
+**To install:**
+	- Initialising the react application
+      `npx create-react-app@latest ./`
+     - Installing TailwindCSS
+      `npm i -D tailwindcss`
+      `npx tailwindcss init`
+      - Other Packages
+	  `npm i axios chart.js mui react-router-dom react-icons classnames`
+	  ![Technologies Used Diagram](https://github.com/sae1um/floraflow-dashboard-main/blob/main/Group%2092.png)
+## Current State
+This is what the main dashboard of the site looks like currently (20.07.2024)
+![Dashboard](https://github.com/sae1um/floraflow-dashboard-main/blob/main/image.png)
+## Deployment
+Initially, the plan was to deploy the server, site, and database on a Raspberry Pi 3, to remove the need of having to connect to an external cloud provider or needing and internet connection. However, due to its limited processing power, and the schools network firewall working a bit too well (and annoyingly), the setup is currently running from a laptop. In the future, the project will be deployed to the free cloud platforms.
+## Future Plans
+I will be actively working on the project till all its features are complete as of right now (20.07.2024) only the main dashboard page is around 85% complete and the other pages still need to be worked on.
+- **Control Features**: Still need to implement features to control the environmental conditions within the greenhouses.
+- **Cloud Deployment**: Properly deploying the server, frontend, and database to cloud platforms. Currently thinking of using AWS RDS for the database, Netlify(Deployed) for the frontend, and Railway for the backend
+## Closing
+Participating in this project allowed me to enhance my web development skills and apply them to a real-world scenario. This dashboard will be featured in a project showcase room for visitors, demonstrating the practical applications of technology in monitoring and controlling environmental conditions.
