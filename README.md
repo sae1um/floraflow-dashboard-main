@@ -6,9 +6,9 @@
 ### Project Overview
 This project is part of a work experience program at UTC Sheffield Olympic Legacy Park. The goal was to create a dashboard to monitor mini-greenhouses equipped with various sensors. These greenhouses, built by my teacher, are placed around the school and at his home. The dashboard allows anyone to access real-time data from these greenhouses and, in the future, will enable control over the environmental conditions within them. This project, along with others, will be featured in a project showcase room for visitors. Check out more info [here](http://bit.ly/UTCOLPCompShowcase)
 <p align="center">
-	<a href="https://github.com/sae1um/floraflow-dashboard-main"><img src="https://see.fontimg.com/api/renderfont4/m2PBm/eyJyIjoiZnMiLCJoIjozNiwidyI6MTAwMCwiZnMiOjM2LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/UmVwb3NpdG9yeQ/cf-gerrion-bold.png" alt="Repositories text image"></a>
+	<a href="https://github.com/sae1um/floraflow-dashboard-main" target="_blank"><img src="https://see.fontimg.com/api/renderfont4/m2PBm/eyJyIjoiZnMiLCJoIjozNiwidyI6MTAwMCwiZnMiOjM2LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/UmVwb3NpdG9yeQ/cf-gerrion-bold.png" alt="Repositories text image"></a>
 	<a><img src="https://see.fontimg.com/api/renderfont4/woBmx/eyJyIjoiZnMiLCJoIjo2LCJ3IjoxMDAwLCJmcyI6NiwiZmdjIjoiI0ZGRkZGRiIsImJnYyI6IiNGRkZGRkYiLCJ0IjoxfQ/c3BhY2U/cf-gerrion-semibold.png" alt="Deployment text image"></a>
-	<a href="https://floraflow.netlify.app/"><img src="https://see.fontimg.com/api/renderfont4/m2PBm/eyJyIjoiZnMiLCJoIjozNiwidyI6MTAwMCwiZnMiOjM2LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/RGVwbG95bWVudA/cf-gerrion-bold.png"></a>
+	<a href="https://floraflow.netlify.app/" target="_blank"><img src="https://see.fontimg.com/api/renderfont4/m2PBm/eyJyIjoiZnMiLCJoIjozNiwidyI6MTAwMCwiZnMiOjM2LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/RGVwbG95bWVudA/cf-gerrion-bold.png"></a>
 </p>
 
 ## Contents
