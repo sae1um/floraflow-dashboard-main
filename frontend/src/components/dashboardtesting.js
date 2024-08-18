@@ -8,8 +8,8 @@ import axios from "axios";
 import {LineGraph} from "./graphs/Line";
 
 //API endpoint URLs
-const GREENHOUSE_DATA_API = "http://localhost:3003/api/greenhouses";
-const CHART_API = "http://localhost:3003/api/chart";
+const GREENHOUSE_DATA_API="https://floraflow-backend.onrender.com/api/greenhouses";
+const CHART_API="https://floraflow-backend.onrender.com/api/chart";
 
 const GaueTitleText = styled("p")({
   position: "absolute",
