@@ -1,3 +1,4 @@
+require("dotenv").config("../.env")
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -8,23 +9,17 @@ const {
 } = require("../dbqueries");
 const { extractGreenhouseData } = require("../extractions");
 
-const PORT = 3003;
-const corsOptions = {
-  origin: "http://localhost:3000", // Only allow this origin to access the API
-  methods: "GET,POST", // Only allow GET, POST methods
-  allowedHeaders: "Content-Type,Authorization", //headers
-  credentials: true,
-};
+const PORT = process.env.API_PORT
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 app.use(express.static("../build"));
 
 app.get("/", (req, res) => {
   req.setTimeout(30000);
-  console.log("React App");
-  res.json("Hello");
+  console.log("Started Succesfully");
+  res.json("Route: '/'");
 });
 
 app.get("/api/greenhouses", (req, res) => {
@@ -47,18 +42,13 @@ app.get("/api/greenhouses", (req, res) => {
 //CHANGE BACK TO req.query
 app.get("/api/updateSensor", (req, res) => {
   const query = req.query;
-//   const query = {
-//     gardenid: "1",
-//     temperature: "27",
-//     humidity: "37",
-//     light: "1",
-//     waterlevel: "21",
-//   };
+
   const sensorId = query.gardenid;
   const temperature = query.temperature;
   const humidity = query.humidity;
   const light = query.light;
   const waterLevel = query.waterlevel;
+
   console.log(sensorId, temperature, humidity, light, waterLevel);
 
   try {
