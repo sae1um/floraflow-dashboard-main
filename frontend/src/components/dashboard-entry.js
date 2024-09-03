@@ -7,10 +7,6 @@ import axios from "axios";
 
 import {LineGraph} from "./graphs/Line";
 
-//API endpoint URLs
-const GREENHOUSE_DATA_API="https://floraflow-backend.onrender.com/api/greenhouses";
-const CHART_API="https://floraflow-backend.onrender.com/api/chart";
-
 const GaueTitleText = styled("p")({
   position: "absolute",
   color: "rgb(156,163,175)",
@@ -34,7 +30,7 @@ export default function DashBoard() {
   const fetchGreenhouses = async () => {
     try {
       //Gets the data from db, sets greenhouses to data
-      const response = await axios.get(GREENHOUSE_DATA_API);
+      const response = await axios.get(process.env.REACT_APP_GREENHOUSE_DATA_API);
       setGreenhouses(response.data);
       
       //Checks if there is a Gh already selected
@@ -67,7 +63,7 @@ export default function DashBoard() {
   //Gets the chart data from db and setschartdata usestate
   const getChartData = async (greenhouseId) => {
     try{
-      const response = await axios.get(CHART_API, {
+      const response = await axios.get(process.env.REACT_APP_CHART_API, {
         params: {id: greenhouseId}
       });
       setChartData(response.data);

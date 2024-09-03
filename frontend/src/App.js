@@ -12,14 +12,14 @@ import LightControl from './components/lightcontrol';
 import TempControl from './components/tempcontrol';
 import SensorControl from './components/sensorcontrol';
 // import DashBoard from './components/dashboard';
-import DashBoardTest from './components/dashboardtesting';
+import DashBoard from './components/dashboard-entry';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Layout/>}>
-          <Route index element={<DashBoardTest />}/>
+          <Route index element={<DashBoard />}/>
           <Route path="health" element={<HealthMonitor />}/>
           <Route path="uptime" element={<UptimeMonitor/>}/>
           <Route path="lightcontrols" element={<LightControl/>}/>
