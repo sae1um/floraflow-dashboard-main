@@ -11,6 +11,10 @@ This project is part of a work experience program at UTC Sheffield Olympic Legac
 	<a href="https://floraflow.netlify.app/" target="_blank"><img src="https://see.fontimg.com/api/renderfont4/m2PBm/eyJyIjoiZnMiLCJoIjozNiwidyI6MTAwMCwiZnMiOjM2LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/RGVwbG95bWVudA/cf-gerrion-bold.png"></a>
 </p>
 
+### Links
+- [Frontend](https://github.com/sae1um/floraflow-dashboard-main/tree/deployment-backend)
+- [Backend](https://github.com/sae1um/floraflow-dashboard-main/tree/deployment-backend)
+- [Deployment](https://floraflow.netlify.app/)
 ## Contents
 -   [Technologies Used](#technologies-used)
 -   [Project Setup](#project-setup)
