@@ -1,6 +1,6 @@
 # FloraFlow - By UTC (Godswill)
 <p align="center">
-	<img src="https://github.com/sae1um/floraflow-dashboard-main/blob/main/Group%201.png" alt="FloraFlow Logo">
+	<img src="https://github.com/sae1um/floraflow-dashboard-main/blob/test-branch/Group%201.png" alt="FloraFlow Logo">
 </p>
 
 ### Project Overview
@@ -62,10 +62,10 @@ This project is part of a work experience program at UTC Sheffield Olympic Legac
       `npx tailwindcss init`
       - Other Packages
 	  `npm i axios chart.js mui react-router-dom react-icons classnames`
-	  ![Technologies Used Diagram](https://github.com/sae1um/floraflow-dashboard-main/blob/main/Group%2092.png)
+	  ![Technologies Used Diagram](https://github.com/sae1um/floraflow-dashboard-main/blob/test-branch/Group%2092.png)
 ## Current State
 This is what the main dashboard of the site looks like currently (20.07.2024)
-![Dashboard](https://github.com/sae1um/floraflow-dashboard-main/blob/main/image.png)
+![Dashboard](https://github.com/sae1um/floraflow-dashboard-main/blob/test-branch/image.png)
 ## Deployment
 Initially, the plan was to deploy the server, site, and database on a Raspberry Pi 3, to remove the need of having to connect to an external cloud provider or needing and internet connection. However, due to its limited processing power, and the schools network firewall working a bit too well (and annoyingly), the setup is currently running from a laptop. In the future, the project will be deployed to the free cloud platforms.
 ## Future Plans
