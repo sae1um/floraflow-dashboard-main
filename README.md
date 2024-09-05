@@ -62,7 +62,7 @@ This project is part of a work experience program at UTC Sheffield Olympic Legac
       `npx tailwindcss init`
       - Other Packages
 	  `npm i axios chart.js mui react-router-dom react-icons classnames`
-	  ![Technologies Used Diagram](https://github.com/sae1um/floraflow-dashboard-main/blob/test-branch/Group%2092.png)
+	  ![Technologies Used Diagram](https://github.com/sae1um/floraflow-dashboard-main/blob/home/Technologies.png)
 ## Current State
 This is what the main dashboard of the site looks like currently (20.07.2024)
 ![Dashboard](https://github.com/sae1um/floraflow-dashboard-main/blob/test-branch/image.png)
