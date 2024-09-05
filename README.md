@@ -12,7 +12,7 @@ This project is part of a work experience program at UTC Sheffield Olympic Legac
 </p>
 
 ### Links
-- [Frontend](https://github.com/sae1um/floraflow-dashboard-main/tree/deployment-backend)
+- [Frontend](https://github.com/sae1um/floraflow-dashboard-main/tree/deployment-frontend)
 - [Backend](https://github.com/sae1um/floraflow-dashboard-main/tree/deployment-backend)
 - [Deployment](https://floraflow.netlify.app/)
 ## Contents
