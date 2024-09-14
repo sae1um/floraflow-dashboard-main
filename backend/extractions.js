@@ -3,11 +3,12 @@ const { getRooms, getGreenhouseData } = require("./dbqueries");
 // const filePath = "../chartData.json";
 // let chartFile = fs.readFileSync(filePath, "utf-8");
 
-const obj = [
+/*const obj = [
   { greenhouse_id: 1, greenhouse_name: "roses", room_id: 1, status: 0 },
   { greenhouse_id: 2, greenhouse_name: "blue flowers", room_id: 1, status: 0 },
   { greenhouse_id: 3, greenhouse_name: "pink ones", room_id: 2, status: 1 },
 ]; //Test data
+*/
 
 async function extractGreenhouseData(data) {
   let room;
