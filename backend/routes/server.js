@@ -1,6 +1,7 @@
-require("dotenv").config("../.env")
+require("dotenv").config("../.env");
 const express = require("express");
 const cors = require("cors");
+const reqIP = require("request-ip");
 const app = express();
 const {
   getGreenhouses,
@@ -9,18 +10,25 @@ const {
 } = require("../dbqueries");
 const { extractGreenhouseData } = require("../extractions");
 
-const PORT = process.env.API_PORT
+const PORT = process.env.API_PORT || 3001;
+console.log(PORT)
 
 app.use(cors());
 app.use(express.json());
 
 app.use(express.static("../build"));
 
+app.use((req, res, next) => {
+  const clientIP = reqIP.getClientIp(req);
+  console.log(`METHOD: ${req.method} \nPATH: ${req.path} \nIP: ${clientIP}`);
+  next();
+});
+
 app.get("/", (req, res) => {
   req.setTimeout(30000);
-  console.log("Started Succesfully");
   res.json("Route: '/'");
 });
+
 
 app.get("/api/greenhouses", (req, res) => {
   getGreenhouses(async (err, data) => {
@@ -81,5 +89,5 @@ app.get("/api/chart", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`listening port: ${PORT}`);
+  console.log(`listening port: ${PORT} \n`);
 });

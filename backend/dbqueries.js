@@ -1,5 +1,12 @@
-const { connection } = require("./database");
+const { connection, pool } = require("./database");
 
+//Tr doing a connection pool to reduce amount of connections
+/*
+* @param
+function connectPool(){
+    return pool.getConnection();
+}
+*/
 function connectDB(){
     connection.connect((err) => {
         if(err) {
