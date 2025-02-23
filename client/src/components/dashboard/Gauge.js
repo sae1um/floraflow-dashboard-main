@@ -7,8 +7,26 @@ import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge"
 import { LuSun, LuMoon } from "react-icons/lu";
 import Divider from '@mui/material/Divider';
 import { TbWind, TbWindOff } from "react-icons/tb";
+import { useEffect, useState } from "react";
 
 export function InfoCard({ title, value, colour }) {
+    const [unit, setUnit] = useState("");
+    
+    useEffect(() => {
+        switch (title) {
+            case "TEMPERATURE":
+                setUnit("°C")
+                break;
+            case "HUMIDITY":
+                setUnit("%")
+                break;
+            case "MOISTURE LEVEL":
+                setUnit("ml")
+                break;
+            default:
+                break;
+        }
+    },[title])
     return (
         <Box
             className="rounded-lg border bg-card text-card-foreground shadow-sm relative p-4"
@@ -32,7 +50,7 @@ export function InfoCard({ title, value, colour }) {
                 innerRadius="85%"
                 outerRadius="100%"
                 value={value ? value : "..."}
-                text={({ value }) => `${value}°C`}
+                text={({ value }) => `${value}${unit}`}
                 sx={(theme) => ({
                     [`& .${gaugeClasses.valueText}`]: {
                         fontSize: 40
@@ -43,8 +61,6 @@ export function InfoCard({ title, value, colour }) {
                 })}
             />
         </Box>
-
-        // <div className="bg-neutral-100 p-4 rounded-xl h-full" ></div>
     )
 };
 

@@ -11,7 +11,7 @@ import { TbFileAlert } from "react-icons/tb";
 
 export const NAVIGATION = [
 	{
-		segment: 'dashboard',
+		segment: '',
 		title: "Dashboard",
 		icon: <HiOutlineTemplate />
 	},

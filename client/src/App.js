@@ -32,7 +32,7 @@ function App() {
       branding={{
         logo: <img src={floraflowLogo} alt="FloraFlow logo with greenleaf" />,
         title: "",
-        homeUrl: "/dashboard"
+        homeUrl: "/"
       }}
       theme={demoTheme}
     >

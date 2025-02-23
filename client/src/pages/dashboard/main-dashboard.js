@@ -1,16 +1,23 @@
 import { InfoCard, ControlStatusCard } from "../../components/dashboard/Gauge"
 import { Box, Grid2 as Grid } from "@mui/material"
-import WeatherWidget from "../../components/dashboard/WeatherWidget"
+// import {} from ""
 
 export default function Dashboard() {
     return (
-        <Box sx={{ flexGrow: 1 }} className="p-4 flex justify-evenly">
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                <InfoCard title="TEMPERATURE" value={"30"} colour={"#ed1515"}/>
+        <Box sx={{ flexGrow: 1 }} className="p-4">
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}
+                sx={{
+                    justifyContent: "center"
+                }}
+            >
+                <InfoCard title="TEMPERATURE" value={"21"} colour={"#ed1515"}/>
                 <InfoCard title="HUMIDITY" value={"21"} colour={"#f97316"}/>
+                <InfoCard title="SOIL MOISTURE" value={"21"} colour={"#10b981"}/>
                 <ControlStatusCard lightStatus={true} ventStatus={false}/>
-                <WeatherWidget />
             </Grid>
+            <Box>
+                
+            </Box>
         </Box>
     )
 };
