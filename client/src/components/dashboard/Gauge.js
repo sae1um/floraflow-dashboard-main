@@ -75,7 +75,7 @@ export function ControlStatusCard({ lightStatus, ventStatus }) {
             alignItems: "center"
         }}
     >
-        <div className="flex flex-col justify-center h-full">
+        <div className="flex flex-col justify-center h-full px-4">
             <div className="font-bold">
                 LIGHT STATUS
             </div>
@@ -95,7 +95,7 @@ export function ControlStatusCard({ lightStatus, ventStatus }) {
             </div>
         </div>
         <Divider orientation="vertical"/>
-        <div className="flex flex-col justify-center h-full">
+        <div className="flex flex-col justify-center h-full px-4">
             <div className="font-bold">
                 VENT STATUS
             </div>

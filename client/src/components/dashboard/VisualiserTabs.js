@@ -35,10 +35,17 @@ export default function VisualiserTabs(props) {
         };
 
         return (
-            <Box sx={{ width: '100%' }}>
-                <Box >
-                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                        <Tab label="Grid View" {...a11yProps(0)} />
+            <Box sx={{ width: '100%', backgroundColor: "", border: 1, borderColor: "divider", borderRadius: "0.5rem", marginTop: "1rem"}}>
+                <Box sx={{display: "flex", justifyContent: "center"}}>
+                    <h1 
+                        className='font-bold text-2xl uppercase p-3'
+                    >
+                        Greenhouse Overview
+                    </h1>
+                </Box>
+                <Box>
+                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
+                        <Tab label="List View" {...a11yProps(0)} />
                         <Tab label="Room View" {...a11yProps(1)} />
                     </Tabs>
                 </Box>

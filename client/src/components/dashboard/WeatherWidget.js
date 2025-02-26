@@ -18,7 +18,9 @@ export default function WeatherWidget() {
                 </div>
             } 
             {
-                error && <p className='text-md italic font-normal flex flex-row items-center gap-4' >Cannot get location <MdLocationOff className='text-xl text-red-500'/></p>
+                !currentWeather ? <p className='text-md italic font-normal flex flex-row items-center gap-4' >Cannot get location <MdLocationOff className='text-xl text-red-500'/></p>
+                :
+                ""
             }
         </Box>
     )

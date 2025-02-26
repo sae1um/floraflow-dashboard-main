@@ -1,6 +1,6 @@
 import { InfoCard, ControlStatusCard } from "../../components/dashboard/Gauge"
 import { Box, Grid2 as Grid } from "@mui/material"
-import { EmblaCarousel } from "../../components/carousel/EmblaCarousel"
+import { EmblaGaugesCarousel, EmblaRoomsCarousel} from "../../components/carousel/EmblaCarousel"
 import VisualiserTabs from "../../components/dashboard/VisualiserTabs"
 
 export default function Dashboard() {
@@ -23,7 +23,7 @@ export default function Dashboard() {
                 <ControlStatusCard lightStatus={true} ventStatus={false} />
             </Grid>
             <Box sx={{ display: { xs: 'block', sm: "block", md: 'none', lg: 'none' },  borderBottom: 1, borderColor: 'divider'}}>
-                <EmblaCarousel />
+                <EmblaGaugesCarousel />
             </Box>
             <Box>
                 <VisualiserTabs />
