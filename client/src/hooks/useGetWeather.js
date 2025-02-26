@@ -40,8 +40,9 @@ export function useGetWeather(){
                 icon = `https://openweathermap.org/img/wn/${icon}@2x.png`;
                 
                 setCurrentWeather({description, main, icon, temp})
+                console.log({description, main, icon, temp});
             }catch(error){
-                console.error(error);
+                console.log(error);
                 setError(error);
                 return error
             }

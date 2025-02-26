@@ -9,6 +9,7 @@ import MainDashboardLayout from './pages/dashboard/layout';
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import Dashboard from './pages/dashboard/main-dashboard';
 import ErrorElementPage from './pages/errorElement';
+import Home from './pages/home';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
             path: "health",
             Component: HealthMonitor
           }
-        ]
+        ],
+      },
+      {
+        path: "/home",
+        Component: Home
       }
     ],
     errorElement: <ErrorElementPage />

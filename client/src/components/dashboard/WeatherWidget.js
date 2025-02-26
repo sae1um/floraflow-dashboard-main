@@ -1,8 +1,9 @@
 import Box from '@mui/material/Box';
 import { useGetWeather } from '../../hooks/useGetWeather';
+import { MdLocationOff } from "react-icons/md";
 
 export default function WeatherWidget() {
-    const {currentWeather} = useGetWeather();    
+    const {currentWeather, error} = useGetWeather();    
 
     return (
         <Box className="bg-card-image rounded-md w-auto h-auto bg-cover text-white p-4 font-bold m-2 ">
@@ -15,6 +16,9 @@ export default function WeatherWidget() {
                     </div>
                     <img src={currentWeather.icon} className='w-auto h-auto object-contain self-start drop-shadow-lg' alt='weather icon'/>
                 </div>
+            } 
+            {
+                error && <p className='text-md italic font-normal flex flex-row items-center gap-4' >Cannot get location <MdLocationOff className='text-xl text-red-500'/></p>
             }
         </Box>
     )
