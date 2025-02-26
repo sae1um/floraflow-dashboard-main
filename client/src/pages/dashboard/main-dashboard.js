@@ -1,12 +1,13 @@
 import { InfoCard, ControlStatusCard } from "../../components/dashboard/Gauge"
 import { Box, Grid2 as Grid } from "@mui/material"
-import { EmblaGaugesCarousel, EmblaRoomsCarousel} from "../../components/carousel/EmblaCarousel"
+import { EmblaGaugesCarousel } from "../../components/carousel/EmblaCarousel"
 import VisualiserTabs from "../../components/dashboard/VisualiserTabs"
+import Chart from "../../components/charts/Chart"
 
 export default function Dashboard() {
     return (
         <Box sx={{ flexGrow: 1 }} className="p-4">
-            <Grid container  spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}
                 sx={{
                     justifyContent: "center",
                     display: {
@@ -28,6 +29,14 @@ export default function Dashboard() {
             <Box>
                 <VisualiserTabs />
             </Box>
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 2, sm: 4, md: 6 }}>
+                <div size={4}><Chart /></div>
+                <div>
+                    <h1 className="font-bold text-2xl uppercase p-3">
+                        Notifications and Quick Actions
+                    </h1>
+                </div>
+            </Grid>
         </Box>
     )
 };

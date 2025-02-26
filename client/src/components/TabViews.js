@@ -1,6 +1,6 @@
 import React from 'react'
 import TabViewCard from './dashboard/TabViewCard'
-import { greenhouses, rooms } from '../lib/testGreenhouses'
+import { greenhouses, rooms } from './libs/data/testGreenhouses'
 import randomColor from "randomcolor"
 
 export function GridView() {
@@ -32,7 +32,7 @@ export function RoomView() {
         rooms.map((room, index) => {
           const backgroundColor = randomColor({hue: 'green', count: 1})[0];
           return(
-          <div key={room} style={{backgroundColor}} className='rounded-lg p-4 flex flex-row md:flex-col lg:flex-col gap-2 overflow-x-scroll touch-pan-x'>
+          <div key={room} style={{backgroundColor}} className='rounded-lg p-4 flex flex-row md:flex-col lg:flex-col gap-2 overflow-x-scroll touch-pan-x md:overflow-x-hidden lg:overflow-x-hidden'>
             <span className='font-bold text-xl'>{room}</span>
           {
             greenhouses.filter((greenhouse) => greenhouse.outRoomName === room).map((ghouse, index) => {
