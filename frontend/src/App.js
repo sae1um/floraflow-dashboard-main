@@ -13,11 +13,17 @@ import TempControl from './components/tempcontrol';
 import SensorControl from './components/sensorcontrol';
 // import DashBoard from './components/dashboard';
 import DashBoard from './components/dashboard-entry';
+import LandingPage from './pages/Landing';
+import RegisterPage from "./pages/auth/Register"
+import LoginPage from './pages/auth/Login';
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="home" element={<LandingPage />} />
+        <Route path="register" element={<RegisterPage/>} />
+        <Route path="login" element={<LoginPage />} />
         <Route path="/" element={<Layout/>}>
           <Route index element={<DashBoard />}/>
           <Route path="health" element={<HealthMonitor />}/>
