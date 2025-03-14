@@ -1,6 +1,10 @@
 import { Button, TextField, Box } from "@mui/material"
 import { useState } from "react"
+<<<<<<< HEAD
 // import { useLogin, useRegister } from "../hooks/useAuth"
+=======
+import { useLogin, useRegister } from "../hooks/useAuth"
+>>>>>>> d322374e (Working DB)
 import { useNavigate } from "react-router-dom";
 
 export function AuthFormMUI({ type }) {
@@ -10,10 +14,16 @@ export function AuthFormMUI({ type }) {
     const [user, setUser] = useState(null);
     const [error, setError] = useState("")
 
+<<<<<<< HEAD
     // const {login, isLoginLoading, loginError} = useLogin();
     // const {register, isRegisterLoading, registerError} = useRegister();
     // const navigate = useNavigate();
     /*
+=======
+    const {login, isLoginLoading, loginError} = useLogin();
+    const {register, isRegisterLoading, registerError} = useRegister();
+    const navigate = useNavigate();
+>>>>>>> d322374e (Working DB)
     const submitForm = async () => {
         setEmail(email.trim());
         setPassword(password.trim());
@@ -38,7 +48,11 @@ export function AuthFormMUI({ type }) {
                 return;
             }
         }
+<<<<<<< HEAD
     }*/
+=======
+    }
+>>>>>>> d322374e (Working DB)
 
     return (
         <Box sx={{ width: "100%" }}>
@@ -94,7 +108,11 @@ export function AuthFormMUI({ type }) {
                 }}
                 // loading={}
                 disabled={isLoginLoading ? true : isRegisterLoading ? true : false}
+<<<<<<< HEAD
                 // onClick={() => submitForm()}
+=======
+                onClick={() => submitForm()}
+>>>>>>> d322374e (Working DB)
             >
                 {type === "login" ? "Log in" : "Register"}
             </Button>
