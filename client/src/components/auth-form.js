@@ -1,6 +1,6 @@
 import { Button, TextField, Box } from "@mui/material"
 import { useState } from "react"
-import { useLogin, useRegister } from "../hooks/useAuth"
+// import { useLogin, useRegister } from "../hooks/useAuth"
 import { useNavigate } from "react-router-dom";
 
 export function AuthFormMUI({ type }) {
@@ -10,9 +10,10 @@ export function AuthFormMUI({ type }) {
     const [user, setUser] = useState(null);
     const [error, setError] = useState("")
 
-    const {login, isLoginLoading, loginError} = useLogin();
-    const {register, isRegisterLoading, registerError} = useRegister();
-    const navigate = useNavigate();
+    // const {login, isLoginLoading, loginError} = useLogin();
+    // const {register, isRegisterLoading, registerError} = useRegister();
+    // const navigate = useNavigate();
+    /*
     const submitForm = async () => {
         setEmail(email.trim());
         setPassword(password.trim());
@@ -37,7 +38,7 @@ export function AuthFormMUI({ type }) {
                 return;
             }
         }
-    }
+    }*/
 
     return (
         <Box sx={{ width: "100%" }}>
