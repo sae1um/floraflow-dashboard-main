@@ -94,7 +94,7 @@ export function AuthFormMUI({ type }) {
                 }}
                 // loading={}
                 disabled={isLoginLoading ? true : isRegisterLoading ? true : false}
-                onClick={() => submitForm()}
+                // onClick={() => submitForm()}
             >
                 {type === "login" ? "Log in" : "Register"}
             </Button>
