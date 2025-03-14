@@ -1,0 +1,2 @@
+Update online/offline functionality
+If no response for greater than X minutes then set as offline
