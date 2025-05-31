@@ -15,7 +15,7 @@ jobs:
 
             - name: 📦 Install dependencies & build
               run: |
-                  cd /client
+                  cd client/
                   npm ci
                   npm run build
 
