@@ -75,13 +75,13 @@ export default function ErrorElement() {
                         size="lg"
                         className="bg-emerald-600 hover:bg-emerald-700"
                     >
-                        <Link href="/">
+                        <Link to="/">
                             <Home className="mr-2 h-5 w-5" />
                             Go Home
                         </Link>
                     </Button>
                     <Button asChild variant="outline" size="lg">
-                        <Link href="javascript:history.back()">
+                        <Link to="javascript:history.back()">
                             <ArrowLeft className="mr-2 h-5 w-5" />
                             Go Back
                         </Link>
@@ -94,27 +94,27 @@ export default function ErrorElement() {
                         <h3 className="text-lg font-semibold text-gray-900 mb-4">
                             Maybe you were looking for:
                         </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 align-middle justify-center gap-3">
                             <Link
-                                href="/"
+                                to="/"
                                 className="text-emerald-600 hover:text-emerald-700 hover:underline transition-colors text-left"
                             >
                                 → Home Page
                             </Link>
                             <Link
-                                href="/login"
+                                to="/login"
                                 className="text-emerald-600 hover:text-emerald-700 hover:underline transition-colors text-left"
                             >
                                 → Sign In
                             </Link>
                             <Link
-                                href="/register"
+                                to="/register"
                                 className="text-emerald-600 hover:text-emerald-700 hover:underline transition-colors text-left"
                             >
                                 → Create Account
                             </Link>
                             <Link
-                                href="/#features"
+                                to="/#features"
                                 className="text-emerald-600 hover:text-emerald-700 hover:underline transition-colors text-left"
                             >
                                 → Features
@@ -128,7 +128,7 @@ export default function ErrorElement() {
                     <p className="text-sm text-gray-500">
                         Still can't find what you're looking for?{" "}
                         <Link
-                            href="#"
+                            to="/support"
                             className="text-emerald-600 hover:text-emerald-700 font-medium"
                         >
                             Contact our support team
