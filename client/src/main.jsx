@@ -5,6 +5,8 @@ import './index.css'
 import App from './App.jsx'
 import ErrorElement from './pages/ErrorElement.jsx'
 import Landing from './pages/Landing'
+import Login from "./pages/Auth/Login"
+import Register from "./pages/Auth/Register"
 
 const router = createBrowserRouter([
   {
@@ -18,11 +20,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <div>Login Page</div>,
+        element: <Login />,
       },
       {
         path: "/register",
-        element: <div>Register Page</div>,
+        element: <Register />,
       },
       {
         path: "/dashboard",
