@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Leaf, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence} from "motion/react"
+import { motion, AnimatePresence } from "motion/react";
 export default function LandingNav() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     return (
@@ -23,7 +23,9 @@ export default function LandingNav() {
                             href="#features"
                             onClick={(e) => {
                                 e.preventDefault();
-                                document.getElementById("features").scrollIntoView({behavior: "smooth"});
+                                document
+                                    .getElementById("features")
+                                    .scrollIntoView({ behavior: "smooth" });
                             }}
                             className="text-gray-600 hover:text-emerald-600 transition-colors"
                         >
@@ -74,8 +76,8 @@ export default function LandingNav() {
                 {/* Mobile Navigation Menu */}
                 <AnimatePresence initial={mobileMenuOpen}>
                     {mobileMenuOpen && (
-                        <motion.div 
-                            initial={{ opacity: 0, height: 0 }} 
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             className="md:hidden border-t border-emerald-100 bg-white"
@@ -97,21 +99,23 @@ export default function LandingNav() {
                                 </Link>
                                 <div className="pt-4 pb-2 border-t border-gray-200 mt-4">
                                     <div className="space-y-2">
-                                        <Button
-                                            variant="outline"
-                                            className="w-full"
-                                            asChild
-                                        >
-                                            <Link href="/login">Sign In</Link>
-                                        </Button>
-                                        <Button
-                                            className="w-full bg-emerald-600 hover:bg-emerald-700"
-                                            asChild
-                                        >
-                                            <Link href="/register">
+                                        <Link to={"/login"}>
+                                            <Button
+                                                variant="outline"
+                                                size="sm"
+                                                className="hover:cursor-pointer"
+                                            >
+                                                Log in
+                                            </Button>
+                                        </Link>
+                                        <Link to={"/register"}>
+                                            <Button
+                                                size="sm"
+                                                className="bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
+                                            >
                                                 Register
-                                            </Link>
-                                        </Button>
+                                            </Button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
