@@ -98,12 +98,12 @@ export default function LandingNav() {
                                     Docs
                                 </Link>
                                 <div className="pt-4 pb-2 border-t border-gray-200 mt-4">
-                                    <div className="space-y-2">
-                                        <Link to={"/login"}>
+                                    <div className="flex flex-col gap-2">
+                                        <Link to={"/login"} className="w-full">
                                             <Button
                                                 variant="outline"
                                                 size="sm"
-                                                className="hover:cursor-pointer"
+                                                className="w-full hover:cursor-pointer"
                                             >
                                                 Log in
                                             </Button>
@@ -111,7 +111,7 @@ export default function LandingNav() {
                                         <Link to={"/register"}>
                                             <Button
                                                 size="sm"
-                                                className="bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
+                                                className="w-full bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
                                             >
                                                 Register
                                             </Button>
