@@ -1,4 +1,4 @@
-# FloraFlow - By UTC (Godswill)
+# FloraFlow by Godswill (sae1um)
 <p align="center">
 	<img src="https://github.com/sae1um/floraflow-dashboard-main/blob/test-branch/Group%201.png" alt="FloraFlow Logo">
 </p>
