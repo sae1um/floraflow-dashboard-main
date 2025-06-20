@@ -1,4 +1,5 @@
-# FloraFlow - By UTC (Godswill)
+# FloraFlow - By UTC (Godswill) 
+## 🏗️ DEPRICATED. WORKING ON REFACTORING TO NEXTJS
 <p align="center">
 	<img src="https://github.com/sae1um/floraflow-dashboard-main/blob/test-branch/Group%201.png" alt="FloraFlow Logo">
 </p>
