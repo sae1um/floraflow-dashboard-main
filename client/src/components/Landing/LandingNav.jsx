@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Leaf, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { motion, AnimatePresence } from "motion/react";
 export default function LandingNav() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -32,30 +33,44 @@ export default function LandingNav() {
                             Features
                         </a>
                         <Link
-                            href="/docs"
+                            to={"/docs"}
                             className="text-gray-600 hover:text-emerald-600 transition-colors"
                         >
                             Docs
                         </Link>
-                        <div className="flex flex-row gap-2">
-                            <Link to={"/login"}>
-                                <Button
-                                    variant="outline"
-                                    size="sm"
-                                    className="hover:cursor-pointer"
-                                >
-                                    Log in
-                                </Button>
-                            </Link>
-                            <Link to={"/register"}>
-                                <Button
-                                    size="sm"
-                                    className="bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
-                                >
-                                    Register
-                                </Button>
-                            </Link>
-                        </div>
+                        <SignedOut>
+                            <div className="flex flex-row gap-2">
+                                <Link to={"/login"}>
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
+                                        className="hover:cursor-pointer"
+                                    >
+                                        Log in
+                                    </Button>
+                                </Link>
+                                <Link to={"/register"}>
+                                    <Button
+                                        size="sm"
+                                        className="bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
+                                    >
+                                        Register
+                                    </Button>
+                                </Link>
+                            </div>
+                        </SignedOut>
+                        <SignedIn>
+                            <div className="flex flex-row gap-2">
+                                <Link to={"/dashboard"}>
+                                    <Button
+                                        size="sm"
+                                        className="bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
+                                    >
+                                        Dashboard
+                                    </Button>
+                                </Link>
+                            </div>
+                        </SignedIn>
                     </div>
                     {/* Mobile menu button */}
                     <div className="md:hidden">
@@ -91,32 +106,44 @@ export default function LandingNav() {
                                     Features
                                 </Link>
                                 <Link
-                                    href="/docs"
+                                    to={"/docs"}
                                     className="block px-3 py-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Docs
                                 </Link>
                                 <div className="pt-4 pb-2 border-t border-gray-200 mt-4">
-                                    <div className="flex flex-col gap-2">
-                                        <Link to={"/login"} className="w-full">
-                                            <Button
-                                                variant="outline"
-                                                size="sm"
-                                                className="w-full hover:cursor-pointer"
-                                            >
-                                                Log in
-                                            </Button>
-                                        </Link>
+                                    <SignedOut>
+                                        <div className="flex flex-col gap-2">
+                                            <Link to={"/login"} className="w-full">
+                                                <Button
+                                                    variant="outline"
+                                                    size="sm"
+                                                    className="w-full hover:cursor-pointer"
+                                                >
+                                                    Log in
+                                                </Button>
+                                            </Link>
+                                            <Link to={"/register"}>
+                                                <Button
+                                                    size="sm"
+                                                    className="w-full bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
+                                                >
+                                                    Register
+                                                </Button>
+                                            </Link>
+                                        </div>
+                                    </SignedOut>
+                                    <SignedIn>
                                         <Link to={"/register"}>
-                                            <Button
-                                                size="sm"
-                                                className="w-full bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
-                                            >
-                                                Register
-                                            </Button>
-                                        </Link>
-                                    </div>
+                                                <Button
+                                                    size="sm"
+                                                    className="w-full bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
+                                                >
+                                                    Dashboard
+                                                </Button>
+                                            </Link>
+                                    </SignedIn>
                                 </div>
                             </div>
                         </motion.div>

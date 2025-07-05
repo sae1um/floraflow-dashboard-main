@@ -1,4 +1,4 @@
-import {Link} from "react-router";
+import { Link } from "react-router";
 import { ArrowLeft, Leaf, Check } from "lucide-react";
 import {
     Card,
@@ -7,6 +7,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
+import { SignUp } from "@clerk/clerk-react";
 
 export default function Register() {
     const benefits = [
@@ -68,7 +69,7 @@ export default function Register() {
                 <div className="w-full lg:w-1/2 flex items-center justify-center px-4 lg:px-12">
                     <div className="w-full max-w-md">
                         {/* Header */}
-                        <div className="text-center mb-8">
+                        <div className="text-center">
                             <Link
                                 to={"/"}
                                 className="inline-flex items-center space-x-2 text-gray-600 hover:text-emerald-600 transition-colors mb-6"
@@ -86,54 +87,13 @@ export default function Register() {
                                 </span>
                             </div>
                         </div>
-
-                        {/* Registration Card */}
-                        <Card className="border-0 shadow-xl">
-                            <CardHeader className="space-y-1 pb-6">
-                                <CardTitle className="text-2xl font-bold text-center text-gray-900">
-                                    Create your account
-                                </CardTitle>
-                                <CardDescription className="text-center text-gray-600">
-                                    Get started today!
-                                </CardDescription>
-                            </CardHeader>
-                            
-                            {/* Auth Form Component */}
-                                {"AUTH FORM COMPONENT"}
-                            {/* ----------------- */}
-                            <CardContent className="pb-8">
-
-                                <div className="mt-6 text-center">
-                                    <p className="text-sm text-gray-600">
-                                        Already have an account?{" "}
-                                        <Link
-                                            to={"/login"}
-                                            className="font-medium text-emerald-600 hover:text-emerald-500 transition-colors"
-                                        >
-                                            Sign in here
-                                        </Link>
-                                    </p>
-                                </div>
-                                <div className="mt-6 pt-6 border-t border-gray-200">
-                                    <p className="text-xs text-center text-gray-500">
-                                        By creating an account, you agree to our{" "}
-                                        <Link
-                                            to="#"
-                                            className="text-emerald-600 hover:text-emerald-500"
-                                        >
-                                            Terms of Service
-                                        </Link>{" "}
-                                        and{" "}
-                                        <Link
-                                            to="#"
-                                            className="text-emerald-600 hover:text-emerald-500"
-                                        >
-                                            Privacy Policy
-                                        </Link>
-                                    </p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                        <SignUp 
+                            appearance={{
+                                elements:{
+                                    formButtonPrimary: "bg-emerald-500"
+                                }
+                            }}     
+                        />
                     </div>
                 </div>
             </div>

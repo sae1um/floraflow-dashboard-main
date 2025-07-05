@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router";
 
 export default function LandingCTA() {
     return (
@@ -10,17 +11,21 @@ export default function LandingCTA() {
                 Join thousands of growers.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
-                        Get Started
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                    <Button
-                        size="lg"
-                        variant="outline"
-                        className="text-lg px-8 py-3 border-white text-black hover:bg-white hover:text-emerald-600"
-                    >
-                        Contact Support
-                    </Button>
+                    <Link to={"/register"}>
+                        <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
+                            Get Started
+                            <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                    </Link>
+                    <Link to={"/support"}>
+                        <Button
+                            size="lg"
+                            variant="outline"
+                            className="text-lg px-8 py-3 border-white text-black hover:bg-white hover:text-emerald-600"
+                        >
+                            Contact Support
+                        </Button>
+                    </Link>
                     </div>
             </div>
         </section>
