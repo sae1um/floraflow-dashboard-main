@@ -1,6 +1,6 @@
 import {Link} from "react-router"
 import { ArrowLeft, Leaf } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { SignIn } from "@clerk/clerk-react";
 
 export default function Login() {
     return (
@@ -11,9 +11,9 @@ export default function Login() {
                 <div className="absolute top-3/4 right-1/4 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
             </div>
 
-            <div className="w-full max-w-md">
+            <div className="w-full flex flex-col items-center justify-center">
                 {/* Header */}
-                <div className="text-center mb-8">
+                <div className="text-center">
                     <Link
                         to={"/"}
                         className="inline-flex items-center space-x-2 text-gray-600 hover:text-emerald-600 transition-colors mb-6"
@@ -32,52 +32,14 @@ export default function Login() {
                     </div>
                 </div>
 
-                {/* Login Card */}
-                <Card className="border-0 shadow-xl">
-                    <CardHeader className="space-y-1 pb-6">
-                        <CardTitle className="text-2xl font-bold text-center text-gray-900">
-                            Welcome back
-                        </CardTitle>
-                        <CardDescription className="text-center text-gray-600">
-                            Sign in to your account to continue
-                        </CardDescription>
-                    </CardHeader>
-                        {/* Auth Form Component */}
-                            {"AUTH FORM COMPONENT"}
-                        {/* ----------------- */}
-                    <CardContent className="pb-8">
-
-                        <div className="mt-6 text-center">
-                            <p className="text-sm text-gray-600">
-                                Don't have an account?{" "}
-                                <Link
-                                    to={"/register"}
-                                    className="font-medium text-emerald-600 hover:text-emerald-500 transition-colors"
-                                >
-                                    Sign up for free
-                                </Link>
-                            </p>
-                        </div>
-                        <div className="mt-6 pt-6 border-t border-gray-200">
-                            <p className="text-xs text-center text-gray-500">
-                                By signing in, you agree to our{" "}
-                                <Link
-                                    to={""}
-                                    className="text-emerald-600 hover:text-emerald-500"
-                                >
-                                    Terms of Service
-                                </Link>{" "}
-                                and{" "}
-                                <Link
-                                    to={""}
-                                    className="text-emerald-600 hover:text-emerald-500"
-                                >
-                                    Privacy Policy
-                                </Link>
-                            </p>
-                        </div>
-                    </CardContent>
-                </Card>
+                {/* Clerk Signin Component */}
+                <SignIn 
+                    appearance={{
+                        elements: {
+                            formButtonPrimary: "bg-emerald-500"
+                        }
+                    }}
+                />
             </div>
         </div>
     );

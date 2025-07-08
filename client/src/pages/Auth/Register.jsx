@@ -1,12 +1,5 @@
 import { Link } from "react-router";
 import { ArrowLeft, Leaf, Check } from "lucide-react";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
 import { SignUp } from "@clerk/clerk-react";
 
 export default function Register() {
@@ -28,7 +21,7 @@ export default function Register() {
 
             <div className="flex min-h-screen">
                 {/* Left side - Benefits */}
-                <div className="hidden lg:flex lg:w-1/2 items-center justify-center px-12">
+                <div className="hidden lg:flex lg:w-1/3 items-center justify-end ml-22">
                     <div className="max-w-md">
                         <div className="flex items-center space-x-2 mb-8">
                             <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
@@ -66,8 +59,8 @@ export default function Register() {
                 </div>
 
                 {/* Right side - Registration Form */}
-                <div className="w-full lg:w-1/2 flex items-center justify-center px-4 lg:px-12">
-                    <div className="w-full max-w-md">
+                <div className="w-full lg:w-1/2 flex items-center justify-center ">
+                    <div className="w-full">
                         {/* Header */}
                         <div className="text-center">
                             <Link
@@ -87,13 +80,16 @@ export default function Register() {
                                 </span>
                             </div>
                         </div>
-                        <SignUp 
-                            appearance={{
-                                elements:{
-                                    formButtonPrimary: "bg-emerald-500"
-                                }
-                            }}     
-                        />
+                        {/* Clerk Signup Component */}
+                        <div className="flex justify-center">
+                            <SignUp
+                                appearance={{
+                                    elements: {
+                                        formButtonPrimary: "bg-emerald-500 border-white"
+                                    },
+                                }}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -9,7 +9,9 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import { DashboardLayout } from "./Layouts/DashboardLayout";
-import { ProtectedRoute } from "./components/ProtectedRoute";
+import { ProtectedRoute } from "./auth/ProtectedRoute";
+import OnboardingCheck from "./auth/OnboardingCheck";
+import OnboardingPage from "./pages/Onboarding";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Landing />
+                element: <Landing />,
             },
             {
                 path: "/login",
@@ -38,8 +40,20 @@ const router = createBrowserRouter([
         ],
     },
     {
+        path: "/onboarding",
+        element: (
+            <OnboardingCheck>
+                <OnboardingPage />
+            </OnboardingCheck>
+        ),
+    },
+    {
         path: "/dashboard",
-        element: <ProtectedRoute><DashboardLayout /></ProtectedRoute>,
+        element: (
+            <ProtectedRoute>
+                <DashboardLayout />
+            </ProtectedRoute>
+        ),
     },
     {
         path: "/support",
@@ -53,7 +67,17 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
-        <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+        <ClerkProvider
+            publishableKey={PUBLISHABLE_KEY}
+            signInUrl="/login"
+            signUpUrl="/register"
+            signInFallbackRedirectUrl="/"
+            signUpFallbackRedirectUrl="/"
+            afterSignOutUrl="/"
+            appearance={{
+                cssLayerName: "clerk",
+            }}
+        >
             <RouterProvider router={router} />
         </ClerkProvider>
     </StrictMode>

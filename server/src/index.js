@@ -1,0 +1,27 @@
+const express = require("express");
+const cors = require("cors");
+// const { clerkMiddleware, requireAuth, getAuth } = require("@clerk/express")
+
+require("dotenv").config();
+
+const app = express();
+
+//ROUTERS
+const OnboardingRouter = require("./routes/onboarding")
+
+const PORT = process.env.PORT
+
+//MIDDLEWARE
+app.use(express.json());
+app.use(cors());
+// app.use(clerkMiddleware());
+
+app.get("/", (req, res) => {
+    res.status(200).json({mssg: "Main Route"})
+})
+
+app.use("/api/onboarding", OnboardingRouter);
+
+app.listen(PORT, () => {
+    console.log(`App listening port ${PORT}`)
+})
