@@ -43,7 +43,7 @@ export const WelcomeStep = ({ setCurrentStep }) => {
             <Button
                 onClick={() => setCurrentStep(2)}
                 size="lg"
-                className="bg-emerald-600 hover:bg-emerald-700"
+                className="bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
             >
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -126,7 +126,7 @@ export const SetupStep = ({
                         variant="outline"
                         onClick={() => setCurrentStep(1)}
                         disabled={isValidating}
-                        className="flex-1"
+                        className="flex-1 cursor-pointer"
                     >
                         Back
                     </Button>

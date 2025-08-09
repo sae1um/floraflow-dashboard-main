@@ -1,13 +1,13 @@
-const express = require("express");
-const cors = require("cors");
-// const { clerkMiddleware, requireAuth, getAuth } = require("@clerk/express")
+import express from "express"
+import cors from "cors"
+import "dotenv/config"
+// import { clerkMiddleware, requireAuth, getAuth } = from "@clerk/express"
 
-require("dotenv").config();
 
 const app = express();
 
 //ROUTERS
-const OnboardingRouter = require("./routes/onboarding")
+const OnboardingRouter = require("./routes/onboarding");
 
 const PORT = process.env.PORT
 
@@ -24,4 +24,4 @@ app.use("/api/onboarding", OnboardingRouter);
 
 app.listen(PORT, () => {
     console.log(`App listening port ${PORT}`)
-})
+});

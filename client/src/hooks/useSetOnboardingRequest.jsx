@@ -10,7 +10,7 @@ export default function useSetOnboardingRequest(){
 
     useEffect(() => {
         //fetch to backend
-        // MOVE API URL TO .ENV FOR PROD PLZZZZ
+        // MOVE API URL TO .ENV FOR PROD
         const setOnboardingRequest = async () => {
             try {
                 const response = await fetch(
@@ -30,6 +30,8 @@ export default function useSetOnboardingRequest(){
             }
         };
 
+        // Setting metadata to false 
+        // When the user has not "onboardingComplete" metadata
         if (
             isLoaded &&
             user &&
@@ -37,8 +39,10 @@ export default function useSetOnboardingRequest(){
             !metadataSet
         ) {
             setResult(setOnboardingRequest())
-            // console.log(result)
-            if (result.response === "Onboarding set succesfully") {
+            //If theres no result then continue 
+            if(!result){
+                setError("There has been an error during onboarding, please try again later.");
+            } else if (result.response === "Onboarding set succesfully") {
                 setMetadataSet(true);
             } else {
                 setError(result.error)

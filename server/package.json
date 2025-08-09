@@ -1,9 +1,33 @@
 {
+  "name": "floraflow-backend",
+  "version": "1.0.1",
+  "description": "Backend server for floraflow",
+  "main": "index.ts",
+  "author": "Godswill Erhunmwunse (Saelum)",
+  "scripts": {
+    "start": "nodemon",
+    "dev": "npx ts-node ./src/index.ts",
+    "build": "tsc"
+  },
   "dependencies": {
     "@clerk/express": "^1.7.4",
+    "@neondatabase/serverless": "^1.0.1",
     "cors": "^2.8.5",
-    "dotenv": "^17.0.1",
+    "dotenv": "^17.1.0",
+    "drizzle-orm": "^0.44.4",
     "express": "^5.1.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.1.0",
+    "@types/ws": "^8.18.1",
+    "drizzle-kit": "^0.31.4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
   }
 }

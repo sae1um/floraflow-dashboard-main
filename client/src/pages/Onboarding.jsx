@@ -7,6 +7,7 @@ import {
     SuccessStep,
 } from "@/components/onboarding/onboardingSteps";
 import { useUser } from "@clerk/clerk-react";
+import { Link } from "react-router";
 export default function OnboardingPage() {
     const { user } = useUser();
     const [currentStep, setCurrentStep] = useState(1);
@@ -96,12 +97,12 @@ export default function OnboardingPage() {
                 <div className="text-center mt-6">
                     <p className="text-sm text-gray-500">
                         Need help?{" "}
-                        <a
-                            href="#"
+                        <Link
+                            to={"/support"}
                             className="text-emerald-600 hover:text-emerald-700 font-medium"
                         >
                             Contact support
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>

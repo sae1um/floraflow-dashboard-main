@@ -1,20 +1,21 @@
-const express = require("express");
-const { clerkClient } = require("@clerk/express");
+import express from "express"
+import { clerkClient } from "@clerk/express";
 
 const router = express();
 
 // CLERK_PUBLISHABLE_KEY
-// CLERK_SECRET_KEYs
+// CLERK_SECRET_KEY
 router.post("/set-onboarding", async (req, res) => {
+    // Validation for request
     if (!req.body) {
         res.status(400).json({ error: "Body is required" });
     } else if (!req.body.userid.trim()) {
         res.status(400).json({ error: "userid is required" });
     }
 
-    console.log("request received");
     const { userid, onboardingType } = req.body;
 
+    // Create onboarding Metadata
     try {
         await clerkClient.users.updateUser(userid, {
             publicMetadata: {
@@ -23,7 +24,7 @@ router.post("/set-onboarding", async (req, res) => {
         });
         console.log("Onboarding Set successfully");
         return res.status(200).json({ repsonse: "Onboarding set succesfully" });
-    } catch (err) {
+    } catch (err: any) {
         console.log("Error updating metadata:", err.errors?.[0].longMessage);
         return res.status(500).json({
             error: "Metadata not set succesfully",
