@@ -5,6 +5,7 @@ import {
     WelcomeStep,
     SetupStep,
     SuccessStep,
+    NameStep,
 } from "@/components/onboarding/onboardingSteps";
 import { useUser } from "@clerk/clerk-react";
 import { Link } from "react-router";
@@ -12,7 +13,7 @@ export default function OnboardingPage() {
     const { user } = useUser();
     const [currentStep, setCurrentStep] = useState(1);
     const [deviceId, setDeviceId] = useState("");
-
+    
     return (
         <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center justify-center p-4">
             {/* Background decoration */}
@@ -77,9 +78,14 @@ export default function OnboardingPage() {
                 <Card className="border-0 shadow-xl">
                     <CardContent className="p-8">
                         {currentStep === 1 && (
+                            <NameStep setCurrentStep={setCurrentStep} firstName={user.firstName} lastName={user.lastName} username={user.username}/>
+                        )
+                            
+                        }
+                        {currentStep === 2 && (
                             <WelcomeStep setCurrentStep={setCurrentStep} />
                         )}
-                        {currentStep === 2 && (
+                        {currentStep === 3 && (
                             <SetupStep
                                 setCurrentStep={setCurrentStep}
                                 deviceId={deviceId}
@@ -87,7 +93,7 @@ export default function OnboardingPage() {
                                 userId={user.id}
                             />
                         )}
-                        {currentStep === 3 && (
+                        {currentStep === 4 && (
                             <SuccessStep deviceId={deviceId} />
                         )}
                     </CardContent>

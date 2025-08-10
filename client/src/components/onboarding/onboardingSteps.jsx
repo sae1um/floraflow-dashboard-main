@@ -6,6 +6,7 @@ import {
     AlertCircle,
     CheckCircle,
     Loader2,
+    User,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -13,6 +14,70 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Navigate } from "react-router";
 import { claimDevice } from "@/helpers/claimDevice";
+import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
+
+export const NameStep = ({ setCurrentStep, firstName, lastName, username }) => {
+    const [nameType, setNameType] = useState("");
+
+    const handleRadioChange = (e) => {
+        setNameType(e.target.value);
+        console.log(e.target.value)
+    } 
+
+    const handleNameSubmit = () => {
+        setCurrentStep(2)
+    }
+
+    return (
+        <div className="space-y-6">
+            <div className="text-center">
+                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <User className="h-8 w-8 text-emerald-600" />
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                    What should we call you?
+                </h2>
+                <p className="text-gray-600">
+                    Let's personalise your FloraFlow experience.
+                </p>
+            </div>
+
+            <div className="space-y-6 flex flex-col">
+                <fieldset
+                    className="space-y-2 m-auto pb-6"
+                >
+                    <div className="flex space-x-2">
+                        <input type="radio" name="nameSelection" value="fullname" id="fullname" onChange={handleRadioChange}/>
+                        <Label
+                            htmlFor="fullname"
+                            className="text-sm font-medium text-gray-500"
+                        >
+                            Use <span className="text-gray-700">{firstName} {lastName}</span>
+                        </Label>
+                    </div>
+                    <div className="flex space-x-2">
+                        <input type="radio" name="nameSelection" value="username" id="username" onChange={handleRadioChange} />
+                        <Label
+                            htmlFor="username"
+                            className="text-sm font-medium text-gray-500 text-center"
+                        >
+                            Use <span className="text-gray-700">{username}</span>
+                        </Label>
+                    </div>
+                </fieldset>
+                <Button
+                    onClick={handleNameSubmit}
+                    disabled={!nameType}
+                    className="w-full bg-emerald-600 hover:bg-emerald-700"
+                    size="lg"
+                >
+                    Continue
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+            </div>
+        </div>
+    );
+};
 
 export const WelcomeStep = ({ setCurrentStep }) => {
     // ADD A SKIP BUTTON (sets onboardingComplete to true)
@@ -41,7 +106,7 @@ export const WelcomeStep = ({ setCurrentStep }) => {
                 </ul>
             </div>
             <Button
-                onClick={() => setCurrentStep(2)}
+                onClick={() => setCurrentStep(3)}
                 size="lg"
                 className="bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
             >
@@ -56,7 +121,7 @@ export const SetupStep = ({
     setCurrentStep,
     deviceId,
     setDeviceId,
-    userId
+    userId,
 }) => {
     const [isValidating, setIsValidating] = useState(false);
     const [validationError, setValidationError] = useState("");
@@ -66,13 +131,13 @@ export const SetupStep = ({
             setValidationError("Please enter a device ID");
             return;
         }
-        
+
         setIsValidating(true);
 
-        if(deviceId.startsWith("GH-") && deviceId.length >= 8){
-            const complete = claimDevice(deviceId, userId)
-        }else{
-            setValidationError("Unable to validate device. Please try again.")
+        if (deviceId.startsWith("GH-") && deviceId.length >= 8) {
+            const complete = claimDevice(deviceId, userId);
+        } else {
+            setValidationError("Unable to validate device. Please try again.");
         }
     };
     return (
@@ -163,7 +228,6 @@ export const SetupStep = ({
 
 export const SuccessStep = ({ deviceId }) => {
     const completeSetup = () => {
-        
         return <Navigate to="dashboard" />;
     };
     return (

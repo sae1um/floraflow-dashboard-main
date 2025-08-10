@@ -1,7 +1,7 @@
-import express from "express"
+import { Router } from "express";
 import { clerkClient } from "@clerk/express";
 
-const router = express();
+export const router = Router();
 
 // CLERK_PUBLISHABLE_KEY
 // CLERK_SECRET_KEY
@@ -13,13 +13,15 @@ router.post("/set-onboarding", async (req, res) => {
         res.status(400).json({ error: "userid is required" });
     }
 
-    const { userid, onboardingType } = req.body;
+    const { userid } = req.body;
 
     // Create onboarding Metadata
+    // Create an empty settins array to store all preferences etc
     try {
         await clerkClient.users.updateUser(userid, {
             publicMetadata: {
                 onboardingComplete: false,
+                // userSettings: []
             },
         });
         console.log("Onboarding Set successfully");
@@ -36,5 +38,3 @@ router.post("/set-onboarding", async (req, res) => {
 router.post("/done-onboarding", (req, res) => {
     
 })
-
-module.exports = router;
