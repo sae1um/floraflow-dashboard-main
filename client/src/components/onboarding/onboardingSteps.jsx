@@ -14,19 +14,23 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Navigate } from "react-router";
 import { claimDevice } from "@/helpers/claimDevice";
-import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
 
-export const NameStep = ({ setCurrentStep, firstName, lastName, username }) => {
-    const [nameType, setNameType] = useState("");
-
+export const NameStep = ({
+    setCurrentStep,
+    firstName,
+    lastName,
+    username,
+    nameType,
+    setNameType,
+}) => {
     const handleRadioChange = (e) => {
         setNameType(e.target.value);
-        console.log(e.target.value)
-    } 
+        console.log(e.target.value);
+    };
 
     const handleNameSubmit = () => {
-        setCurrentStep(2)
-    }
+        setCurrentStep(2);
+    };
 
     return (
         <div className="space-y-6">
@@ -43,25 +47,39 @@ export const NameStep = ({ setCurrentStep, firstName, lastName, username }) => {
             </div>
 
             <div className="space-y-6 flex flex-col">
-                <fieldset
-                    className="space-y-2 m-auto pb-6"
-                >
+                <fieldset className="space-y-2 m-auto pb-6">
                     <div className="flex space-x-2">
-                        <input type="radio" name="nameSelection" value="fullname" id="fullname" onChange={handleRadioChange}/>
+                        <input
+                            type="radio"
+                            name="nameSelection"
+                            value="fullname"
+                            id="fullname"
+                            onChange={handleRadioChange}
+                        />
                         <Label
                             htmlFor="fullname"
                             className="text-sm font-medium text-gray-500"
                         >
-                            Use <span className="text-gray-700">{firstName} {lastName}</span>
+                            Use{" "}
+                            <span className="text-gray-700">
+                                {firstName} {lastName}
+                            </span>
                         </Label>
                     </div>
                     <div className="flex space-x-2">
-                        <input type="radio" name="nameSelection" value="username" id="username" onChange={handleRadioChange} />
+                        <input
+                            type="radio"
+                            name="nameSelection"
+                            value="username"
+                            id="username"
+                            onChange={handleRadioChange}
+                        />
                         <Label
                             htmlFor="username"
                             className="text-sm font-medium text-gray-500 text-center"
                         >
-                            Use <span className="text-gray-700">{username}</span>
+                            Use{" "}
+                            <span className="text-gray-700">{username}</span>
                         </Label>
                     </div>
                 </fieldset>
@@ -80,7 +98,6 @@ export const NameStep = ({ setCurrentStep, firstName, lastName, username }) => {
 };
 
 export const WelcomeStep = ({ setCurrentStep }) => {
-    // ADD A SKIP BUTTON (sets onboardingComplete to true)
     return (
         <div className="text-center space-y-6">
             <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -135,6 +152,7 @@ export const SetupStep = ({
         setIsValidating(true);
 
         if (deviceId.startsWith("GH-") && deviceId.length >= 8) {
+            // If true then do onboarding complete function
             const complete = claimDevice(deviceId, userId);
         } else {
             setValidationError("Unable to validate device. Please try again.");

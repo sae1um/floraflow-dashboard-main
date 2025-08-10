@@ -13,7 +13,8 @@ export default function OnboardingPage() {
     const { user } = useUser();
     const [currentStep, setCurrentStep] = useState(1);
     const [deviceId, setDeviceId] = useState("");
-    
+    const [nameType, setNameType] = useState("");
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center justify-center p-4">
             {/* Background decoration */}
@@ -71,6 +72,20 @@ export default function OnboardingPage() {
                                     : "bg-gray-300"
                             }`}
                         />
+                        <div
+                            className={`w-8 h-0.5 ${
+                                currentStep >= 4
+                                    ? "bg-emerald-500"
+                                    : "bg-gray-300"
+                            }`}
+                        />
+                        <div
+                            className={`w-2 h-2 rounded-full ${
+                                currentStep >= 4
+                                    ? "bg-emerald-500"
+                                    : "bg-gray-300"
+                            }`}
+                        />
                     </div>
                 </div>
 
@@ -78,10 +93,15 @@ export default function OnboardingPage() {
                 <Card className="border-0 shadow-xl">
                     <CardContent className="p-8">
                         {currentStep === 1 && (
-                            <NameStep setCurrentStep={setCurrentStep} firstName={user.firstName} lastName={user.lastName} username={user.username}/>
-                        )
-                            
-                        }
+                            <NameStep
+                                setCurrentStep={setCurrentStep}
+                                firstName={user.firstName}
+                                lastName={user.lastName}
+                                username={user.username}
+                                nameType={nameType}
+                                setNameType={setNameType}
+                            />
+                        )}
                         {currentStep === 2 && (
                             <WelcomeStep setCurrentStep={setCurrentStep} />
                         )}

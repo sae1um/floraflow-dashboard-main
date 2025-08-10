@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { clerkClient } from "@clerk/express";
-
+import userSettings from "../lib/userSettings.json"
 export const router = Router();
 
 // CLERK_PUBLISHABLE_KEY
@@ -21,7 +21,7 @@ router.post("/set-onboarding", async (req, res) => {
         await clerkClient.users.updateUser(userid, {
             publicMetadata: {
                 onboardingComplete: false,
-                // userSettings: []
+                userSettings
             },
         });
         console.log("Onboarding Set successfully");
