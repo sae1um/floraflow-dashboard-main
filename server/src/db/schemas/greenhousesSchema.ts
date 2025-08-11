@@ -2,6 +2,9 @@ import { text } from "drizzle-orm/pg-core";
 import { boolean } from "drizzle-orm/pg-core";
 import { uuid } from "drizzle-orm/pg-core";
 import { pgTable } from "drizzle-orm/pg-core";
+import { users } from "./usersSchema";
+import { timestamp } from "drizzle-orm/pg-core";
+
 
 /*
  * When device made, greenhouse
@@ -10,6 +13,8 @@ export const greenhouses = pgTable("greenhouses", {
     id: uuid("id").primaryKey().defaultRandom(),
     name: text("name"),
     room: text("room"),
-    ownerId: text("ownerId"),
-    isClaimed: boolean("isClaimed"),
+    location: text("location"),
+    ownerId: text("ownerId").references(() => users.id),
+    claimedAt: timestamp("claimed_at"),
+    createdAt: timestamp("created_at").notNull().defaultNow()
 });
