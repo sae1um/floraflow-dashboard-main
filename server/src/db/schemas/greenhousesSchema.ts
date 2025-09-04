@@ -1,13 +1,11 @@
 import { text } from "drizzle-orm/pg-core";
-import { boolean } from "drizzle-orm/pg-core";
 import { uuid } from "drizzle-orm/pg-core";
 import { pgTable } from "drizzle-orm/pg-core";
 import { users } from "./usersSchema";
 import { timestamp } from "drizzle-orm/pg-core";
 
-
 /*
- * When device made, greenhouse
+ * When device made, greenhouse sends 
  */
 export const greenhouses = pgTable("greenhouses", {
     id: uuid("id").primaryKey().defaultRandom(),

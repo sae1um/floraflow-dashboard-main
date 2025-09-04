@@ -1,6 +1,6 @@
-import express, { Router } from "express";
+import { Router } from "express";
 import { router as OnboardingRouter } from "./onboarding";
-
+import { router as GreenhouseRouter } from "./greenhouses";
 export const router = Router();
 
 router.get("/", (req, res) => {
@@ -8,3 +8,4 @@ router.get("/", (req, res) => {
 });
 
 router.use("/api/onboarding", OnboardingRouter);
+router.use("/api/greenhouses", GreenhouseRouter);

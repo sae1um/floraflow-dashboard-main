@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import useSetOnboardingRequest from "@/hooks/useSetOnboardingRequest";
 import { SignOutButton, useUser } from "@clerk/clerk-react";
@@ -8,12 +7,9 @@ import { Navigate } from "react-router";
 export default function OnboardingCheck({ children }) {
     /*
      * this sets the onboarding metadata for clerk when new user registers
-     * if metadata set succesfully, then it sets the state to true showing that it has
+     * if metadata set succesfully, then it sets the state to true showing that it has been set
      * then redirect to onboarding
-     *
      * for new user {user.publicMetadata.onboardingComplete will be undefined}
-     *
-     * But it login with no onboarding
      */
     const { user, isLoaded, isSignedIn } = useUser();
     const { error, metadataSet } = useSetOnboardingRequest();
@@ -52,12 +48,15 @@ export default function OnboardingCheck({ children }) {
                     </div>
 
                     {/* Main Card */}
-                    <Card className="border-0 shadow-xl">
-                        <CardContent className="p-8 flex flex-col gap-4 items-center justify-center">
-                            {error}
+                    {/* Only show when there's an error */}
+                    {error && (
+                        <Card className="border-0 shadow-xl">
+                            <CardContent className="p-8 flex flex-col gap-4 items-center justify-center">
+                                {error}
                                 <SignOutButton className="py-2 px-1 rounded-md w-1/3 cursor-pointer bg-emerald-500 hover:bg-emerald-600 text-white font-bold" />
-                        </CardContent>
-                    </Card>
+                            </CardContent>
+                        </Card>
+                    )}
 
                     {/* Footer */}
                     <div className="text-center mt-6">

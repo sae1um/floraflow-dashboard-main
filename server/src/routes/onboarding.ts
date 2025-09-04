@@ -16,16 +16,16 @@ router.post("/set-onboarding", async (req, res) => {
     const { userid } = req.body;
 
     // Create onboarding Metadata
-    // Create an empty settins array to store all preferences etc
+    // Create an empty settings array to store all preferences etc
     try {
         await clerkClient.users.updateUser(userid, {
             publicMetadata: {
                 onboardingComplete: false,
-                userSettings
+                userSettings //from userSettings.json
             },
         });
         console.log("Onboarding Set successfully");
-        return res.status(200).json({ repsonse: "Onboarding set succesfully" });
+        return res.status(200).json({ response: "Onboarding set succesfully" });
     } catch (err: any) {
         console.log("Error updating metadata:", err.errors?.[0].longMessage);
         return res.status(500).json({

@@ -31,7 +31,7 @@ export default function useSetOnboardingRequest(){
         };
 
         // Setting metadata to false 
-        // When the user has not "onboardingComplete" metadata
+        // When the user has no "onboardingComplete" metadata
         if (
             isLoaded &&
             user &&

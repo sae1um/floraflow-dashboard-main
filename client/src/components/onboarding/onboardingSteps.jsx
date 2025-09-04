@@ -143,7 +143,7 @@ export const SetupStep = ({
     const [isValidating, setIsValidating] = useState(false);
     const [validationError, setValidationError] = useState("");
 
-    const validateDeviceId = () => {
+    const validateDevice = () => {
         if (!deviceId.trim()) {
             setValidationError("Please enter a device ID");
             return;
@@ -151,9 +151,11 @@ export const SetupStep = ({
 
         setIsValidating(true);
 
+        // device ID must start with GH- and be at least 8 characters long
         if (deviceId.startsWith("GH-") && deviceId.length >= 8) {
-            // If true then do onboarding complete function
-            const complete = claimDevice(deviceId, userId);
+            // object with success and message e.g. { success: true, message: "Device claimed successfully" }
+            const result = claimDevice(deviceId, userId);
+            
         } else {
             setValidationError("Unable to validate device. Please try again.");
         }
@@ -214,7 +216,7 @@ export const SetupStep = ({
                         Back
                     </Button>
                     <Button
-                        onClick={validateDeviceId}
+                        onClick={validateDevice}
                         disabled={isValidating || !deviceId.trim()}
                         className="flex-1 bg-emerald-600 hover:bg-emerald-700"
                     >
