@@ -9,9 +9,6 @@
 #include <LiquidCrystal_I2C.h>
 #include <Servo.h>
 
-// Function Declarations
-
-
 // ===== Time Code ======
 const long utcOffsetInSeconds = 3600;
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};

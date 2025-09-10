@@ -86,7 +86,7 @@ export const NameStep = ({
                 <Button
                     onClick={handleNameSubmit}
                     disabled={!nameType}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
                     size="lg"
                 >
                     Continue
@@ -122,14 +122,23 @@ export const WelcomeStep = ({ setCurrentStep }) => {
                     <li>• Stable internet connection</li>
                 </ul>
             </div>
-            <Button
-                onClick={() => setCurrentStep(3)}
-                size="lg"
-                className="bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
-            >
-                Get Started
-                <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>{" "}
+            <div className="flex gap-3">
+                <Button
+                    variant="outline"
+                    onClick={() => setCurrentStep(1)}
+                    className="flex-1 cursor-pointer"
+                >
+                    Back
+                </Button>
+                <Button
+                    onClick={() => setCurrentStep(3)}
+                    size="lg"
+                    className="flex-2 bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
+                >
+                    Get Started
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+            </div>
         </div>
     );
 };
@@ -155,7 +164,6 @@ export const SetupStep = ({
         if (deviceId.startsWith("GH-") && deviceId.length >= 8) {
             // object with success and message e.g. { success: true, message: "Device claimed successfully" }
             const result = claimDevice(deviceId, userId);
-            
         } else {
             setValidationError("Unable to validate device. Please try again.");
         }
@@ -209,8 +217,7 @@ export const SetupStep = ({
                 <div className="flex gap-3">
                     <Button
                         variant="outline"
-                        onClick={() => setCurrentStep(1)}
-                        disabled={isValidating}
+                        onClick={() => setCurrentStep(2)}
                         className="flex-1 cursor-pointer"
                     >
                         Back
@@ -218,7 +225,7 @@ export const SetupStep = ({
                     <Button
                         onClick={validateDevice}
                         disabled={isValidating || !deviceId.trim()}
-                        className="flex-1 bg-emerald-600 hover:bg-emerald-700"
+                        className="flex-1 bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
                     >
                         {isValidating ? (
                             <>

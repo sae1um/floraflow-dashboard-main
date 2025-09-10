@@ -107,7 +107,7 @@ export default function LandingNav() {
                                 </Link>
                                 <Link
                                     to={"/docs"}
-                                    className="block px-3 py-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors"
+                                    className="block px-3 py-2 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     Docs

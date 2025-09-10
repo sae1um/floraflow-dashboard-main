@@ -5,25 +5,22 @@
 #define DHT_PIN D5 // DHT11 Temp & Humidity
 #define LDR_PIN D5 // LDR
 #define WATER_PIN A0 // Water Level
+extern DHT dht;
 
-DHT dht(DHT_PIN, DHT11);
 
-class Greenhouse{
-    private:
-        String gardenid;
-    public:
-        Greenhouse(String mac);
-        float temperature;
-        float humidity;
-        int lightLevel;
-        int waterLevel;
-        
-        String setGardenId(String mac);
+class Greenhouse {
+public:
+    Greenhouse(String mac);
+    String greenhouseId;
+    float temperature;
+    float humidity;
+    int lightLevel;
+    int waterLevel;
 
-        Greenhouse readDHTSensor();
-        Greenhouse readLDR();
-        Greenhouse readWaterLevel();
-        Greenhouse readAllSensors();
+    String setGreenhouseId(String mac);
+    Greenhouse& readDHTSensor();
+    Greenhouse& readLDR();
+    Greenhouse& readWaterLevel();
+    Greenhouse& readAllSensors();
 };
-
 #endif

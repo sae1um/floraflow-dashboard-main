@@ -8,6 +8,7 @@
     "start": "nodemon",
     "dev": "npx ts-node ./src/index.ts",
     "db:generate": "drizzle-kit",
+    "db:migrate": "npx ts-node ./src/db/index.ts",
     "build": "tsc"
   },
   "dependencies": {

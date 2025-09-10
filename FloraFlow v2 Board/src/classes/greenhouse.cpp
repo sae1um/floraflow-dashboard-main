@@ -1,66 +1,51 @@
 #include "Greenhouse.h"
+DHT dht(DHT_PIN, DHT11);
+Greenhouse::Greenhouse(String mac) {
+    String id = setGreenhouseId(mac);
+    id.trim();
+    this->greenhouseId = id;
+    dht.begin();
+}
 
-class Greenhouse{
-    private:
-        String gardenid;
-    
-    public:
-        Greenhouse(String mac){
-            String id = setGardenId(mac);
-            id.trim();
-            this->gardenid = id;
-            dht.begin();
-        }
-        float temperature;
-        float humidity;
-        int lightLevel;
-        int waterLevel;
-        
-        //METHODS
-        String setGardenId(String mac){
-            return "GH-" + mac; // TEMPORARY
-        }
+String Greenhouse::setGreenhouseId(String mac) {
+    return "GH-" + mac;
+}
 
-        Greenhouse readDHTSensor(){
-            this->temperature = dht.readTemperature();
-            this->humidity = dht.readHumidity();
-            
-            if(isnan(this->temperature)|| isnan(this->humidity)){
-                Serial.println("Failed to read sensor");
-                return *this;
-            }
-            return *this;
-        }
+Greenhouse& Greenhouse::readDHTSensor() {
+    this->temperature = dht.readTemperature();
+    this->humidity = dht.readHumidity();
 
-        Greenhouse readLDR(){
-            int reading = digitalRead(LDR_PIN);
-            
-            // 0 = no light, 1 = light, 2 = no reading
-            switch (reading){
-                case HIGH:
-                    lightLevel = 0;
-                    return *this;
-                    break;
-                case LOW:
-                    lightLevel = 1;
-                    return *this;
-                    break;
-                default:
-                    lightLevel = 2;
-                    return *this;
-                    break;
-            }
-        }
+    if (isnan(this->temperature) || isnan(this->humidity)) {
+        Serial.println("Failed to read sensor");
+    }
+    return *this;
+}
 
-        Greenhouse readWaterLevel(){
-            this->waterLevel = analogRead(WATER_PIN);
-            return *this;
-        }
+Greenhouse& Greenhouse::readLDR() {
+    int reading = digitalRead(LDR_PIN);
 
-        Greenhouse readAllSensors(){
-            readDHTSensor();
-            readLDR();
-            readWaterLevel();
-            return *this;
-        }
-};
+    switch (reading) {
+        case HIGH:
+            lightLevel = 0;
+            break;
+        case LOW:
+            lightLevel = 1;
+            break;
+        default:
+            lightLevel = 2;
+            break;
+    }
+    return *this;
+}
+
+Greenhouse& Greenhouse::readWaterLevel() {
+    this->waterLevel = analogRead(WATER_PIN);
+    return *this;
+}
+
+Greenhouse& Greenhouse::readAllSensors() {
+    readDHTSensor();
+    readLDR();
+    readWaterLevel();
+    return *this;
+}
