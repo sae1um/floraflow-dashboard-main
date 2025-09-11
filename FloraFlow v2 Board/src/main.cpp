@@ -23,8 +23,8 @@ Servo VentServo;
 String serverName = "http://192.168.0.192:3002/api/"; //REMOVE LOCALHOST LATER, MIGHT BE IP
 // String serverName = "https://floraflow-backend.onrender.com/api";
 // - Wifi Credentials
-const char *ssid = "VM0828917";
-const char *password = "a2rbgZpnggbxb9sh";
+const char *ssid = "";
+const char *password = "";
 
 void setup(){
   Serial.begin(115200);
