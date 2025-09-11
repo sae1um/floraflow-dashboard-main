@@ -1,5 +1,5 @@
 CREATE TABLE "greenhouses" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" varchar(36) PRIMARY KEY NOT NULL,
 	"name" text,
 	"room" text,
 	"location" text,
@@ -10,7 +10,7 @@ CREATE TABLE "greenhouses" (
 --> statement-breakpoint
 CREATE TABLE "greenhouseReadings" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"greenhouse_id" uuid,
+	"greenhouse_id" varchar(36),
 	"temperature" numeric(5, 2),
 	"humidity" numeric(5, 2),
 	"co2" integer,
@@ -22,7 +22,7 @@ CREATE TABLE "users" (
 	"id" text NOT NULL,
 	"name" text NOT NULL,
 	"role" text DEFAULT 'None',
-	"created_at" timestamp (6) with time zone,
+	"created_at" timestamp (6) with time zone DEFAULT now(),
 	CONSTRAINT "users_id_unique" UNIQUE("id")
 );
 --> statement-breakpoint

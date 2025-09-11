@@ -14,6 +14,8 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Navigate } from "react-router";
 import { claimDevice } from "@/helpers/claimDevice";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { completeOnboarding } from "@/helpers/completeOnboarding";
 
 export const NameStep = ({
     setCurrentStep,
@@ -147,26 +149,41 @@ export const SetupStep = ({
     setCurrentStep,
     deviceId,
     setDeviceId,
-    userId,
+    nameType,
+    user,
 }) => {
     const [isValidating, setIsValidating] = useState(false);
     const [validationError, setValidationError] = useState("");
 
-    const validateDevice = () => {
+    const validateDevice = async () => {
+        setIsValidating(true);
         if (!deviceId.trim()) {
             setValidationError("Please enter a device ID");
+            setIsValidating(false);
             return;
         }
 
-        setIsValidating(true);
-
         // device ID must start with GH- and be at least 8 characters long
         if (deviceId.startsWith("GH-") && deviceId.length >= 8) {
+            let username;
+            if (nameType === "fullname") {
+                username = user.firstName + " " + user.lastName;
+            } else {
+                username = user.username;
+            }
             // object with success and message e.g. { success: true, message: "Device claimed successfully" }
-            const result = claimDevice(deviceId, userId);
+            const result = await claimDevice(deviceId, username, user.id);
+            if (!result.success) {
+                console.log(result);
+                setValidationError(result.message);
+                setIsValidating(false);
+                return;
+            }
         } else {
             setValidationError("Unable to validate device. Please try again.");
         }
+        setIsValidating(false);
+        setCurrentStep(4);
     };
     return (
         <div className="space-y-6">
@@ -255,7 +272,8 @@ export const SetupStep = ({
 
 export const SuccessStep = ({ deviceId }) => {
     const completeSetup = () => {
-        return <Navigate to="dashboard" />;
+        completeOnboarding();
+        return <Navigate to="/dashboard" />;
     };
     return (
         <div className="text-center space-y-6">
@@ -269,7 +287,7 @@ export const SuccessStep = ({ deviceId }) => {
                 </h2>
                 <p className="text-gray-600 mb-6">
                     Your greenhouse{" "}
-                    <span className="font-mono bg-gray-100 px-2 py-1 rounded">
+                    <span className="font-mono bg-gray-100 0 px-2 py-1 rounded">
                         {deviceId}
                     </span>{" "}
                     has been successfully connected to FloraFlow.
@@ -291,7 +309,7 @@ export const SuccessStep = ({ deviceId }) => {
             <Button
                 onClick={completeSetup}
                 size="lg"
-                className="bg-emerald-600 hover:bg-emerald-700"
+                className="bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
             >
                 Go to Dashboard
                 <ArrowRight className="ml-2 h-5 w-5" />

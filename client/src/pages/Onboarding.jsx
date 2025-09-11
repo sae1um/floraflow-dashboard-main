@@ -110,7 +110,8 @@ export default function OnboardingPage() {
                                 setCurrentStep={setCurrentStep}
                                 deviceId={deviceId}
                                 setDeviceId={setDeviceId}
-                                userId={user.id}
+                                nameType={nameType}
+                                user={user}
                             />
                         )}
                         {currentStep === 4 && (

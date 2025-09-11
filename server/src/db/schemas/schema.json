@@ -1,0 +1,32 @@
+{
+    "users": {
+        "fields": [
+            "id",
+            "name",
+            "role",
+            "created_at"
+        ]
+    },
+    "greenhouses": {
+        "fields": [
+            "id",
+            "name",
+            "room",
+            "location",
+            "ownerId",
+            "claimedAt",
+            "createdAt"
+        ]
+    },
+    "greenhouseReadings": {
+        "fields": [
+            "id",
+            "greenhouseId",
+            "temperature",
+            "humidity",
+            "co2",
+            "waterLevel",
+            "timestamp"
+        ]
+    }
+}

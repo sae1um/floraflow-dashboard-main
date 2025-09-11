@@ -9,12 +9,10 @@ export default function useSetOnboardingRequest(){
     const API_URL = import.meta.env.VITE_BACKEND_API_URL;
 
     useEffect(() => {
-        //fetch to backend
-        // MOVE API URL TO .ENV FOR PROD
         const setOnboardingRequest = async () => {
             try {
                 const response = await fetch(
-                    `${API_URL}/api/onboarding/set-onboarding`,
+                    `${API_URL}/onboarding/set-onboarding`,
                     {
                         method: "POST",
                         headers: {

@@ -4,12 +4,15 @@ import { greenhouses } from "./greenhousesSchema";
 import { timestamp } from "drizzle-orm/pg-core";
 import { numeric } from "drizzle-orm/pg-core";
 import { integer } from "drizzle-orm/pg-core";
+import { varchar } from "drizzle-orm/pg-core";
 
 // ADD LIGHT LEVEL LATER
 
 export const greenhouseReadings = pgTable("greenhouseReadings", {
     id: uuid("id").defaultRandom().primaryKey(), //reading id != greenhouse id, identifies each reading
-    greenhouseId: uuid("greenhouse_id").references(() => greenhouses.id),
+    greenhouseId: varchar("greenhouse_id", { length: 36 }).references(
+        () => greenhouses.id
+    ),
     temperature: numeric("temperature", { precision: 5, scale: 2 }),
     humidity: numeric("humidity", { precision: 5, scale: 2 }),
     co2: integer("co2"),

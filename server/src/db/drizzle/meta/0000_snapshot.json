@@ -1,5 +1,5 @@
 {
-  "id": "6afa6365-f71d-4c49-be13-c9238b23803e",
+  "id": "a7803a27-99ea-42e4-92bc-7977bf8ef03f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -10,10 +10,9 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "uuid",
+          "type": "varchar(36)",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "name": {
           "name": "name",
@@ -88,7 +87,7 @@
         },
         "greenhouse_id": {
           "name": "greenhouse_id",
-          "type": "uuid",
+          "type": "varchar(36)",
           "primaryKey": false,
           "notNull": false
         },
@@ -173,7 +172,8 @@
           "name": "created_at",
           "type": "timestamp (6) with time zone",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
