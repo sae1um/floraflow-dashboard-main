@@ -7,15 +7,21 @@ import {
     CheckCircle,
     Loader2,
     User,
+    Info,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
-import { Navigate } from "react-router";
 import { claimDevice } from "@/helpers/claimDevice";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { completeOnboarding } from "@/helpers/completeOnboarding";
+import useSetOnboardingRequest from "@/hooks/useSetOnboardingRequest";
+import { Skeleton } from "@/components/ui/skeleton";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { updateDeviceClaim } from "@/helpers/updateDeviceClaim";
 
 export const NameStep = ({
     setCurrentStep,
@@ -24,10 +30,11 @@ export const NameStep = ({
     username,
     nameType,
     setNameType,
+    complete
 }) => {
+    const { isRequestLoading } = useSetOnboardingRequest();
     const handleRadioChange = (e) => {
         setNameType(e.target.value);
-        console.log(e.target.value);
     };
 
     const handleNameSubmit = () => {
@@ -56,6 +63,7 @@ export const NameStep = ({
                             name="nameSelection"
                             value="fullname"
                             id="fullname"
+                            disabled={isRequestLoading}
                             onChange={handleRadioChange}
                         />
                         <Label
@@ -63,9 +71,13 @@ export const NameStep = ({
                             className="text-sm font-medium text-gray-500"
                         >
                             Use{" "}
-                            <span className="text-gray-700">
-                                {firstName} {lastName}
-                            </span>
+                            {isRequestLoading ? (
+                                <Skeleton>loading...</Skeleton>
+                            ) : (
+                                <span className="text-gray-700">
+                                    {firstName} {lastName}
+                                </span>
+                            )}
                         </Label>
                     </div>
                     <div className="flex space-x-2">
@@ -74,6 +86,7 @@ export const NameStep = ({
                             name="nameSelection"
                             value="username"
                             id="username"
+                            disabled={isRequestLoading}
                             onChange={handleRadioChange}
                         />
                         <Label
@@ -81,7 +94,13 @@ export const NameStep = ({
                             className="text-sm font-medium text-gray-500 text-center"
                         >
                             Use{" "}
-                            <span className="text-gray-700">{username}</span>
+                            {isRequestLoading ? (
+                                <Skeleton>loading...</Skeleton>
+                            ) : (
+                                <span className="text-gray-700">
+                                    {username}
+                                </span>
+                            )}
                         </Label>
                     </div>
                 </fieldset>
@@ -94,12 +113,20 @@ export const NameStep = ({
                     Continue
                     <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
+                <div className="flex items-center justify-center">
+                    <button
+                        onClick={complete}
+                        className="underline pl-2 text-slate-400 cursor-pointer"
+                    >
+                        Click to skip onboarding
+                    </button>
+                </div>
             </div>
         </div>
     );
 };
 
-export const WelcomeStep = ({ setCurrentStep }) => {
+export const WelcomeStep = ({ setCurrentStep, complete }) => {
     return (
         <div className="text-center space-y-6">
             <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -141,6 +168,14 @@ export const WelcomeStep = ({ setCurrentStep }) => {
                     <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
             </div>
+            <div>
+                <button
+                    onClick={complete}
+                    className="underline pl-2 text-slate-400 cursor-pointer"
+                >
+                    Click to skip onboarding
+                </button>
+            </div>
         </div>
     );
 };
@@ -151,12 +186,22 @@ export const SetupStep = ({
     setDeviceId,
     nameType,
     user,
+    complete
 }) => {
     const [isValidating, setIsValidating] = useState(false);
     const [validationError, setValidationError] = useState("");
+    const [isConnected, setIsConnected] = useState(false);
+    const [location, setLocation] = useState("");
+    const [room, setRoom] = useState("");
 
     const validateDevice = async () => {
         setIsValidating(true);
+        setValidationError("");
+
+        if (isConnected) {
+            return completeForm();
+        }
+        // device ID cannot be empty
         if (!deviceId.trim()) {
             setValidationError("Please enter a device ID");
             setIsValidating(false);
@@ -174,17 +219,37 @@ export const SetupStep = ({
             // object with success and message e.g. { success: true, message: "Device claimed successfully" }
             const result = await claimDevice(deviceId, username, user.id);
             if (!result.success) {
-                console.log(result);
                 setValidationError(result.message);
                 setIsValidating(false);
                 return;
+            } else if (result.success) {
+                setValidationError("");
+                setIsValidating(false);
+                setIsConnected(true);
             }
         } else {
             setValidationError("Unable to validate device. Please try again.");
+            setIsValidating(false);
+        }
+        setIsValidating(false);
+    };
+
+    const completeForm = async () => {
+        if (!room.trim()) {
+            setValidationError("Please enter a room name");
+            return;
+        }
+        const res = await updateDeviceClaim(deviceId, location, room);
+        if (!res.success) {
+            setIsValidating(false);
+            setValidationError(res.message);
+            return;
         }
         setIsValidating(false);
         setCurrentStep(4);
+        return;
     };
+
     return (
         <div className="space-y-6">
             <div className="text-center">
@@ -212,17 +277,71 @@ export const SetupStep = ({
                         type="text"
                         placeholder="e.g., GH-ABC123XYZ"
                         value={deviceId}
+                        disabled={isValidating || isConnected}
                         onChange={(e) => {
                             setDeviceId(e.target.value.toUpperCase());
                             setValidationError("");
                         }}
                         className="mt-1 h-12 text-center font-mono tracking-wider"
-                        disabled={isValidating}
                     />
                     <p className="text-xs text-gray-500 mt-1">
                         You can find this on your greenhouse device label
                     </p>
                 </div>
+                {isConnected && (
+                    <div className="flex justify-between space-y-2">
+                        <div className="">
+                            <Label
+                                htmlFor="location"
+                                className="text-center text-sm font-medium text-gray-700"
+                            >
+                                Location
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <Info className="inline-block ml-1 h-4 w-4 text-gray-400 cursor-pointer" />
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p className="text-xs">
+                                            Example: Mom's house, School, etc
+                                            (Optional)
+                                        </p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </Label>
+                            <Input
+                                id="location"
+                                disabled={isValidating}
+                                value={location}
+                                onChange={(e) => setLocation(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <Label
+                                htmlFor="room"
+                                className=" flex flex-row gap-0 text-sm font-medium text-gray-700"
+                            >
+                                Room<span className="text-red-600 mr-2">*</span>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <Info className="inline-block ml-1 h-4 w-4 text-gray-400 cursor-pointer" />
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p className="text-xs">
+                                            Example: Back garden, Timmy's room,
+                                            etc. (Required)
+                                        </p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </Label>
+                            <Input
+                                id="room"
+                                disabled={isValidating}
+                                value={room}
+                                onChange={(e) => setRoom(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                )}
 
                 {validationError && (
                     <Alert variant="destructive">
@@ -244,15 +363,23 @@ export const SetupStep = ({
                         disabled={isValidating || !deviceId.trim()}
                         className="flex-1 bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
                     >
-                        {isValidating ? (
+                        {isValidating && (
                             <>
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                                 Connecting...
                             </>
-                        ) : (
-                            "Connect Device"
                         )}
+                        {!isValidating && !isConnected && "Connect Device"}
+                        {!isValidating && isConnected && "Continue"}
                     </Button>
+                </div>
+                <div>
+                    <button
+                        onClick={complete}
+                        className="underline pl-2 text-slate-400 cursor-pointer"
+                    >
+                        Click to skip onboarding
+                    </button>
                 </div>
             </div>
 
@@ -270,11 +397,8 @@ export const SetupStep = ({
     );
 };
 
-export const SuccessStep = ({ deviceId }) => {
-    const completeSetup = () => {
-        completeOnboarding();
-        return <Navigate to="/dashboard" />;
-    };
+export const SuccessStep = ({ deviceId, complete }) => {
+    
     return (
         <div className="text-center space-y-6">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
@@ -307,7 +431,7 @@ export const SuccessStep = ({ deviceId }) => {
             </div>
 
             <Button
-                onClick={completeSetup}
+                onClick={complete}
                 size="lg"
                 className="bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
             >

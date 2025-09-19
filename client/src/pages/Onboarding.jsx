@@ -8,13 +8,22 @@ import {
     NameStep,
 } from "@/components/onboarding/onboardingSteps";
 import { useUser } from "@clerk/clerk-react";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
+import { completeOnboarding } from "@/helpers/completeOnboarding";
+
 export default function OnboardingPage() {
     const { user } = useUser();
     const [currentStep, setCurrentStep] = useState(1);
     const [deviceId, setDeviceId] = useState("");
     const [nameType, setNameType] = useState("");
-
+    const completeSetup = async () => {
+        const result = await completeOnboarding(user.id, nameType);
+        console.log(result);
+        if(result.success){
+            <Navigate to="/dashboard" />;
+        }
+        return;
+    };
     return (
         <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center justify-center p-4">
             {/* Background decoration */}
@@ -100,10 +109,14 @@ export default function OnboardingPage() {
                                 username={user.username}
                                 nameType={nameType}
                                 setNameType={setNameType}
+                                complete={completeSetup}
                             />
                         )}
                         {currentStep === 2 && (
-                            <WelcomeStep setCurrentStep={setCurrentStep} />
+                            <WelcomeStep
+                                setCurrentStep={setCurrentStep}
+                                complete={completeSetup}
+                            />
                         )}
                         {currentStep === 3 && (
                             <SetupStep
@@ -112,10 +125,14 @@ export default function OnboardingPage() {
                                 setDeviceId={setDeviceId}
                                 nameType={nameType}
                                 user={user}
+                                complete={completeSetup}
                             />
                         )}
                         {currentStep === 4 && (
-                            <SuccessStep deviceId={deviceId} />
+                            <SuccessStep
+                                deviceId={deviceId}
+                                complete={completeSetup}
+                            />
                         )}
                     </CardContent>
                 </Card>

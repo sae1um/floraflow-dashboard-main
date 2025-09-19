@@ -1,10 +1,18 @@
-import {claimGreenhouse, initialiseGreenhouse, } from "../db/queries/greenhouse";
+import {
+    claimGreenhouse,
+    initialiseGreenhouse,
+    updateOnboardingGreenhouse,
+} from "../db/queries/greenhouse";
 
 import { Router } from "express";
 export const router = Router();
 
 router.post("/claim", async (req, res) => {
+    if (!req.body) {
+        res.status(400).json({ error: "Body is required" });
+    }
     const { deviceId, username, userId } = req.body;
+    
     if (!deviceId.trim() || !username.trim() || !userId.trim()) {
         return res.status(400).send("Missing fields");
     }
@@ -16,7 +24,27 @@ router.post("/claim", async (req, res) => {
     return res.status(200).send(response);
 });
 
+router.post("/update-claim", async (req, res) => {
+    if (!req.body) {
+        res.status(400).json({ error: "Body is required" });
+    }
+
+    const { deviceId, location, room } = req.body;
+    
+    if(!room.trim()){
+        return res.status(401).send({success: false, message: "Please enter a room name"})
+    }
+    const response = await updateOnboardingGreenhouse(deviceId, location, room);
+    if(!response.success){
+        return res.status(400).send(response)
+    }
+    return res.status(200).send(response)
+});
+
 router.post("/initialise", async (req, res) => {
+    if (!req.body) {
+        res.status(400).json({ error: "Body is required" });
+    }
     const { greenhouseId } = req.body;
 
     if (!greenhouseId.trim()) {

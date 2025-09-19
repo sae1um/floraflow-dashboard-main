@@ -27,7 +27,11 @@ export async function claimGreenhouse(
             .from(greenhouses)
             .where(eq(greenhouses.id, deviceId));
         if (greenhouse.length === 0) {
-            return { success: false, message: "Greenhouse not initialised" };
+            return {
+                success: false,
+                message:
+                    "Greenhouse not initialised. Make sure the device is plugged in and powered on.",
+            };
         } else if (greenhouse[0].ownerId) {
             return { success: false, message: "Greenhouse already claimed" };
         } else {
@@ -42,4 +46,19 @@ export async function claimGreenhouse(
         // console.error(error);
         return { success: false, message: error, more: userResp };
     }
+}
+
+export async function updateOnboardingGreenhouse(
+    deviceId: string,
+    location: string,
+    room: string
+) {
+    try{
+        await db.update(greenhouses).set({room, location,}).where(eq(greenhouses.id, deviceId));
+        return {success: true, message: "Greenhouse updated successfully"}
+    }catch(err){
+        console.log(err);
+        return {success: false, message: "Failed to update greenhouse"}
+    }
+
 }

@@ -63,6 +63,10 @@ const router = createBrowserRouter([
         path: "/docs",
         element: <div>Documentation Page</div>,
     },
+    {
+        path: "/test",
+        element: <div> Test Page</div>,
+    }
 ]);
 
 createRoot(document.getElementById("root")).render(

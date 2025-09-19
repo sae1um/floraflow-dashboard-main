@@ -2,14 +2,14 @@ import axios from "axios";
 
 const URL = import.meta.env.VITE_BACKEND_API_URL;
 
-export const claimDevice = async (deviceId, username, userId) => {
+export const updateDeviceClaim = async (deviceId, location, room) => {
     try {
         const response = await axios.post(
-            URL + "/greenhouses/claim",
+            URL + "/greenhouses/update-claim",
             {
                 deviceId,
-                username,
-                userId
+                location,
+                room
             },
             {
                 headers: {
@@ -23,4 +23,3 @@ export const claimDevice = async (deviceId, username, userId) => {
         return error.response.data;
     }
 }
-

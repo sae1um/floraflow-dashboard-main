@@ -1,3 +1,4 @@
+import { NameStep } from "@/components/onboarding/onboardingSteps";
 import { Card, CardContent } from "@/components/ui/card";
 import useSetOnboardingRequest from "@/hooks/useSetOnboardingRequest";
 import { SignOutButton, useUser } from "@clerk/clerk-react";
@@ -12,7 +13,7 @@ export default function OnboardingCheck({ children }) {
      * for new user {user.publicMetadata.onboardingComplete will be undefined}
      */
     const { user, isLoaded, isSignedIn } = useUser();
-    const { error, metadataSet } = useSetOnboardingRequest();
+    const { error, metadataSet, isRequestLoading } = useSetOnboardingRequest();
 
     if (!isLoaded) {
         //add a loader/spinner/skeleton!!!
@@ -26,7 +27,10 @@ export default function OnboardingCheck({ children }) {
     if (user.publicMetadata.onboardingComplete) {
         return <Navigate to="/dashboard" />;
     }
-    // if()
+    if(isRequestLoading || !isRequestLoading){
+        return children;
+    }
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center justify-center p-4">
             {/* Background decoration */}
@@ -48,7 +52,7 @@ export default function OnboardingCheck({ children }) {
                     </div>
 
                     {/* Main Card */}
-                    {/* Only show when there's an error */}
+                    {/* {isRequestLoading && <NameStep />} */}
                     {error && (
                         <Card className="border-0 shadow-xl">
                             <CardContent className="p-8 flex flex-col gap-4 items-center justify-center">
@@ -57,7 +61,7 @@ export default function OnboardingCheck({ children }) {
                             </CardContent>
                         </Card>
                     )}
-
+                    {error ? console.log(error) : ""}
                     {/* Footer */}
                     <div className="text-center mt-6">
                         <p className="text-sm text-gray-500">

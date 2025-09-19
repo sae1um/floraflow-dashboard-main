@@ -3,14 +3,17 @@ import { useEffect, useState } from "react";
 
 export default function useSetOnboardingRequest(){
     const { user, isLoaded } = useUser();
+    const [isRequestLoading, setIsRequestLoading] = useState(false);
     const [result, setResult] = useState();
     const [metadataSet, setMetadataSet] = useState(false); //has new metadata been set?
     const [error, setError] = useState();
     const API_URL = import.meta.env.VITE_BACKEND_API_URL;
 
+    //REFACOTOR WITH AXIOS
     useEffect(() => {
         const setOnboardingRequest = async () => {
             try {
+                setIsRequestLoading(true);
                 const response = await fetch(
                     `${API_URL}/onboarding/set-onboarding`,
                     {
@@ -21,10 +24,18 @@ export default function useSetOnboardingRequest(){
                         body: JSON.stringify({ userid: user.id }),
                     }
                 );
-                return await response.json();
+                const data = await response.json();
+                if(data.reponse == "Onboarding set succesfully"){
+                    setResult(data);
+                    setMetadataSet(true);
+                }else{
+                    setError(data.error);
+                }
             } catch (err) {
                 console.error(err);
-                return err;
+                setError("There has been an error during onboarding, please try again later.");
+            } finally {
+                setIsRequestLoading(false);
             }
         };
 
@@ -36,21 +47,13 @@ export default function useSetOnboardingRequest(){
             user.publicMetadata.onboardingComplete === undefined &&
             !metadataSet
         ) {
-            setResult(setOnboardingRequest())
+            setOnboardingRequest()
             //If theres no result then continue 
-            if(!result){
-                setError("There has been an error during onboarding, please try again later.");
-            } else if (result.response === "Onboarding set succesfully") {
-                setMetadataSet(true);
-            } else {
-                setError(result.error)
-                console.log(result.error);
-            }
         }else if(isLoaded && (user.publicMetadata.onboardingComplete || !user.publicMetadata.onboardingComplete)){
             setMetadataSet(true)
         }
     }, [user, isLoaded]);
 
     
-    return {result, error, metadataSet}
+    return {result, error, metadataSet, isRequestLoading}
 }
