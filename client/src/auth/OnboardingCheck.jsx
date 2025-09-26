@@ -1,4 +1,3 @@
-import { NameStep } from "@/components/Onboarding/OnboardingSteps";
 import { Card, CardContent } from "@/components/ui/card";
 import useSetOnboardingRequest from "@/hooks/useSetOnboardingRequest";
 import { SignOutButton, useUser } from "@clerk/clerk-react";
