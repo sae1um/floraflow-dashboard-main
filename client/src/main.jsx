@@ -12,6 +12,8 @@ import { DashboardLayout } from "./Layouts/DashboardLayout";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
 import OnboardingCheck from "./auth/OnboardingCheck";
 import OnboardingPage from "./pages/Onboarding";
+import DashboardGreenhosuesPage from "./components/Dashboard/DashboardGreenhosuesPage ";
+import DashboardHomePage from "./components/Dashboard/DashboardHomePage";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -45,7 +47,7 @@ const router = createBrowserRouter([
             <OnboardingCheck>
                 <OnboardingPage />
             </OnboardingCheck>
-        ),
+        )
     },
     {
         path: "/dashboard",
@@ -54,6 +56,16 @@ const router = createBrowserRouter([
                 <DashboardLayout />
             </ProtectedRoute>
         ),
+        children: [
+            {
+                index: true,
+                element: <DashboardGreenhosuesPage />
+            },
+            {
+                path: "greenhouse",
+                element: <DashboardHomePage />
+            }
+        ]
     },
     {
         path: "/support",

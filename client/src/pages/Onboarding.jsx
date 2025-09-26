@@ -6,21 +6,21 @@ import {
     SetupStep,
     SuccessStep,
     NameStep,
-} from "@/components/onboarding/onboardingSteps";
+} from "@/components/Onboarding/OnboardingSteps";
 import { useUser } from "@clerk/clerk-react";
-import { Link, Navigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import { completeOnboarding } from "@/helpers/completeOnboarding";
 
 export default function OnboardingPage() {
     const { user } = useUser();
+    const navigate = useNavigate();
     const [currentStep, setCurrentStep] = useState(1);
     const [deviceId, setDeviceId] = useState("");
     const [nameType, setNameType] = useState("");
     const completeSetup = async () => {
         const result = await completeOnboarding(user.id, nameType);
-        console.log(result);
-        if(result.success){
-            <Navigate to="/dashboard" />;
+        if (result.success) {
+            return navigate("/dashboard");
         }
         return;
     };

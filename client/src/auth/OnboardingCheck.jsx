@@ -1,4 +1,4 @@
-import { NameStep } from "@/components/onboarding/onboardingSteps";
+import { NameStep } from "@/components/Onboarding/OnboardingSteps";
 import { Card, CardContent } from "@/components/ui/card";
 import useSetOnboardingRequest from "@/hooks/useSetOnboardingRequest";
 import { SignOutButton, useUser } from "@clerk/clerk-react";
@@ -27,7 +27,7 @@ export default function OnboardingCheck({ children }) {
     if (user.publicMetadata.onboardingComplete) {
         return <Navigate to="/dashboard" />;
     }
-    if(isRequestLoading || !isRequestLoading){
+    if (isRequestLoading || !isRequestLoading) {
         return children;
     }
 

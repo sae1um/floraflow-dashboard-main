@@ -54,7 +54,6 @@ export const NameStep = ({
                     Let's personalise your FloraFlow experience.
                 </p>
             </div>
-
             <div className="space-y-6 flex flex-col">
                 <fieldset className="space-y-2 m-auto pb-6">
                     <div className="flex space-x-2">
