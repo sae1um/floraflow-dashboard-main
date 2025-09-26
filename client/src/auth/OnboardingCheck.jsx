@@ -9,13 +9,12 @@ export default function OnboardingCheck({ children }) {
      * this sets the onboarding metadata for clerk when new user registers
      * if metadata set succesfully, then it sets the state to true showing that it has been set
      * then redirect to onboarding
-     * for new user {user.publicMetadata.onboardingComplete will be undefined}
+     * for new user user.publicMetadata.onboardingComplete will be undefined
      */
     const { user, isLoaded, isSignedIn } = useUser();
     const { error, metadataSet, isRequestLoading } = useSetOnboardingRequest();
 
     if (!isLoaded) {
-        //add a loader/spinner/skeleton!!!
         return null;
     } else if (!isSignedIn) {
         return <Navigate to="/" />;
