@@ -50,7 +50,6 @@ export default function OnboardingCheck({ children }) {
                     </div>
 
                     {/* Main Card */}
-                    {/* {isRequestLoading && <NameStep />} */}
                     {error && (
                         <Card className="border-0 shadow-xl">
                             <CardContent className="p-8 flex flex-col gap-4 items-center justify-center">

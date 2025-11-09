@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "FloraFlow v2 Board",
+			"path": "."
+		}
+	],
+	"settings": {
+		"discord.enabled": true,
+		"postman.settings.dotenv-detection-notification-visibility": false
+	}
+}

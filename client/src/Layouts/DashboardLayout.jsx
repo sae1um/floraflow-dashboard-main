@@ -1,15 +1,16 @@
+import DashboardHeader from "@/components/Dashboard/DashboardHeader";
 import Sidebar from "@/components/Dashboard/Sidebar";
-import { SignOutButton } from "@clerk/clerk-react";
 import React from "react";
-import { Link, Navigate, Outlet } from "react-router";
+import { Outlet } from "react-router";
+// import { uiser}
 
 export const DashboardLayout = () => {
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-gray-50">
             <Sidebar />
-            <div>
+            <div className="lg:pl-64">
+                <DashboardHeader />
                 <Outlet />
-                <SignOutButton>Sign out</SignOutButton>
             </div>
         </div>
     );

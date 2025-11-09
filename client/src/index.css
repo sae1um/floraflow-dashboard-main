@@ -75,6 +75,7 @@
     --sidebar-accent-foreground: oklch(0.205 0 0);
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
+
 }
 
 .dark {
@@ -124,4 +125,14 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+.icon-size-4{
+    width: calc(var(--spacing) * 4);
+    height: calc(var(--spacing) * 4);
+}
+
+.icon-size-5{
+    width: calc(var(--spacing) * 5);
+    height: calc(var(--spacing) * 5);
 }
