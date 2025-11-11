@@ -1,76 +1,83 @@
-# FloraFlow by Godswill (sae1um)
-<p align="center">
-	<img src="https://github.com/sae1um/floraflow-dashboard-main/blob/test-branch/Group%201.png" alt="FloraFlow Logo">
-</p>
+# FloraFlow 
+<span style="display: flex;  justify-content: center; gap: 2rem" >
+	<a href="https://github.com/sae1um/floraflow-dashboard-main" target="_blank"><img src="https://see.fontimg.com/api/renderfont4/m2PBm/eyJyIjoiZnMiLCJoIjozNiwidyI6MTAwMCwiZnMiOjM2LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/UmVwb3NpdG9yeQ/cf-gerrion-bold.png" alt="Repositories text image"></a>
+	<a href="https://floraflow.netlify.app/" target="_blank"><img src="https://see.fontimg.com/api/renderfont4/m2PBm/eyJyIjoiZnMiLCJoIjozNiwidyI6MTAwMCwiZnMiOjM2LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/RGVwbG95bWVudA/cf-gerrion-bold.png"></a>
+</span>
+
+## 🚧 Rebuild in Progress 🚧
+<span style="display: flex; justify-content: center;">
+	<img src="./floraflow logo.png" alt="FloraFlow Logo">
+</span>
 
 ### Project Overview
-This project is part of a work experience program at UTC Sheffield Olympic Legacy Park. The goal was to create a dashboard to monitor mini-greenhouses equipped with various sensors. These greenhouses, built by my teacher, are placed around the school and at his home. The dashboard allows anyone to access real-time data from these greenhouses and, in the future, will enable control over the environmental conditions within them. This project, along with others, will be featured in a project showcase room for visitors. Check out more info [here](http://bit.ly/UTCOLPCompShowcase)
-<p align="center">
-	<a href="https://github.com/sae1um/floraflow-dashboard-main" target="_blank"><img src="https://see.fontimg.com/api/renderfont4/m2PBm/eyJyIjoiZnMiLCJoIjozNiwidyI6MTAwMCwiZnMiOjM2LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/UmVwb3NpdG9yeQ/cf-gerrion-bold.png" alt="Repositories text image"></a>
-	<a><img src="https://see.fontimg.com/api/renderfont4/woBmx/eyJyIjoiZnMiLCJoIjo2LCJ3IjoxMDAwLCJmcyI6NiwiZmdjIjoiI0ZGRkZGRiIsImJnYyI6IiNGRkZGRkYiLCJ0IjoxfQ/c3BhY2U/cf-gerrion-semibold.png" alt="Deployment text image"></a>
-	<a href="https://floraflow.netlify.app/" target="_blank"><img src="https://see.fontimg.com/api/renderfont4/m2PBm/eyJyIjoiZnMiLCJoIjozNiwidyI6MTAwMCwiZnMiOjM2LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/RGVwbG95bWVudA/cf-gerrion-bold.png"></a>
-</p>
+FloraFlow is an intelligent dashboard designed to monitor and manage smart greenhouses in real-time. Each greenhouse is equipped with sensors that track temperature, humidity, CO₂, and water levels — all visualized through an intuitive web interface.
 
-### Links
-- [Frontend](https://github.com/sae1um/floraflow-dashboard-main/tree/deployment-frontend)
-- [Backend](https://github.com/sae1um/floraflow-dashboard-main/tree/deployment-backend)
-- [Deployment](https://floraflow.netlify.app/)
-## Contents
--   [Technologies Used](#technologies-used)
--   [Project Setup](#project-setup)
-- [Current State](#current-state)
--   [Deployment](#deployment)
--   [Future Plans](#future-plans)
--   [Closing](#closing)
-### Technologies Used
-## Frontend
-- **React**: I already had a little experience using React. which made it easier to develop the dashboard.
-	- Used to create a component based dashboard
-- **Axios**: This was my first time using Axios, but it is well-regarded for making client side http requests, and wanted to learn how to use it.
-- **ChartJS**: Previously used ChartJS for another project, found it straightforward for creating interactive charts.
-- **MUI Gauges**: A library of components, I used the gauge components to display information from the greenhouses
+Originally developed as part of a computing showcase at UTC Sheffield Olympic Legacy Park, FloraFlow has since evolved into a scalable system featuring real-time data tracking, device linking, and user authentication.
 
-## Backend
-- **Node.js**: Node.js is a robust platform for building server-side applications, and it uses JavaScript, which I am already familiar with.
-- **Express**: Minimal and flexible framework that provides a robust set of features for web and mobile applications.
+## ✨ Key Features
 
-## Database
-- **MySQL**: Powerful and widely-used database management system that fits will with the project requirements. The alpha version of the dashboard used SQL with PHPMyAdmin, when I took over the project I switched to MySQL
+- **Real-time Monitoring**: Instantly view live environmental data from your connected greenhouses.
 
-## Project Setup
-### Backend Packages: 
-- Express
-- Mysql2
-- DotEnv
-- Cors
-**To install:**
-`npm i express mysql2 dotenv cors`
- ### Frontend Packages: 
-- ReactJs
-- React-Router-Dom
-- Axios
-- Mui (X-charts, Material, Icons and all other dependencies can be found in package.json)
-- React-Icons
-- ChartJs
-- ClassNames 
-- TailwindCSS
-**To install:**
-	- Initialising the react application
-      `npx create-react-app@latest ./`
-     - Installing TailwindCSS
-      `npm i -D tailwindcss`
-      `npx tailwindcss init`
-      - Other Packages
-	  `npm i axios chart.js mui react-router-dom react-icons classnames`
-	  ![Technologies Used Diagram](https://github.com/sae1um/floraflow-dashboard-main/blob/home/Technologies.png)
-## Current State
-This is what the main dashboard of the site looks like currently (20.07.2024)
-![Dashboard](https://github.com/sae1um/floraflow-dashboard-main/blob/test-branch/image.png)
+- **Secure User Accounts**: Each user can log in, claim, and manage their own greenhouses.
+
+- **Greenhouse Management**: Add, rename, or link new devices seamlessly.
+
+- **Data Visualisation**: Interactive charts and gauges make sensor data easy to understand.
+
+- **Device Claiming System**: Each greenhouse can be securely linked to an owner through a one-time claim process.
+
+- **Scalable Cloud Infrastructure**: Fully refactored to use Neon, Drizzle ORM, and Clerk Authentication for reliability and speed.
+
+---
+### Differences between V1 and V2
+- Switched from MySQL to PostgreSQL (Neon) with Drizzle ORM
+- Added Clerk authentication for secure user login and account management
+- Implemented a device claiming system (users can claim a greenhouse using a unique ID)
+- Created a 3-step onboarding flow (welcome → connect greenhouse → success)
+- General code cleanup and project restructuring for maintainability (No more spaghetti code, Kinda :/)
+### Features currently WIP
+- New dashboard layout with proper routing structure and better UX
+- Individual greenhouse detail pages (/dashboard/greenhouses/:id) for full metrics and charts
+- Device online/offline tracking with periodic pings
+- Refactoring routing with React Router v6
+
+
+## 🧠 Technology Stack
+### **Frontend**
+
+- **React (Vite):** Modern, fast, and modular frontend.
+- **TailwindCSS + ShadCN UI:** Clean, consistent UI with accessible components.
+- **Recharts / ChartJS:** Real-time data visualization.
+- **Clerk Auth:** Secure and modern authentication.
+
+### **Backend**
+- **Express.js:** Lightweight Node.js framework for API endpoints.
+- **Drizzle ORM:** Type-safe SQL layer for maintainable database logic.
+- **Neon:** Scalable Postgres database for real-time queries.
+
+### **Device Integration**
+
+- **ESP32-CAM / Microcontrollers:** Each greenhouse transmits live sensor readings to the backend via REST API.
+- **Local + Cloud Communication:** Devices connect to the cloud API or local network depending on connectivity.
+
 ## Deployment
-Initially, the plan was to deploy the server, site, and database on a Raspberry Pi 3, to remove the need of having to connect to an external cloud provider or needing and internet connection. However, due to its limited processing power, and the schools network firewall working a bit too well (and annoyingly), the setup is currently running from a laptop. In the future, the project will be deployed to the free cloud platforms.
-## Future Plans
-I will be actively working on the project till all its features are complete as of right now (20.07.2024) only the main dashboard page is around 85% complete and the other pages still need to be worked on.
-- **Control Features**: Still need to implement features to control the environmental conditions within the greenhouses.
-- **Cloud Deployment**: Properly deploying the server, frontend, and database to cloud platforms. Currently thinking of using AWS RDS for the database, Netlify(Deployed) for the frontend, and Railway for the backend
-## Closing
-Participating in this project allowed me to enhance my web development skills and apply them to a real-world scenario. This dashboard will be featured in a project showcase room for visitors, demonstrating the practical applications of technology in monitoring and controlling environmental conditions.
+
+#### **FloraFlow is currently deployed on:**
+
+- **Frontend:** Netlify, but will eventually be on https://floraflow.godswill.dev
+- **Backend:** Hosted via Render 
+- **Database:** Neon Postgres
+
+## 🛣️ Roadmap
+
+✅ Authentication and onboarding system
+
+✅ Device claiming and linking
+
+⚙️ Real-time data updates from ESP32
+
+🗓️ Scheduling & automation controls
+
+📊 Greenhouse health scoring and alerts
+
+🌤️ AI-based climate prediction and optimization
