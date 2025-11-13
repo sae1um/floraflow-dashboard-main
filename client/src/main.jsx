@@ -13,7 +13,7 @@ import { ProtectedRoute } from "./auth/ProtectedRoute";
 import OnboardingCheck from "./auth/OnboardingCheck";
 import OnboardingPage from "./pages/Onboarding";
 import DashboardHomePage from "./components/Dashboard/DashboardHomePage";
-import GreenhousesPage from "./components/Dashboard/GreenhosuesPage";
+import GreenhousesPage from "./components/Dashboard/GreenhousesPage";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 

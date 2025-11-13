@@ -12,7 +12,7 @@ router.post("/claim", async (req, res) => {
         res.status(400).json({ error: "Body is required" });
     }
     const { deviceId, username, userId } = req.body;
-    
+
     if (!deviceId.trim() || !username.trim() || !userId.trim()) {
         return res.status(400).send("Missing fields");
     }
@@ -30,15 +30,17 @@ router.post("/update-claim", async (req, res) => {
     }
 
     const { deviceId, location, room } = req.body;
-    
-    if(!room.trim()){
-        return res.status(401).send({success: false, message: "Please enter a room name"})
+
+    if (!room.trim()) {
+        return res
+            .status(401)
+            .send({ success: false, message: "Please enter a room name" });
     }
     const response = await updateOnboardingGreenhouse(deviceId, location, room);
-    if(!response.success){
-        return res.status(400).send(response)
+    if (!response.success) {
+        return res.status(400).send(response);
     }
-    return res.status(200).send(response)
+    return res.status(200).send(response);
 });
 
 router.post("/initialise", async (req, res) => {
