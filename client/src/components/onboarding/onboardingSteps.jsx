@@ -30,7 +30,7 @@ export const NameStep = ({
     username,
     nameType,
     setNameType,
-    complete
+    complete,
 }) => {
     const { isRequestLoading } = useSetOnboardingRequest();
     const handleRadioChange = (e) => {
@@ -153,6 +153,7 @@ export const WelcomeStep = ({ setCurrentStep, complete }) => {
             <div className="flex gap-3">
                 <Button
                     variant="outline"
+                    size="lg"
                     onClick={() => setCurrentStep(1)}
                     className="flex-1 cursor-pointer"
                 >
@@ -185,7 +186,7 @@ export const SetupStep = ({
     setDeviceId,
     nameType,
     user,
-    complete
+    complete,
 }) => {
     const [isValidating, setIsValidating] = useState(false);
     const [validationError, setValidationError] = useState("");
@@ -397,7 +398,6 @@ export const SetupStep = ({
 };
 
 export const SuccessStep = ({ deviceId, complete }) => {
-    
     return (
         <div className="text-center space-y-6">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
