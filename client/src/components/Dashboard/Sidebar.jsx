@@ -27,7 +27,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 const navigation = [
     { name: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
-    { name: "Greenhouses", url: "/dashboard/greenhouse", icon: Home },
+    { name: "Greenhouses", url: "/dashboard/greenhouses", icon: Home },
     { name: "Schedules", url: "/dashboard/schedules", icon: Calendar },
     { name: "Tasks", url: "/dashboard/tasks", icon: CheckSquare },
     { name: "Reports", url: "/dashboard/reports", icon: BarChart3 },

@@ -2,7 +2,6 @@ import DashboardHeader from "@/components/Dashboard/DashboardHeader";
 import Sidebar from "@/components/Dashboard/Sidebar";
 import React from "react";
 import { Outlet } from "react-router";
-// import { uiser}
 
 export const DashboardLayout = () => {
     return (

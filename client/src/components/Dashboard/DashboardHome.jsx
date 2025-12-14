@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export default function DashboardHomePage() {
+export default function DashboardHome() {
     return (
         <div className="flex flex-col">
             <div>
