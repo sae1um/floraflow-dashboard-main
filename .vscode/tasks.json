@@ -1,0 +1,30 @@
+{
+    "tasks": [
+        {
+            "label": "Start Server",
+            "type": "shell",
+            "command": "npm run dev",
+            "options": {"cwd": "${workspaceFolder}/server"},
+            "presentation": {
+                "panel": "new",
+                "reveal": "always",
+                "focus": false,
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Start Client",
+            "type": "shell",
+            "command": "npm run host",
+            "options": {"cwd": "${workspaceFolder}/client"},
+            "presentation": {
+                "panel": "new",
+                "reveal": "always",
+                "focus": false,
+                "clear": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

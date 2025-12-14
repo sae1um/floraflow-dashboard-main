@@ -39,11 +39,9 @@ export async function claimGreenhouse(
                 .update(greenhouses)
                 .set({ ownerId: userId, claimedAt: new Date() })
                 .where(eq(greenhouses.id, deviceId));
-            // console.log({ success: true, message: "Device claimed successfully" })
             return { success: true, message: "Device claimed successfully" };
         }
     } catch (error) {
-        // console.error(error);
         return { success: false, message: error, more: userResp };
     }
 }
@@ -57,7 +55,6 @@ export async function updateOnboardingGreenhouse(
         await db.update(greenhouses).set({room, location,}).where(eq(greenhouses.id, deviceId));
         return {success: true, message: "Greenhouse updated successfully"}
     }catch(err){
-        console.log(err);
         return {success: false, message: "Failed to update greenhouse"}
     }
 

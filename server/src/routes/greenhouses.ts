@@ -17,7 +17,6 @@ router.post("/claim", async (req, res) => {
         return res.status(400).send("Missing fields");
     }
     const response = await claimGreenhouse(deviceId, username, userId);
-    console.log(response);
     if (!response.success) {
         return res.status(400).send(response);
     }
@@ -52,6 +51,7 @@ router.post("/initialise", async (req, res) => {
     if (!greenhouseId.trim()) {
         return res.status(400).send("No greenhouse ID provided");
     }
+    // Remove line terminator
     const id = greenhouseId.replace("\x00", "");
     //Check if ID follows rules
     if (!idRules(id)) {
@@ -63,10 +63,8 @@ router.post("/initialise", async (req, res) => {
         if (response.initialised) {
             return res.status(200).send("Greenhouse succesfully initialised");
         }
-        console.log("Gh already in db");
         return res.status(200).send("Greenhouse already exists");
     } catch (error) {
-        console.error(error);
         return res.status(500).send("There has been an issue");
     }
 });
