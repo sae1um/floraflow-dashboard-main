@@ -25,7 +25,6 @@ export default function ErrorElement() {
                     </span>
                 </div>
 
-                {/* 404 Illustration */}
                 <div className="mb-8">
                     <div className="text-9xl font-bold text-emerald-600 mb-4 leading-none">
                         404

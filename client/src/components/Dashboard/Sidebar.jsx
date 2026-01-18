@@ -31,6 +31,7 @@ const navigation = [
     { name: "Schedules", url: "/dashboard/schedules", icon: Calendar },
     { name: "Tasks", url: "/dashboard/tasks", icon: CheckSquare },
     { name: "Reports", url: "/dashboard/reports", icon: BarChart3 },
+    // CONSIDER Within settings add a layout option Mobile/Desktop
     { name: "Settings", url: "/dashboard/settings", icon: Settings },
 ];
 export default function Sidebar() {
@@ -114,7 +115,7 @@ function MobileSidebar({ sidebarOpen, setSidebarOpen }) {
         </div>
     );
 }
-function SidebarContent({ userName, userInitials }) {
+function SidebarContent() {
     const { user } = useUser();
     const location = useLocation();
     const { pathname } = location;
@@ -173,8 +174,7 @@ function SidebarContent({ userName, userInitials }) {
                         >
                             <div className="flex items-center space-x-3">
                                 <Avatar className="h-8 w-8">
-                                    {/* Upload pfps to uploadthing and have the url in src */}
-                                    {/* <AvatarImage src="https://icij87uwpa.ufs.sh/f/Tq54NAESXBRW2XHPcqpq38VPS1xHcITfmOKGtov7aBXWU0EL" /> */}
+                                    {/* TODO Add pfp uploading with https://uploadthing.com/ */}
                                     <AvatarFallback className="bg-emerald-100 text-emerald-700 text-sm">
                                         {userInitial}
                                     </AvatarFallback>
@@ -192,14 +192,15 @@ function SidebarContent({ userName, userInitials }) {
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-56">
-                        <DropdownMenuItem>
-                            <Link to={"/profile"} className="flex gap-2">
+                        <DropdownMenuItem className="cursor-pointer">
+                            <Link to={"/profile"} className="flex gap-2 ">
                                 <User className="mr-2 h-4 w-4" />
                                 Profile
                             </Link>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem className="cursor-pointer">
                             <Link to={"/settings"} className="flex gap-2">
+                                {/* TODO Implement header quick actions choice in dashboard settings */}
                                 <Settings className="mr-2 h-4 w-4" />
                                 Account Settings
                             </Link>

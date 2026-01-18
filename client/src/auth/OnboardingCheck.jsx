@@ -7,7 +7,7 @@ import { Navigate } from "react-router";
 export default function OnboardingCheck({ children }) {
     /*
      * this sets the onboarding metadata for clerk when new user registers
-     * if metadata set succesfully, then it sets the state to true showing that it has been set
+     * if metadata updated succesfully, then it sets the state to true showing that it has been set
      * then redirect to onboarding
      * for new user user.publicMetadata.onboardingComplete will be undefined
      */

@@ -30,9 +30,9 @@ export default function GreenhousesPage() {
     );
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 mx-4 mt-4">
             {/* Header with Quick Actions */}
-            <div className="flex flex-col lg:flex-row lf:items-start justify-between gap-6">
+            <div className="w-full flex flex-col lg:flex-row justify-between gap-6">
                 <div>
                     <h1 className="text-2xl font-semibold text-gray-900">
                         My Greenhouses
@@ -43,15 +43,21 @@ export default function GreenhousesPage() {
                         {greenhouses.length !== 1 ? "s" : ""} shown
                     </p>
                 </div>
-                {/* Quick Actions */}
-                <div className="flex flex-col sm:flex-row gap-3">
-                    <AddGreenhouseDialog onAdd={handleAddGreenhouse}>
-                        <Button className="bg-emerald-600 hover:bg-emerald-700">
-                            <Plus className="mr-2 h-4 w-4" />
-                            Add Greenhouse
-                        </Button>
-                    </AddGreenhouseDialog>
-                </div>
+                {/* Action Buttons*/}
+                <span className="flex gap-6">
+                    <div className="flex flex-col sm:flex-row gap-3">
+                        <AddGreenhouseDialog onAdd={handleAddGreenhouse}>
+                            <Button className="bg-emerald-600 hover:bg-emerald-700">
+                                <Plus className="mr-2 h-4 w-4" />
+                                Add Greenhouse
+                            </Button>
+                        </AddGreenhouseDialog>
+                    </div>
+                    <div>
+                        Quick Actions
+                    </div>
+                </span>
+
                 {/* <SearchBar
                     showIcon={false}
                     searchValue={searchQuery}

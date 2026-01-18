@@ -12,7 +12,7 @@ export default function filterAndSortGhList(greenhouses, filterStatus, searchQue
             return matchesSearch && matchStatus;
         })
         .sort((a, b) => {
-            //Values to comapre in gh list
+            //Values to compare in gh list
             //Sorts by input sort value
             let aValue = a[sortBy];
             let bValue = b[sortBy];

@@ -14,5 +14,8 @@
             "name": "cool"
         }
     ],
-    "discord.enabled": false
+    "discord.enabled": false,
+    "todo-tree.tree.showBadges": false,
+    "todo-tree.tree.disableCompactFolders": true,
+    "todo-tree.tree.showCountsInTree": true
 }

@@ -6,7 +6,7 @@ import { numeric } from "drizzle-orm/pg-core";
 import { integer } from "drizzle-orm/pg-core";
 import { varchar } from "drizzle-orm/pg-core";
 
-// ADD LIGHT LEVEL LATER
+// TODO Add Light level to readings schema 
 
 export const greenhouseReadings = pgTable("greenhouseReadings", {
     id: uuid("id").defaultRandom().primaryKey(), //reading id != greenhouse id, identifies each reading
