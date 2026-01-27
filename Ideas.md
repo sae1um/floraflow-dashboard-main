@@ -9,4 +9,7 @@
 lightsandclockwork.net/testdb_temp/rawlivedata.php
 lightsandclockwork.net/testdb_temp/rawdatalog.php
 
+- CLERK DEPLOYMENT
+    - https://clerk.com/docs/guides/development/deployment/production
+
 Arduino:
