@@ -3,7 +3,7 @@ import { router as OnboardingRouter } from "./onboarding";
 import { router as GreenhouseRouter } from "./greenhouses";
 export const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/api", (req, res) => {
     res.status(200).send("OK");
 });
 

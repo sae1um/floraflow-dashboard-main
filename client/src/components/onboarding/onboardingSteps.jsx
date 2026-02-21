@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
-import { claimDevice } from "@/helpers/claimDevice";
+import { claimDeviceOnboarding } from "@/helpers/claimDevice";
 import useSetOnboardingRequest from "@/hooks/useSetOnboardingRequest";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
@@ -207,9 +207,10 @@ export const SetupStep = ({
             setIsValidating(false);
             return;
         }
-
+        // TODO - GH Ids should actually be 12 chars long excluding the GH-
         // device ID must start with GH- and be at least 8 characters long
-        if (deviceId.startsWith("GH-") && deviceId.length >= 8) {
+        const splitId = deviceId.split("-");
+        if (splitId[0] == "GH" && splitId[1].length == 12) {
             let username;
             if (nameType === "fullname") {
                 username = user.firstName + " " + user.lastName;
@@ -217,7 +218,11 @@ export const SetupStep = ({
                 username = user.username;
             }
             // object with success and message e.g. { success: true, message: "Device claimed successfully" }
-            const result = await claimDevice(deviceId, username, user.id);
+            const result = await claimDeviceOnboarding(
+                deviceId,
+                username,
+                user.id,
+            );
             if (!result.success) {
                 setValidationError(result.message);
                 setIsValidating(false);
@@ -235,6 +240,7 @@ export const SetupStep = ({
     };
 
     const completeForm = async () => {
+        // REFACTOR with Try/Catch
         if (!room.trim()) {
             setValidationError("Please enter a room name");
             return;
@@ -361,7 +367,6 @@ export const SetupStep = ({
                     <Button
                         onClick={validateDevice}
                         disabled={isValidating || !deviceId.trim()}
-                        className="flex-1 bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
                     >
                         {isValidating && (
                             <>
@@ -429,11 +434,7 @@ export const SuccessStep = ({ deviceId, complete }) => {
                 </ul>
             </div>
 
-            <Button
-                onClick={complete}
-                size="lg"
-                className="bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
-            >
+            <Button onClick={complete} size="lg">
                 Go to Dashboard
                 <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

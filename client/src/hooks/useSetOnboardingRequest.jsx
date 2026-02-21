@@ -54,6 +54,5 @@ export default function useSetOnboardingRequest(){
         }
     }, [user, isLoaded]);
 
-    
     return {result, error, metadataSet, isRequestLoading}
 }

@@ -3,6 +3,7 @@ import { db } from "../index";
 import { eq } from "drizzle-orm";
 export async function addNewUser(id: string, name: string) {
     // Check if user already exists so then return
+    console.log("name:", name);
     try {
         const existingUser = await db.select().from(users).where(eq(users.id, id)).limit(1);
         if(existingUser.length > 0){
@@ -15,6 +16,7 @@ export async function addNewUser(id: string, name: string) {
         if ((error as { code?: string }).code === "23505") {
             return { success: true, message: "User already exists" };
         }
+        console.log("Error inserting user:", error);
         return { success: false, message: "Error adding user" };
     }
 }

@@ -15,11 +15,12 @@ export async function initialiseGreenhouse(id: string) {
     return { initialised: null };
 }
 
-export async function claimGreenhouse(
+export async function claimOnboardingGreenhouse(
     deviceId: string,
     username: string,
     userId: string
 ) {
+    
     const userResp = await addNewUser(userId, username);
     try {
         const greenhouse = await db
@@ -58,4 +59,38 @@ export async function updateOnboardingGreenhouse(
         return {success: false, message: "Failed to update greenhouse"}
     }
 
+}
+
+export async function claimGreenhouse(
+    deviceId: string,
+    name: string,
+    location: string,
+    room: string,
+    userId: string
+) {
+    // const userResp = await addNewUser(userId);
+    
+    try {
+        const greenhouse = await db
+            .select()
+            .from(greenhouses)
+            .where(eq(greenhouses.id, deviceId));
+        if (greenhouse.length === 0) {
+            return {
+                success: false,
+                message:
+                    "Greenhouse not initialised. Make sure the device is plugged in and powered on.",
+            };
+        } else if (greenhouse[0].ownerId) {
+            return { success: false, message: "Greenhouse already claimed" };
+        } else {
+            await db
+                .update(greenhouses)
+                .set({ ownerId: userId, name, room, location,  claimedAt: new Date() })
+                .where(eq(greenhouses.id, deviceId));
+            return { success: true, message: "Device claimed successfully" };
+        }
+    } catch (error) {
+        return { success: false, message: error };
+    }
 }

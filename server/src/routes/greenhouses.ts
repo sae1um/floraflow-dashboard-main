@@ -1,7 +1,8 @@
 import {
+    claimOnboardingGreenhouse,
+    updateOnboardingGreenhouse,
     claimGreenhouse,
     initialiseGreenhouse,
-    updateOnboardingGreenhouse,
 } from "../db/queries/greenhouse";
 
 import { Router } from "express";
@@ -9,14 +10,14 @@ export const router = Router();
 
 router.post("/claim", async (req, res) => {
     if (!req.body) {
-        res.status(400).json({ error: "Body is required" });
+        return res.status(400).json({ error: "Body is required" });
     }
     const { deviceId, username, userId } = req.body;
 
     if (!deviceId.trim() || !username.trim() || !userId.trim()) {
         return res.status(400).send("Missing fields");
     }
-    const response = await claimGreenhouse(deviceId, username, userId);
+    const response = await claimOnboardingGreenhouse(deviceId, username, userId);
     if (!response.success) {
         return res.status(400).send(response);
     }
@@ -25,14 +26,13 @@ router.post("/claim", async (req, res) => {
 
 router.post("/update-claim", async (req, res) => {
     if (!req.body) {
-        res.status(400).json({ error: "Body is required" });
+        return res.status(400).json({ error: "Body is required" });
     }
-
     const { deviceId, location, room } = req.body;
 
     if (!room.trim()) {
         return res
-            .status(401)
+            .status(400)
             .send({ success: false, message: "Please enter a room name" });
     }
     const response = await updateOnboardingGreenhouse(deviceId, location, room);
@@ -42,9 +42,25 @@ router.post("/update-claim", async (req, res) => {
     return res.status(200).send(response);
 });
 
+router.post("/new-dashboard-claim", async (req, res) => {
+    if (!req.body) {
+        return res.status(400).json({ error: "Body is required" });
+    }
+    console.log("Endpoint hit",req.body);
+
+    const { deviceId, name, location, room, userId } = req.body;
+
+    const response = await claimGreenhouse(deviceId, name, location, room, userId);
+    if (!response.success) {
+        return res.send(response);
+    }
+    return res.status(200).send(response);
+});
+
+
 router.post("/initialise", async (req, res) => {
     if (!req.body) {
-        res.status(400).json({ error: "Body is required" });
+        return res.status(400).json({ error: "Body is required" });
     }
     const { greenhouseId } = req.body;
 
@@ -74,7 +90,9 @@ function idRules(id: string) {
     if (splitId[0] != "GH") {
         return false;
     }
-    if (splitId[1].length < 8) {
+    if (splitId[1].length < 12) {
+        return false;
+    }else if (splitId[1].length > 12) {
         return false;
     }
     return true;

@@ -18,7 +18,10 @@ export default function OnboardingPage() {
     const [deviceId, setDeviceId] = useState("");
     const [nameType, setNameType] = useState("");
     const completeSetup = async () => {
-        const result = await completeOnboarding(user.id, nameType);
+        setNameType(!nameType.trim() ? "fullname" : "username");
+        const userName = nameType === "fullname" ? user.fullName : user.username;
+        
+        const result = await completeOnboarding(user.id, nameType, userName);
         if (result.success) {
             return navigate("/dashboard");
         }

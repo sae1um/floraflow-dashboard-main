@@ -25,13 +25,16 @@ import {
 } from "../ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
+// CONSIDER - Add a layout option 
+/**
+ * Layout option within settings page, to customise layout of the dashboard
+ */ 
 const navigation = [
     { name: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
     { name: "Greenhouses", url: "/dashboard/greenhouses", icon: Home },
     { name: "Schedules", url: "/dashboard/schedules", icon: Calendar },
     { name: "Tasks", url: "/dashboard/tasks", icon: CheckSquare },
     { name: "Reports", url: "/dashboard/reports", icon: BarChart3 },
-    // CONSIDER Within settings add a layout option Mobile/Desktop
     { name: "Settings", url: "/dashboard/settings", icon: Settings },
 ];
 export default function Sidebar() {

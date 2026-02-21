@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { clerkClient } from "@clerk/express";
 import userSettings from "../lib/userSettings.json";
+import { addNewUser } from "../db/queries/users";
 export const router = Router();
 
 // CLERK_PUBLISHABLE_KEY
@@ -21,7 +22,7 @@ router.post("/set-onboarding", async (req, res) => {
         await clerkClient.users.updateUser(userid, {
             publicMetadata: {
                 onboardingComplete: false,
-                userSettings, //from userSettings.json
+                userSettings
             },
         });
         console.log("Onboarding Set successfully");
@@ -42,7 +43,19 @@ router.post("/complete-onboarding", async (req, res) => {
         res.status(400).json({ error: "All body fields are required" });
     }
 
-    const { userId, namePreference } = req.body;
+    const { userId, namePreference, userName } = req.body;
+    console.log(userName);
+    try{
+        const userResp = await addNewUser(userId, userName);
+        if(!userResp.success){
+            console.error(userResp);
+            return res.status(500).json(userResp)
+        }
+    }
+    catch(err: any){
+        console.log("Error adding user to db:", err);
+    }
+    
     try {
         const user = await clerkClient.users.getUser(userId);
         await clerkClient.users.updateUser(userId, {

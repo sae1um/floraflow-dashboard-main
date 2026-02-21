@@ -5,8 +5,8 @@ import SearchBar from "../SearchBar";
 import AddGreenhouseDialog from "./AddGreenhouseDialog";
 import filterAndSortGhList from "@/helpers/filterSortGhList";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-// TODO
+import { Bolt, CloudLightning, Plus, Zap } from "lucide-react";
+// TODO Actual data
 /**
  * Implement actual greenhouse data
  * Implement actual count of greenhouses
@@ -16,10 +16,6 @@ export default function GreenhousesPage() {
     const [filterStatus, setFilterStatus] = useState("all");
     const [sortBy, setSortBy] = useState("name");
     const [sortOrder, setSortOrder] = useState("asc");
-
-    const handleAddGreenhouse = () => {
-        return;
-    }
 
     const filteredAndSortedGreenhouses = filterAndSortGhList(
         greenhouses,
@@ -46,16 +42,17 @@ export default function GreenhousesPage() {
                 {/* Action Buttons*/}
                 <span className="flex gap-6">
                     <div className="flex flex-col sm:flex-row gap-3">
-                        <AddGreenhouseDialog onAdd={handleAddGreenhouse}>
-                            <Button className="bg-emerald-600 hover:bg-emerald-700">
+                        <AddGreenhouseDialog>
+                            <Button>
                                 <Plus className="mr-2 h-4 w-4" />
                                 Add Greenhouse
                             </Button>
                         </AddGreenhouseDialog>
                     </div>
-                    <div>
+                    <Button variant={'outline'} className="flex items-center gap-2 text-sm">
+                        <Zap className=""/>
                         Quick Actions
-                    </div>
+                    </Button>
                 </span>
 
                 {/* <SearchBar
