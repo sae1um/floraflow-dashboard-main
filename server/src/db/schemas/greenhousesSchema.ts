@@ -4,9 +4,12 @@ import { users } from "./usersSchema";
 import { timestamp } from "drizzle-orm/pg-core";
 import { varchar } from "drizzle-orm/pg-core";
 
-/*
- * When device made, greenhouse sends 
- */
+/* TODO - Add more filds
+    * lightLevel
+    * imageUrl
+    * status? can it be derived from the devices? maybe not, maybe we need a "lastActiveAt" field or something like that
+    * lastUdpateAt/lastActiveAt?
+*/
 export const greenhouses = pgTable("greenhouses", {
     id: varchar("id", {length: 36}).primaryKey(),
     name: text("name"),

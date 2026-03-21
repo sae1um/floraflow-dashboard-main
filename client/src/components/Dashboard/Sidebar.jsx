@@ -24,6 +24,7 @@ import {
     DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import checkCurrentPath from "@/lib/helpers/checkCurrentPath";
 
 // CONSIDER - Add a layout option 
 /**
@@ -147,7 +148,7 @@ function SidebarContent() {
             {/* Navigation */}
             <nav className="flex-1 px-4 py-6 space-y-2">
                 {navigation.map((item) => {
-                    const isActive = pathname === item.url;
+                    const isActive = pathname === item.url || checkCurrentPath(pathname.split("/"), item.url.split("/")[2]);
                     return (
                         <Link
                             key={item.name}
@@ -177,7 +178,7 @@ function SidebarContent() {
                         >
                             <div className="flex items-center space-x-3">
                                 <Avatar className="h-8 w-8">
-                                    {/* TODO Add pfp uploading with https://uploadthing.com/ */}
+                                    {/* TODO - Add pfp uploading with https://uploadthing.com/ */}
                                     <AvatarFallback className="bg-emerald-100 text-emerald-700 text-sm">
                                         {userInitial}
                                     </AvatarFallback>
@@ -203,7 +204,7 @@ function SidebarContent() {
                         </DropdownMenuItem>
                         <DropdownMenuItem className="cursor-pointer">
                             <Link to={"/settings"} className="flex gap-2">
-                                {/* TODO Implement header quick actions choice in dashboard settings */}
+                                {/* TODO - Implement header quick actions choice in dashboard settings */}
                                 <Settings className="mr-2 h-4 w-4" />
                                 Account Settings
                             </Link>

@@ -47,6 +47,9 @@ export const claimDevice = async (
         );
         return response.data;
     } catch (error) {
+        if(!error.response) {
+            return { success: false, message: "Network error. Please try again later." };
+        }
         return error.response.data;
     }
 };

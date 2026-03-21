@@ -22,12 +22,10 @@ import { Badge } from "@/components/ui/badge";
 
 export default function AddGreenhouseDialog({ children }) {
     const { user } = useUser();
-    const [open, setOpen] = useState(false);
     const [step, setStep] = useState(1); // 1: form, 2: success
 
     const [isValidating, setIsValidating] = useState(false);
     const [validationError, setValidationError] = useState([]);
-    const [isConnected, setIsConnected] = useState(false);
     const [greenhouseFormDetails, setGreenhouseFormDetails] = useState({
         name: "",
         location: "",
@@ -206,8 +204,7 @@ export default function AddGreenhouseDialog({ children }) {
                                 Connecting...
                             </>
                         )}
-                        {!isValidating && !isConnected && "Connect Device"}
-                        {!isValidating && isConnected && "Continue"}
+                        {!isValidating && "Connect Device"}
                     </Button>
                     {/* <Button
                         onClick={(e) => {

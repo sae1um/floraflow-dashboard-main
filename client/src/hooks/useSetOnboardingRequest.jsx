@@ -9,7 +9,7 @@ export default function useSetOnboardingRequest(){
     const [error, setError] = useState();
     const API_URL = import.meta.env.VITE_BACKEND_API_URL;
 
-    // REFACTOR request with axios
+    // REFACTOR - request with axios
     useEffect(() => {
         const setOnboardingRequest = async () => {
             try {

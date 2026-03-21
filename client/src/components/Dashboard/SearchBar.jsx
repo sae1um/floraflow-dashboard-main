@@ -6,6 +6,7 @@ export default function SearchBar({
     placeholderText,
     searchValue,
     setSearchValue,
+    classNameProps
 }) {
     return (
         <div className="relative max-w-md w-max lg:w-full ">
@@ -14,7 +15,7 @@ export default function SearchBar({
             )}
 
             <Input
-                className={`${showIcon ? "pl-10": ""}`}
+                className={`${showIcon ? "pl-10": ""} bg-white ${classNameProps}`}
                 placeholder={placeholderText}
                 value={searchValue}
                 onChange={(e) => {

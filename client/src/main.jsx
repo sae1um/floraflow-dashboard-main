@@ -14,6 +14,7 @@ import OnboardingCheck from "./auth/OnboardingCheck";
 import OnboardingPage from "./pages/Onboarding";
 import DashboardHome from "./components/Dashboard/DashboardHome";
 import GreenhousesPage from "./components/Dashboard/GreenhousesTab/GreenhousesTab";
+import GreenhouseDetailsPage from "./components/Dashboard/GreenhousesTab/GreenhouseDetailsPage";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -65,10 +66,10 @@ const router = createBrowserRouter([
                 path: "greenhouses",
                 element: <GreenhousesPage />,
             },
-            // {
-            //     path: "greenhouses/:id",
-            //     element: <GreenhouseDetailsPage />
-            // }
+            {
+                path: "greenhouses/:id",
+                element: <GreenhouseDetailsPage />,
+            },
         ],
     },
     {
@@ -100,5 +101,5 @@ createRoot(document.getElementById("root")).render(
         >
             <RouterProvider router={router} />
         </ClerkProvider>
-    </StrictMode>
+    </StrictMode>,
 );

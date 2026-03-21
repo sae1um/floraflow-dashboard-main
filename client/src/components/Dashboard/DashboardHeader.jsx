@@ -14,6 +14,7 @@ export default function DashboardHeader() {
                     showIcon={true}
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
+                    placeholderText={"Search..."}
                 />
             </div>
             <QuickActionButons />

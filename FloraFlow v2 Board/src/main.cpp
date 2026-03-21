@@ -20,7 +20,7 @@ Greenhouse gh(getMacAddress(WiFi.macAddress()));
 LiquidCrystal_I2C lcd(0x3F, 16, 2); // Sets the LCD I2C address
 Servo VentServo;
 
-String serverName = "http://192.168.0.192:3002/api/"; //TODO REMOVE LOCALHOST LATER, MIGHT BE IP
+String serverName = "http://192.168.0.192:3002/api/"; //TODO - REMOVE LOCALHOST LATER, MIGHT BE IP
 // String serverName = "https://floraflow-backend.onrender.com/api";
 // - Wifi Credentials
 const char *ssid = "";

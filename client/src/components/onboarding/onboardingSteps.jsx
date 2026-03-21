@@ -240,7 +240,6 @@ export const SetupStep = ({
     };
 
     const completeForm = async () => {
-        // REFACTOR with Try/Catch
         if (!room.trim()) {
             setValidationError("Please enter a room name");
             return;
