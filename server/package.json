@@ -12,7 +12,7 @@
     "build": "tsc ./src/index.ts"
   },
   "dependencies": {
-    "@clerk/express": "^1.7.4",
+    "@clerk/express": "^1.7.79",
     "@neondatabase/serverless": "^1.0.1",
     "cors": "^2.8.5",
     "dotenv": "^17.1.0",
