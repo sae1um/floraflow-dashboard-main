@@ -5,37 +5,57 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import {
+    ChevronDown,
     ChevronLeft,
     Download,
     Droplets,
     Edit2,
+    Ellipsis,
     MapPin,
     Thermometer,
     Wind,
     Zap,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { getStatusConfig } from "@/lib/helpers/getStatusConfig";
 import StatisticCard from "./ui/StatisticCard";
 import DashboardHeading from "@/components/DashboardHeading";
 import LineChartMultiple from "./ui/DataVisualisation/LineChartMultiple";
+import DeviceInformation from "./ui/DeviceInformation";
 import { colourClasses } from "@/lib/classes/DashboardDataCardClasses";
+import {
+    Tooltip,
+    TooltipTrigger,
+    TooltipContent,
+} from "@/components/ui/tooltip";
+import ConnectionBadge from "@/components/Dashboard/ui/badges/ConnectionBadge";
 
 export default function GreenhouseDetailsPage() {
     let { id } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [greenhouse, setGreenhouse] = useState(null);
+    const [highlighting, setHighlighting] = useState(false);
     const currentStatus = getStatusConfig(greenhouse?.status);
 
     useEffect(() => {
         setTimeout(() => {
             const ghId = id;
+            // TODO - Replace with real greenhouse data, when there is no matching id, should return 404 or similar
             setGreenhouse(
                 mockGreenhouseData[ghId] || mockGreenhouseData["greenhouse-1"],
             );
             setIsLoading(false);
         }, 600);
     }, [id]);
+
+    const scrollToDeviceInformation = (event) => {
+        event?.preventDefault();
+        const element = document.getElementById("device-information");
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+            setHighlighting(true);
+            setTimeout(() => setHighlighting(false), 3000);
+        }
+    };
 
     if (isLoading) {
         return (
@@ -63,18 +83,38 @@ export default function GreenhouseDetailsPage() {
 
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                            {greenhouse.name}
-                        </h1>
                         <div className="flex flex-wrap items-center gap-4">
+                            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                                {greenhouse.name}
+                            </h1>
+                            <ConnectionBadge
+                                badgeContent={{
+                                    value: greenhouse.deviceStatus,
+                                }}
+                                style={"bg-slate-200 text-black"}
+                            />
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2">
                             <div className="flex items-center gap-1 text-gray-600">
                                 <MapPin className="h-4 w-4" />
                                 {greenhouse.location} • {greenhouse.room}
-
                             </div>
-                            <Badge className={currentStatus.color}>
-                                {currentStatus.badge}
-                            </Badge>
+                            <div>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <a
+                                            href="#device-information"
+                                            onClick={scrollToDeviceInformation}
+                                            className="hover:bg-transparent"
+                                        >
+                                            <ChevronDown />
+                                        </a>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>More details</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </div>
                         </div>
                     </div>
 
@@ -92,6 +132,9 @@ export default function GreenhouseDetailsPage() {
                         >
                             <Download className="h-4 w-4" />
                             Export
+                        </Button>
+                        <Button variant="outline">
+                            <Ellipsis />
                         </Button>
                     </div>
                 </div>
@@ -174,6 +217,16 @@ export default function GreenhouseDetailsPage() {
                         />
                     </div>
                 </div>
+            </motion.div>
+            <motion.div
+                id="device-information"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+            >
+                <DeviceInformation greenhouse={greenhouse} highlighting={highlighting} />
+                
             </motion.div>
         </div>
     );

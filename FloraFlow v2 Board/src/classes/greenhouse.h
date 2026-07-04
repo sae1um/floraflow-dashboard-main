@@ -5,7 +5,7 @@
 #define DHT_PIN D5 // DHT11 Temp & Humidity
 #define LDR_PIN D5 // LDR
 #define WATER_PIN A0 // Water Level
-extern DHT dht;
+extern DHT dht; // Temp & Humidity 
 
 
 class Greenhouse {

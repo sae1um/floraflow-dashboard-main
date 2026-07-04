@@ -1,10 +1,13 @@
 import { Home, ArrowLeft, Leaf, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Link } from "react-router";
-
+import { Link, useNavigate } from "react-router";
 
 export default function ErrorElement() {
+    const navigate = useNavigate();
+    const handleGoBack = () => {
+        navigate(-1);
+    }
     return (
         <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center justify-center p-4">
             {/* Background decoration */}
@@ -79,11 +82,13 @@ export default function ErrorElement() {
                             Go Home
                         </Link>
                     </Button>
-                    <Button asChild variant="outline" size="lg">
-                        <Link to="javascript:history.back()">
-                            <ArrowLeft className="mr-2 h-5 w-5" />
-                            Go Back
-                        </Link>
+                    <Button
+                        variant="outline"
+                        size="lg"
+                        onClick={handleGoBack}
+                    >
+                        <ArrowLeft className="mr-2 h-5 w-5" />
+                        Go Back
                     </Button>
                 </div>
 

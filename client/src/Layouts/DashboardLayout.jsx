@@ -8,7 +8,7 @@ export const DashboardLayout = () => {
         // TODO - Update all icons to icon-size-x classes for consistency
         <div className="min-h-screen bg-gray-50">
             <Sidebar />
-            <div className="lg:pl-64">
+            <div id className="lg:pl-64">
                 <DashboardHeader />
                 <Outlet />
             </div>

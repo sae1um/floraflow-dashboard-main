@@ -6,8 +6,9 @@ export const mockGreenhouseData = {
         location: "North Wing",
         status: "healthy",
         lastSync: "2 minutes ago",
-        deviceId: "GH-2024-001",
+        deviceId: "GH-ECFABCD511CD",
         deviceStatus: "online",
+        uptimeHours: 214,
         currentStats: {
             temperature: 24.5,
             humidity: 68,
@@ -31,8 +32,9 @@ export const mockGreenhouseData = {
         location: "East Wing",
         status: "attention",
         lastSync: "5 minutes ago",
-        deviceId: "GH-2024-002",
+        deviceId: "GH-ECFABCD511CE",
         deviceStatus: "online",
+        uptimeHours: 36,
         currentStats: {
             temperature: 22.1,
             humidity: 72,

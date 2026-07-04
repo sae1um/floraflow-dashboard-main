@@ -15,6 +15,7 @@ import OnboardingPage from "./pages/Onboarding";
 import DashboardHome from "./components/Dashboard/DashboardHome";
 import GreenhousesPage from "./components/Dashboard/GreenhousesTab/GreenhousesTab";
 import GreenhouseDetailsPage from "./components/Dashboard/GreenhousesTab/GreenhouseDetailsPage";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
                 path: "/register",
                 element: <Register />,
             },
+            {
+                path: "*",
+                element: <ErrorElement />,
+            },
         ],
     },
     {
@@ -54,7 +59,9 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: (
             <ProtectedRoute>
-                <DashboardLayout />
+                <TooltipProvider>
+                    <DashboardLayout />
+                </TooltipProvider>
             </ProtectedRoute>
         ),
         children: [

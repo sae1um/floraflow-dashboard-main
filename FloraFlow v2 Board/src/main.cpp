@@ -23,6 +23,14 @@ Servo VentServo;
 String serverName = "http://192.168.0.192:3002/api/"; //TODO - REMOVE LOCALHOST LATER, MIGHT BE IP
 // String serverName = "https://floraflow-backend.onrender.com/api";
 // - Wifi Credentials
+// TODO - CONNECT TO WIFI USING SCREEN on device
+
+/*
+  CONSIDER 
+  - ON BOOT CHECK IF STORED CREDS STILL AVAIBLE TO CONNECT
+  - IF NOT, ALLOW USER TO CONNECT AND ENTER NEW CREDENTIALS
+  - HOW WILL USER ENTER CREDENTIALS? - SCREEN AND BUTTONS? - OR MOBILE APP?
+*/
 const char *ssid = "";
 const char *password = "";
 
@@ -116,4 +124,9 @@ void updateScreen(Greenhouse gh)
     lcd.print("Temp: ");
     lcd.print(gh.temperature);
     lcd.print("");
+}
+
+void telemetryPayload()
+{
+  
 }
