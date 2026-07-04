@@ -197,8 +197,14 @@ export default function GreenhouseDetailsPage() {
                             dataPoints={greenhouse.trends}
                             label1={"Temperature"}
                             label2={"Humidity"}
-                            color1={colourClasses.orange.hex}
-                            color2={colourClasses.blue.hex}
+                            color1={{
+                                hex: colourClasses.orange.hex,
+                                name: colourClasses.orange.border,
+                            }}
+                            color2={{
+                                hex: colourClasses.blue.hex,
+                                name: colourClasses.blue.border,
+                            }}
                             isLoading={isLoading}
                             dataKey1="temp"
                             dataKey2="humidity"
@@ -209,8 +215,14 @@ export default function GreenhouseDetailsPage() {
                             dataPoints={greenhouse.trends}
                             label1={"CO2 Level"}
                             label2={"Water Level"}
-                            color1={colourClasses.green.hex}
-                            color2={colourClasses.teal.hex}
+                            color1={{
+                                hex: colourClasses.green.hex,
+                                name: colourClasses.green.border,
+                            }}
+                            color2={{
+                                hex: colourClasses.teal.hex,
+                                name: colourClasses.teal.border,
+                            }}
                             isLoading={isLoading}
                             dataKey1="co2"
                             dataKey2="water"

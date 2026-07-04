@@ -8,7 +8,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { getStatusConfig } from "@/lib/helpers/getStatusConfig";
+import {getStatusConfig} from "@/lib/helpers/getStatusConfig";
 import { Droplet, Edit, Eye, MoreVertical, StarOff, Thermometer, Trash2, Wind, Zap } from "lucide-react";
 import { Link } from "react-router";
 

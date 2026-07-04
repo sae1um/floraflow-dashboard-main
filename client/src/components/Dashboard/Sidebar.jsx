@@ -24,7 +24,7 @@ import {
     DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import checkCurrentPath from "@/lib/helpers/checkCurrentPath";
+import checkCurrentPath from "@/lib/helpers/checkCurrentPath.ts";
 
 // CONSIDER - Add a layout option 
 /**

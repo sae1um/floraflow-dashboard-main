@@ -36,6 +36,8 @@ export default function LineChartMultiple({
     if (isLoading) {
         return <Skeleton className="h-64" />;
     }
+    const colourClass1 = color1.name;
+    const colourClass2 = color2.name;
     const chartConfig = {
         dataPoint1: {
             label: label1,
@@ -43,7 +45,7 @@ export default function LineChartMultiple({
         },
         dataPoint2: {
             label: label2,
-            color: color2,
+            color: color2.hex,
         },
     };
 
@@ -107,15 +109,32 @@ export default function LineChartMultiple({
                             type="monotone"
                             stroke="var(--color-dataPoint1)"
                             strokeWidth={2}
+                            name={capitalise(dataKey1)}
                         />
                         <Line
                             dataKey={dataKey2}
                             type="monotone"
                             stroke="var(--color-dataPoint2)"
                             strokeWidth={2}
+                            name={capitalise(dataKey2)}
                         />
                     </LineChart>
                 </ChartContainer>
+                <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-gray-900">
+                    <div className="flex items-center gap-2">
+                        <span
+                            className={`h-2.5 w-2.5 rounded-full ${colourClass1}`}
+                        />
+                        <span className="text-sm text-zinc-400">{label1}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <span
+                            className={`h-2.5 w-2.5 rounded-full ${colourClass2}`}
+                        />
+
+                        <span className="text-sm text-zinc-400">{label2}</span>
+                    </div>
+                </div>
             </CardContent>
             <CardFooter className="flex items-center justify-center flex-row gap-4">
                 <div className="flex gap-2 items-center text-sm text-gray-400 font-semibold"><ChartLegendSvg size={15} color={chartConfig.dataPoint1.color}/> {label1}</div>

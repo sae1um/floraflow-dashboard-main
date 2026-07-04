@@ -1,2 +1,2 @@
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd server; $host.ui.RawUI.WindowTitle='Server'; npm run dev"
-Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd client; $host.ui.RawUI.WindowTitle='Server'; npm run host"
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd client; $host.ui.RawUI.WindowTitle='Client'; npm run host"
