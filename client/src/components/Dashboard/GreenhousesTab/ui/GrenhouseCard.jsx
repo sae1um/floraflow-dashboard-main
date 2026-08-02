@@ -17,7 +17,7 @@ export default function GreenhouseCard({ greenhouse }) {
     // TODO - Add favourite functionality
     // const isFavourite;
     return (
-        <Card className="p-0 border-gray-200 hover:shadow-md transition-shadow">
+        <Card className="p-0 border-border hover:shadow-md transition-shadow">
             <CardContent className="p-0">
                 {/* TODO - Add a camera snapshot to each, allow uploading with upload thing
                     Change name to cameraUrl or similar
@@ -26,7 +26,7 @@ export default function GreenhouseCard({ greenhouse }) {
                     <img
                         src={greenhouse.cameraSnapshot}
                         alt={`${greenhouse.name} camera feed`}
-                        className="w-full h-32 object-cover rounded-t-lg bg-gray-100"
+                        className="w-full h-32 object-cover rounded-t-lg bg-muted"
                     />
                     <div className="absolute top-2 right-2 flex space-x-1">
                         <Button
@@ -67,7 +67,7 @@ export default function GreenhouseCard({ greenhouse }) {
                                 </DropdownMenuItem>
                                 <DropdownMenuSeparator />
                                 <DropdownMenuItem
-                                    className="text-red-600"
+                                    className="text-destructive"
                                     onClick={() =>
                                         handleRemoveGreenhouse(greenhouse.id)
                                     }
@@ -80,7 +80,7 @@ export default function GreenhouseCard({ greenhouse }) {
                     </div>
                     <div className="absolute bottom-2 left-2">
                         <div className="flex items-center space-x-1">
-                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                             <span className="text-xs text-white bg-black/50 px-1 rounded">
                                 LIVE
                             </span>
@@ -92,13 +92,13 @@ export default function GreenhouseCard({ greenhouse }) {
                     {/* Header */}
                     <div className="flex items-start justify-between mb-3">
                         <div>
-                            <h3 className="font-semibold text-gray-900 flex items-center">
+                            <h3 className="font-semibold text-foreground flex items-center">
                                 {greenhouse.name}
                                 {/* {isDefault && (
                                     <Star className="ml-2 h-4 w-4 text-yellow-500 fill-current" />
                                 )} */}
                             </h3>
-                            <p className="text-sm text-gray-500">
+                            <p className="text-sm text-muted-foreground">
                                 {greenhouse.location} • {greenhouse.room}
                             </p>
                         </div>
@@ -116,7 +116,7 @@ export default function GreenhouseCard({ greenhouse }) {
                                 <Thermometer className="h-3 w-3 text-orange-600" />
                             </div>
                             <div>
-                                <p className="text-xs text-gray-500">Temp</p>
+                                <p className="text-xs text-muted-foreground">Temp</p>
                                 <p className="text-sm font-medium">
                                     {greenhouse.temperature}°C
                                 </p>
@@ -127,7 +127,7 @@ export default function GreenhouseCard({ greenhouse }) {
                                 <Droplet className="h-3 w-3 text-blue-600" />
                             </div>
                             <div>
-                                <p className="text-xs text-gray-500">
+                                <p className="text-xs text-muted-foreground">
                                     Humidity
                                 </p>
                                 <p className="text-sm font-medium">
@@ -140,7 +140,7 @@ export default function GreenhouseCard({ greenhouse }) {
                                 <Wind className="h-3 w-3 text-green-600" />
                             </div>
                             <div>
-                                <p className="text-xs text-gray-500">CO₂</p>
+                                <p className="text-xs text-muted-foreground">CO₂</p>
                                 <p className="text-sm font-medium">
                                     {greenhouse.co2} ppm
                                 </p>
@@ -151,7 +151,7 @@ export default function GreenhouseCard({ greenhouse }) {
                                 <Zap className="h-3 w-3 text-emerald-600" />
                             </div>
                             <div>
-                                <p className="text-xs text-gray-500">Water</p>
+                                <p className="text-xs text-muted-foreground">Water</p>
                                 <p className="text-sm font-medium">
                                     {greenhouse.waterLevel}%
                                 </p>
@@ -160,8 +160,8 @@ export default function GreenhouseCard({ greenhouse }) {
                     </div>
 
                     {/* Footer */}
-                    <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                        <p className="text-xs text-gray-500">
+                    <div className="flex items-center justify-between pt-3 border-t border-border">
+                        <p className="text-xs text-muted-foreground">
                             Updated {greenhouse.lastUpdate}
                         </p>
                         <Button

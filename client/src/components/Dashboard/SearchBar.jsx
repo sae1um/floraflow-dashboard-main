@@ -11,11 +11,11 @@ export default function SearchBar({
     return (
         <div className="relative max-w-md w-max lg:w-full ">
             {showIcon && (
-                <Search className="absolute left-3 top-1/2 trasnform -translate-y-1/2 icon-size-4 text-gray-400 " />
+                <Search className="absolute left-3 top-1/2 trasnform -translate-y-1/2 icon-size-4 text-muted-foreground " />
             )}
 
             <Input
-                className={`${showIcon ? "pl-10": ""} bg-white ${classNameProps}`}
+                className={`${showIcon ? "pl-10": ""} bg-background ${classNameProps}`}
                 placeholder={placeholderText}
                 value={searchValue}
                 onChange={(e) => {

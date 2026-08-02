@@ -9,8 +9,8 @@ import ConnectionBadge from "@/components/Dashboard/ui/badges/ConnectionBadge";
 
 const InfoRow = ({ label, value }) => (
     <div className="space-y-1">
-        <p className="text-sm font-medium text-gray-500">{label}</p>
-        <div className="text-base font-semibold text-gray-900">{value}</div>
+        <p className="text-sm font-medium text-muted-foreground">{label}</p>
+        <div className="text-base font-semibold text-foreground">{value}</div>
     </div>
 );
 
@@ -18,12 +18,12 @@ export default function DeviceInformation({ greenhouse, highlighting }) {
     return (
         <Card
             id="device-information"
-            className="relative border border-gray-200"
+            className="relative border border-border"
         >
             {highlighting && (
                 <span className="absolute -top-1 -right-1 inline-flex size-4">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                    <span className="relative inline-flex size-4 rounded-full bg-primary-green"></span>
+                    <span className="relative inline-flex size-4 rounded-full bg-primary"></span>
                 </span>
             )}
             <CardHeader>

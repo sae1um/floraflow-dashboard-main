@@ -158,7 +158,7 @@ export default function AddGreenhouseDialog({ children }) {
                         placeholder="e.g. GH-ABC123XYZ456"
                         required
                     />
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-muted-foreground">
                         Find this on your greenhouse controller device label
                     </p>
                 </div>
@@ -220,12 +220,12 @@ export default function AddGreenhouseDialog({ children }) {
     const renderSuccessStep = () => {
         return (
             <div className="text-center py-8">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="h-8 w-8 text-green-700"/>
+                <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="h-8 w-8 text-success"/>
                 </div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">Greenhouse Connected!</h3>
-                <p className="text-sm text-gray-500 mb-4">{greenhouseFormDetails.deviceId} has been successfully connected to your dashboard.</p>
-                <Badge className="bg-green-100 text-green-800">Connection Established</Badge>
+                <h3 className="text-lg font-medium text-foreground mb-2">Greenhouse Connected!</h3>
+                <p className="text-sm text-muted-foreground mb-4">{greenhouseFormDetails.deviceId} has been successfully connected to your dashboard.</p>
+                <Badge variant="success">Connection Established</Badge>
             </div>
         );
     };

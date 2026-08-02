@@ -18,7 +18,7 @@ function Landing() {
     }
   }
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-100 via-white to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-primary/15 via-white to-teal-50">
       <LandingNav />
       <div className='flex flex-col gap-12'>
         <LandingHero />

@@ -44,13 +44,13 @@ export const NameStep = ({
     return (
         <div className="space-y-6">
             <div className="text-center">
-                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <User className="h-8 w-8 text-emerald-600" />
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <User className="h-8 w-8 text-primary" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-foreground mb-2">
                     What should we call you?
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                     Let's personalise your FloraFlow experience.
                 </p>
             </div>
@@ -67,13 +67,13 @@ export const NameStep = ({
                         />
                         <Label
                             htmlFor="fullname"
-                            className="text-sm font-medium text-gray-500"
+                            className="text-sm font-medium text-muted-foreground"
                         >
                             Use{" "}
                             {isRequestLoading ? (
                                 <Skeleton>loading...</Skeleton>
                             ) : (
-                                <span className="text-gray-700">
+                                <span className="text-foreground">
                                     {firstName} {lastName}
                                 </span>
                             )}
@@ -90,13 +90,13 @@ export const NameStep = ({
                         />
                         <Label
                             htmlFor="username"
-                            className="text-sm font-medium text-gray-500 text-center"
+                            className="text-sm font-medium text-muted-foreground text-center"
                         >
                             Use{" "}
                             {isRequestLoading ? (
                                 <Skeleton>loading...</Skeleton>
                             ) : (
-                                <span className="text-gray-700">
+                                <span className="text-foreground">
                                     {username}
                                 </span>
                             )}
@@ -106,7 +106,7 @@ export const NameStep = ({
                 <Button
                     onClick={handleNameSubmit}
                     disabled={!nameType}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
+                    className="w-full cursor-pointer"
                     size="lg"
                 >
                     Continue
@@ -115,7 +115,7 @@ export const NameStep = ({
                 <div className="flex items-center justify-center">
                     <button
                         onClick={complete}
-                        className="underline pl-2 text-slate-400 cursor-pointer"
+                        className="underline pl-2 text-muted-foreground cursor-pointer"
                     >
                         Click to skip onboarding
                     </button>
@@ -128,23 +128,23 @@ export const NameStep = ({
 export const WelcomeStep = ({ setCurrentStep, complete }) => {
     return (
         <div className="text-center space-y-6">
-            <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Leaf className="h-10 w-10 text-emerald-600" />
+            <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Leaf className="h-10 w-10 text-primary" />
             </div>
             <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                <h1 className="text-3xl font-bold text-foreground mb-4">
                     Welcome to FloraFlow!
                 </h1>
-                <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto">
+                <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
                     Let's get you started by connecting your first greenhouse.
                     This will only take a minute.
                 </p>
             </div>
-            <div className="bg-emerald-50 rounded-lg p-6 max-w-md mx-auto">
-                <h3 className="font-semibold text-emerald-900 mb-2">
+            <div className="bg-primary/10 rounded-lg p-6 max-w-md mx-auto">
+                <h3 className="font-semibold text-primary mb-2">
                     What you'll need:
                 </h3>
-                <ul className="text-sm text-emerald-800 space-y-1 text-left">
+                <ul className="text-sm text-primary space-y-1 text-left">
                     <li>• Your greenhouse device ID</li>
                     <li>• Device should be powered on</li>
                     <li>• Stable internet connection</li>
@@ -162,7 +162,7 @@ export const WelcomeStep = ({ setCurrentStep, complete }) => {
                 <Button
                     onClick={() => setCurrentStep(3)}
                     size="lg"
-                    className="flex-2 bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
+                    className="flex-2 cursor-pointer"
                 >
                     Get Started
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -171,7 +171,7 @@ export const WelcomeStep = ({ setCurrentStep, complete }) => {
             <div>
                 <button
                     onClick={complete}
-                    className="underline pl-2 text-slate-400 cursor-pointer"
+                    className="underline pl-2 text-muted-foreground cursor-pointer"
                 >
                     Click to skip onboarding
                 </button>
@@ -258,13 +258,13 @@ export const SetupStep = ({
     return (
         <div className="space-y-6">
             <div className="text-center">
-                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Wifi className="h-8 w-8 text-emerald-600" />
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Wifi className="h-8 w-8 text-primary" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-foreground mb-2">
                     Connect Your Greenhouse
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                     Enter your greenhouse device ID to establish the connection.
                 </p>
             </div>
@@ -273,7 +273,7 @@ export const SetupStep = ({
                 <div>
                     <Label
                         htmlFor="deviceId"
-                        className="text-sm font-medium text-gray-700"
+                        className="text-sm font-medium text-muted-foreground"
                     >
                         Device ID
                     </Label>
@@ -289,7 +289,7 @@ export const SetupStep = ({
                         }}
                         className="mt-1 h-12 text-center font-mono tracking-wider"
                     />
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-muted-foreground mt-1">
                         You can find this on your greenhouse device label
                     </p>
                 </div>
@@ -298,12 +298,12 @@ export const SetupStep = ({
                         <div className="">
                             <Label
                                 htmlFor="location"
-                                className="text-center text-sm font-medium text-gray-700"
+                                className="text-center text-sm font-medium text-muted-foreground"
                             >
                                 Location
                                 <Tooltip>
                                     <TooltipTrigger>
-                                        <Info className="inline-block ml-1 h-4 w-4 text-gray-400 cursor-pointer" />
+                                        <Info className="inline-block ml-1 h-4 w-4 text-muted-foreground cursor-pointer" />
                                     </TooltipTrigger>
                                     <TooltipContent>
                                         <p className="text-xs">
@@ -323,12 +323,12 @@ export const SetupStep = ({
                         <div>
                             <Label
                                 htmlFor="room"
-                                className=" flex flex-row gap-0 text-sm font-medium text-gray-700"
+                                className=" flex flex-row gap-0 text-sm font-medium text-muted-foreground"
                             >
-                                Room<span className="text-red-600 mr-2">*</span>
+                                Room<span className="text-destructive mr-2">*</span>
                                 <Tooltip>
                                     <TooltipTrigger>
-                                        <Info className="inline-block ml-1 h-4 w-4 text-gray-400 cursor-pointer" />
+                                        <Info className="inline-block ml-1 h-4 w-4 text-muted-foreground cursor-pointer" />
                                     </TooltipTrigger>
                                     <TooltipContent>
                                         <p className="text-xs">
@@ -380,7 +380,7 @@ export const SetupStep = ({
                 <div>
                     <button
                         onClick={complete}
-                        className="underline pl-2 text-slate-400 cursor-pointer"
+                        className="underline pl-2 text-muted-foreground cursor-pointer"
                     >
                         Click to skip onboarding
                     </button>
@@ -404,28 +404,28 @@ export const SetupStep = ({
 export const SuccessStep = ({ deviceId, complete }) => {
     return (
         <div className="text-center space-y-6">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-                <CheckCircle className="h-10 w-10 text-green-600" />
+            <div className="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto">
+                <CheckCircle className="h-10 w-10 text-success" />
             </div>
 
             <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-foreground mb-2">
                     Greenhouse Connected!
                 </h2>
-                <p className="text-gray-600 mb-6">
+                <p className="text-muted-foreground mb-6">
                     Your greenhouse{" "}
-                    <span className="font-mono bg-gray-100 0 px-2 py-1 rounded">
+                    <span className="font-mono bg-muted 0 px-2 py-1 rounded">
                         {deviceId}
                     </span>{" "}
                     has been successfully connected to FloraFlow.
                 </p>
             </div>
 
-            <div className="bg-green-50 rounded-lg p-6 max-w-md mx-auto">
-                <h3 className="font-semibold text-green-900 mb-3">
+            <div className="bg-success/10 rounded-lg p-6 max-w-md mx-auto">
+                <h3 className="font-semibold text-success mb-3">
                     You're all set! Now you can:
                 </h3>
-                <ul className="text-sm text-green-800 space-y-2 text-left">
+                <ul className="text-sm text-success space-y-2 text-left">
                     <li>• Monitor real-time environmental data</li>
                     <li>• Control greenhouse systems remotely</li>
                     <li>• View historical analytics</li>

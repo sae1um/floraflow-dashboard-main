@@ -4,10 +4,10 @@ import { SignIn } from "@clerk/clerk-react";
 
 export default function Login() {
     return (
-        <div className="min-h-screen overflow-hidden relative bg-gradient-to-br from-emerald-50 via-white to-teal-50 flex items-center justify-center p-4">
+        <div className="min-h-screen overflow-hidden relative bg-gradient-to-br from-primary/10 via-white to-teal-50 flex items-center justify-center p-4">
             {/* Background decoration */}
             <div className="absolute inset-0 -z-10">
-                <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+                <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/20 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
                 <div className="absolute top-3/4 right-1/4 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
             </div>
 
@@ -16,27 +16,27 @@ export default function Login() {
                 <div className="text-center">
                     <Link
                         to={"/"}
-                        className="inline-flex items-center space-x-2 text-gray-600 hover:text-emerald-600 transition-colors mb-6"
+                        className="inline-flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors mb-6"
                     >
                         <ArrowLeft className="h-4 w-4" />
                         <span>Back to home</span>
                     </Link>
 
                     <div className="flex items-center justify-center space-x-2 mb-6">
-                        <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
+                        <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                             <Leaf className="h-6 w-6 text-white" />
                         </div>
-                        <span className="text-2xl font-bold text-gray-900">
+                        <span className="text-2xl font-bold text-foreground">
                             FloraFlow
                         </span>
                     </div>
                 </div>
 
                 {/* Clerk Signin Component */}
-                <SignIn 
+                <SignIn
                     appearance={{
                         elements: {
-                            formButtonPrimary: "bg-emerald-500"
+                            formButtonPrimary: "bg-primary"
                         }
                     }}
                 />

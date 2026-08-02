@@ -53,10 +53,10 @@ export default function GreenhousesPage() {
             {/* Header with Quick Actions */}
             <div className="w-full flex flex-col lg:flex-row justify-between gap-6">
                 <div>
-                    <h1 className="text-2xl font-semibold text-gray-900">
+                    <h1 className="text-2xl font-semibold text-foreground">
                         My Greenhouses
                     </h1>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-muted-foreground">
                         {filteredAndSortedGreenhouses.length} of{" "}
                         {greenhouses.length} greenhouse
                         {greenhouses.length !== 1 ? "s" : ""} shown
@@ -113,7 +113,7 @@ export default function GreenhousesPage() {
                         onValueChange={setFilterStatus}
                     >
                         {/* CONSIDER - ServiceNow like filtering? */}
-                        <SelectTrigger className="w-[160px] bg-white">
+                        <SelectTrigger className="w-[160px] bg-background">
                             <SelectValue placeholder="Filter status" />
                         </SelectTrigger>
                         <SelectContent>
@@ -127,7 +127,7 @@ export default function GreenhousesPage() {
                     </Select>
                     <div className="flex">
                         <Select value={sortBy} onValueChange={setSortBy}>
-                            <SelectTrigger className="w-[160px] bg-white rounded-r-none">
+                            <SelectTrigger className="w-[160px] bg-background rounded-r-none">
                                 <div className="flex items-center gap-2">
                                     <Filter className="icon-size-4" />
                                     <SelectValue placeholder="Sort by" />

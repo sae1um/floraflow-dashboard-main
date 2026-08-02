@@ -6,7 +6,7 @@ import { Outlet } from "react-router";
 export const DashboardLayout = () => {
     return (
         // TODO - Update all icons to icon-size-x classes for consistency
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-background">
             <Sidebar />
             <div id className="lg:pl-64">
                 <DashboardHeader />

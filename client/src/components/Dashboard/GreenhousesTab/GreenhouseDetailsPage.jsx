@@ -84,18 +84,18 @@ export default function GreenhouseDetailsPage() {
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                     <div>
                         <div className="flex flex-wrap items-center gap-4">
-                            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                            <h1 className="text-3xl font-bold text-foreground mb-2">
                                 {greenhouse.name}
                             </h1>
                             <ConnectionBadge
                                 badgeContent={{
                                     value: greenhouse.deviceStatus,
                                 }}
-                                style={"bg-slate-200 text-black"}
+                                style={"bg-muted text-foreground"}
                             />
                         </div>
                         <div className="flex flex-wrap items-center gap-2">
-                            <div className="flex items-center gap-1 text-gray-600">
+                            <div className="flex items-center gap-1 text-muted-foreground">
                                 <MapPin className="h-4 w-4" />
                                 {greenhouse.location} • {greenhouse.room}
                             </div>
