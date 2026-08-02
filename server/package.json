@@ -7,6 +7,7 @@
   "scripts": {
     "start": "nodemon",
     "dev": "npx ts-node ./src/index.ts",
+    "dev:doppler": "doppler run -- npx ts-node ./src/index.ts",
     "db:generate": "drizzle-kit",
     "db:migrate": "npx ts-node ./src/db/index.ts",
     "build": "tsc ./src/index.ts"

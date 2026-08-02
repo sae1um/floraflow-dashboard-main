@@ -6,7 +6,7 @@ import {
     SetupStep,
     SuccessStep,
     NameStep,
-} from "@/components/Onboarding/OnboardingSteps";
+} from "@/components/onboarding/onboardingSteps";
 import { useUser } from "@clerk/clerk-react";
 import { Link, Navigate, useNavigate } from "react-router";
 import { completeOnboarding } from "@/helpers/completeOnboarding";
