@@ -1,155 +1,127 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { Leaf, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { SignedIn, SignedOut } from "@clerk/clerk-react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+
+const navLinks = [
+    { href: "#features", label: "Features" },
+    { href: "#how", label: "How it Works" },
+    { href: "#pricing", label: "Pricing" },
+];
+
+function ScrollLink({ href, className, onClick, children }) {
+    return (
+        <a
+            href={href}
+            className={className}
+            onClick={(e) => {
+                e.preventDefault();
+                document
+                    .querySelector(href)
+                    ?.scrollIntoView({ behavior: "smooth" });
+                onClick?.();
+            }}
+        >
+            {children}
+        </a>
+    );
+}
+
 export default function LandingNav() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
     return (
-        <nav className="border-b border-primary/20 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
-                    <Link to={"/"} className="flex items-center space-x-2">
-                        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                            <Leaf className="h-5 w-5 text-white" />
-                        </div>
-                        <span className="text-xl font-bold text-foreground">
-                            FloraFlow
-                        </span>
+        <>
+            <div className="h-[3px] bg-gradient-to-r from-emerald-800 via-emerald-500 to-emerald-800" />
+            <header className="sticky top-0 z-40 flex items-center justify-between gap-4 border-b border-gray-200 bg-white px-8 py-3.5">
+                <Link to="/" className="flex items-center gap-2.5">
+                    <div className="flex h-[34px] w-[34px] items-center justify-center rounded-[9px] bg-emerald-600">
+                        <Leaf className="h-[19px] w-[19px] text-white" />
+                    </div>
+                    <span className="text-lg font-extrabold tracking-tight text-gray-900">
+                        FloraFlow
+                    </span>
+                </Link>
+
+                <nav className="hidden min-[860px]:flex items-center gap-7">
+                    {navLinks.map((link) => (
+                        <ScrollLink
+                            key={link.href}
+                            href={link.href}
+                            className="text-sm font-medium text-gray-700 hover:text-emerald-700 transition-colors"
+                        >
+                            {link.label}
+                        </ScrollLink>
+                    ))}
+                </nav>
+
+                <div className="hidden min-[860px]:flex items-center gap-2.5">
+                    <Link
+                        to="/login"
+                        className="rounded-lg px-4 py-2.5 text-[13.5px] font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
+                    >
+                        Sign In
                     </Link>
-                    {/* Desktop Nav */}
-                    <div className="hidden md:flex items-center space-x-8">
-                        <a
-                            href="#features"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                document
-                                    .getElementById("features")
-                                    .scrollIntoView({ behavior: "smooth" });
-                            }}
-                            className="text-muted-foreground hover:text-primary transition-colors"
-                        >
-                            Features
-                        </a>
-                        <Link
-                            to={"/docs"}
-                            className="text-muted-foreground hover:text-primary transition-colors"
-                        >
-                            Docs
-                        </Link>
-                        <SignedOut>
-                            <div className="flex flex-row gap-2">
-                                <Link to={"/login"}>
-                                    <Button
-                                        variant="outline"
-                                        size="sm"
-                                        className="hover:cursor-pointer"
-                                    >
-                                        Log in
-                                    </Button>
-                                </Link>
-                                <Link to={"/register"}>
-                                    <Button
-                                        size="sm"
-                                        className="hover:cursor-pointer"
-                                    >
-                                        Register
-                                    </Button>
-                                </Link>
-                            </div>
-                        </SignedOut>
-                        <SignedIn>
-                            <div className="flex flex-row gap-2">
-                                <Link to={"/dashboard"}>
-                                    <Button
-                                        size="sm"
-                                        className="hover:cursor-pointer"
-                                    >
-                                        Dashboard
-                                    </Button>
-                                </Link>
-                            </div>
-                        </SignedIn>
-                    </div>
-                    {/* Mobile menu button */}
-                    <div className="md:hidden">
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="p-2"
-                        >
-                            {mobileMenuOpen ? (
-                                <X className="h-6 w-6" />
-                            ) : (
-                                <Menu className="h-6 w-6" />
-                            )}
-                        </Button>
-                    </div>
+                    <Link
+                        to="/register"
+                        className="rounded-lg bg-emerald-600 px-4.5 py-2.5 text-[13.5px] font-semibold text-white hover:bg-emerald-700 transition-colors"
+                    >
+                        Get Started
+                    </Link>
                 </div>
-                {/* Mobile Navigation Menu */}
-                <AnimatePresence initial={mobileMenuOpen}>
-                    {mobileMenuOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="md:hidden border-t border-primary/20 bg-white"
-                        >
-                            <div className="px-2 pt-2 pb-3 space-y-1">
-                                <Link
-                                    href="#features"
-                                    className="block px-3 py-2 text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    Features
-                                </Link>
-                                <Link
-                                    to={"/docs"}
-                                    className="block px-3 py-2 text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-md transition-colors"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    Docs
-                                </Link>
-                                <div className="pt-4 pb-2 border-t border-border mt-4">
-                                    <SignedOut>
-                                        <div className="flex flex-col gap-2">
-                                            <Link to={"/login"} className="w-full">
-                                                <Button
-                                                    variant="outline"
-                                                    size="sm"
-                                                    className="w-full hover:cursor-pointer"
-                                                >
-                                                    Log in
-                                                </Button>
-                                            </Link>
-                                            <Link to={"/register"}>
-                                                <Button
-                                                    size="sm"
-                                                    className="w-full hover:cursor-pointer"
-                                                >
-                                                    Register
-                                                </Button>
-                                            </Link>
-                                        </div>
-                                    </SignedOut>
-                                    <SignedIn>
-                                        <Link to={"/register"}>
-                                                <Button
-                                                    size="sm"
-                                                    className="w-full hover:cursor-pointer"
-                                                >
-                                                    Dashboard
-                                                </Button>
-                                            </Link>
-                                    </SignedIn>
-                                </div>
-                            </div>
-                        </motion.div>
+
+                <button
+                    type="button"
+                    onClick={() => setMobileMenuOpen((open) => !open)}
+                    className="min-[860px]:hidden p-1.5 cursor-pointer"
+                    aria-label="Toggle menu"
+                >
+                    {mobileMenuOpen ? (
+                        <X className="h-[22px] w-[22px] text-gray-900" />
+                    ) : (
+                        <Menu className="h-[22px] w-[22px] text-gray-900" />
                     )}
-                </AnimatePresence>
-            </div>
-        </nav>
+                </button>
+            </header>
+
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="min-[860px]:hidden overflow-hidden border-b border-gray-200 bg-white"
+                    >
+                        <div className="flex flex-col gap-3.5 px-8 py-4">
+                            {navLinks.map((link) => (
+                                <ScrollLink
+                                    key={link.href}
+                                    href={link.href}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="text-[14.5px] font-medium text-gray-700"
+                                >
+                                    {link.label}
+                                </ScrollLink>
+                            ))}
+                            <div className="h-px bg-gray-100" />
+                            <Link
+                                to="/login"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="text-sm font-semibold text-gray-700"
+                            >
+                                Sign In
+                            </Link>
+                            <Link
+                                to="/register"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="rounded-lg bg-emerald-600 py-2.5 text-center text-sm font-semibold text-white"
+                            >
+                                Get Started
+                            </Link>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
     );
 }

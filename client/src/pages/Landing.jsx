@@ -2,7 +2,8 @@ import React from 'react'
 import LandingNav from '@/components/Landing/LandingNav'
 import LandingHero from '@/components/Landing/LandingHero'
 import LandingFeatures from '@/components/Landing/LandingFeatures'
-import LandingCTA from '@/components/Landing/LandingCTA'
+import LandingHowItWorks from '@/components/Landing/LandingHowItWorks'
+import LandingPricing from '@/components/Landing/LandingPricing'
 import LandingFooter from '@/components/Landing/LandingFooter'
 import { useUser } from '@clerk/clerk-react'
 import { Navigate } from 'react-router'
@@ -18,13 +19,12 @@ function Landing() {
     }
   }
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/15 via-white to-teal-50">
+    <div className="min-h-screen bg-gray-50">
       <LandingNav />
-      <div className='flex flex-col gap-12'>
-        <LandingHero />
-        <LandingFeatures/>
-        <LandingCTA />
-      </div>
+      <LandingHero />
+      <LandingFeatures />
+      <LandingHowItWorks />
+      <LandingPricing />
       <LandingFooter />
     </div>
   )

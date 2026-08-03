@@ -148,3 +148,8 @@
     height: calc(var(--spacing) * 5);
 }
 
+@keyframes ff-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
