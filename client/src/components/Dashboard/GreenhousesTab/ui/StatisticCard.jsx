@@ -1,4 +1,5 @@
 import { colourClasses } from "@/lib/classes/DashboardDataCardClasses";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function StatisticCard({
     isLoading,
@@ -35,7 +36,7 @@ export default function StatisticCard({
                             {isPositive ? "+" : ""}
                             {trend}%
                         </span>
-                        <span className="text-muted-foreground">vs last hour</span>
+                        <span className="text-muted-foreground">vs previous reading</span>
                     </div>
                 </div>
 

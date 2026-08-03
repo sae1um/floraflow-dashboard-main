@@ -19,9 +19,9 @@ import {
 import { getStatusConfig } from "@/lib/helpers/getStatusConfig";
 import StatisticCard from "./ui/StatisticCard";
 import DashboardHeading from "@/components/DashboardHeading";
-import LineChartMultiple from "./ui/DataVisualisation/LineChartMultiple";
+import MetricAreaChart from "./ui/DataVisualisation/MetricAreaChart";
 import DeviceInformation from "./ui/DeviceInformation";
-import { colourClasses } from "@/lib/classes/DashboardDataCardClasses";
+import { computeTrend } from "@/lib/helpers/chartHelpers";
 import {
     Tooltip,
     TooltipTrigger,
@@ -66,6 +66,12 @@ export default function GreenhouseDetailsPage() {
                         <Skeleton key={i} className="h-24" />
                     ))}
                 </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {[...Array(4)].map((_, i) => (
+                        <Skeleton key={i} className="h-56" />
+                    ))}
+                </div>
+                <Skeleton className="h-48" />
             </div>
         );
     }
@@ -153,7 +159,7 @@ export default function GreenhouseDetailsPage() {
                         unit="°C"
                         icon={Thermometer}
                         color="orange"
-                        trend={2.1}
+                        trend={computeTrend(greenhouse.trends, "temp")}
                         isLoading={isLoading}
                     />
                     <StatisticCard
@@ -162,7 +168,7 @@ export default function GreenhouseDetailsPage() {
                         unit="%"
                         icon={Droplets}
                         color="blue"
-                        trend={-1.5}
+                        trend={computeTrend(greenhouse.trends, "humidity")}
                         isLoading={isLoading}
                     />
                     <StatisticCard
@@ -171,7 +177,7 @@ export default function GreenhouseDetailsPage() {
                         unit="ppm"
                         icon={Wind}
                         color="green"
-                        trend={0.8}
+                        trend={computeTrend(greenhouse.trends, "co2")}
                         isLoading={isLoading}
                     />
                     <StatisticCard
@@ -180,7 +186,7 @@ export default function GreenhouseDetailsPage() {
                         unit="%"
                         icon={Zap}
                         color="teal"
-                        trend={-3.2}
+                        trend={computeTrend(greenhouse.trends, "water")}
                         isLoading={isLoading}
                     />
                 </div>
@@ -191,54 +197,47 @@ export default function GreenhouseDetailsPage() {
                 transition={{ duration: 0.4, delay: 0.2 }}
             >
                 <DashboardHeading title={"Historical Trends"} />
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="space-y-6">
-                        <LineChartMultiple
-                            dataPoints={greenhouse.trends}
-                            label1={"Temperature"}
-                            label2={"Humidity"}
-                            color1={{
-                                hex: colourClasses.orange.hex,
-                                name: colourClasses.orange.border,
-                            }}
-                            color2={{
-                                hex: colourClasses.blue.hex,
-                                name: colourClasses.blue.border,
-                            }}
-                            isLoading={isLoading}
-                            dataKey1="temp"
-                            dataKey2="humidity"
-                        />
-                    </div>
-                    <div className="space-y-6">
-                        <LineChartMultiple
-                            dataPoints={greenhouse.trends}
-                            label1={"CO2 Level"}
-                            label2={"Water Level"}
-                            color1={{
-                                hex: colourClasses.green.hex,
-                                name: colourClasses.green.border,
-                            }}
-                            color2={{
-                                hex: colourClasses.teal.hex,
-                                name: colourClasses.teal.border,
-                            }}
-                            isLoading={isLoading}
-                            dataKey1="co2"
-                            dataKey2="water"
-                        />
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <MetricAreaChart
+                        dataPoints={greenhouse.trends}
+                        dataKey="temp"
+                        label="Temperature"
+                        unit="°C"
+                        color="orange"
+                        isLoading={isLoading}
+                    />
+                    <MetricAreaChart
+                        dataPoints={greenhouse.trends}
+                        dataKey="humidity"
+                        label="Humidity"
+                        unit="%"
+                        color="blue"
+                        isLoading={isLoading}
+                    />
+                    <MetricAreaChart
+                        dataPoints={greenhouse.trends}
+                        dataKey="co2"
+                        label="CO2 Level"
+                        unit="ppm"
+                        color="green"
+                        isLoading={isLoading}
+                    />
+                    <MetricAreaChart
+                        dataPoints={greenhouse.trends}
+                        dataKey="water"
+                        label="Water Level"
+                        unit="%"
+                        color="teal"
+                        isLoading={isLoading}
+                    />
                 </div>
             </motion.div>
             <motion.div
-                id="device-information"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, delay: 0.3 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-6"
             >
                 <DeviceInformation greenhouse={greenhouse} highlighting={highlighting} />
-                
             </motion.div>
         </div>
     );

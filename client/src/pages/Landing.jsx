@@ -18,6 +18,7 @@ function Landing() {
       return <Navigate to="/onboarding" />
     }
   }
+  
   return (
     <div className="min-h-screen bg-gray-50">
       <LandingNav />

@@ -58,13 +58,13 @@ export default function LandingNav() {
                 <div className="hidden min-[860px]:flex items-center gap-2.5">
                     <Link
                         to="/login"
-                        className="rounded-lg px-4 py-2.5 text-[13.5px] font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
+                        className="rounded-lg px-4 py-2.5 text-[13.5px] font-semibold text-gray-700 hover:bg-gray-100 transition-colors just"
                     >
                         Sign In
                     </Link>
                     <Link
                         to="/register"
-                        className="rounded-lg bg-emerald-600 px-4.5 py-2.5 text-[13.5px] font-semibold text-white hover:bg-emerald-700 transition-colors"
+                        className="rounded-lg bg-red-600 px-4.5 py-2.5 text-[13.5px] font-semibold text-white hover:bg-emerald-700 transition-colors"
                     >
                         Get Started
                     </Link>
