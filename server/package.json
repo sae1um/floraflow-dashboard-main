@@ -10,7 +10,9 @@
     "dev:doppler": "doppler run -- npx ts-node ./src/index.ts",
     "db:generate": "drizzle-kit",
     "db:migrate": "npx ts-node ./src/db/index.ts",
-    "build": "tsc ./src/index.ts"
+    "build": "tsc ./src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@clerk/express": "^1.7.4",
@@ -31,6 +33,7 @@
     "drizzle-kit": "^0.31.4",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.3",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^4.1.11"
   }
 }

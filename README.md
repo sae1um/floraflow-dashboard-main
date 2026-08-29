@@ -39,6 +39,11 @@ The project was originally built for a computing showcase at UTC Sheffield Olymp
 - Added a 3-step onboarding flow: welcome → connect greenhouse → success
 - General restructuring for maintainability
 
+## Testing
+
+Vitest, in both `client/` and `server/`. Run `npm test` in either directory. See
+[testing.md](./testing.md) for what's covered and how it's organised.
+
 ## Deployment
 
 - **Frontend:** Netlify (eventually `floraflow.godswill.dev`)

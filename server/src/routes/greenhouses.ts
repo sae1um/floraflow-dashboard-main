@@ -4,6 +4,7 @@ import {
     claimGreenhouse,
     initialiseGreenhouse,
 } from "../db/queries/greenhouse";
+import { isValidDeviceId, stripNullBytes } from "../lib/deviceId";
 
 import { Router } from "express";
 export const router = Router();
@@ -67,10 +68,10 @@ router.post("/initialise", async (req, res) => {
     if (!greenhouseId.trim()) {
         return res.status(400).send("No greenhouse ID provided");
     }
-    // Remove line terminator
-    const id = greenhouseId.replace("\x00", "");
+    // Remove embedded NUL bytes
+    const id = stripNullBytes(greenhouseId);
     //Check if ID follows rules
-    if (!idRules(id)) {
+    if (!isValidDeviceId(id)) {
         return res.status(400).send("Invalid greenhouse ID");
     }
 
@@ -84,16 +85,3 @@ router.post("/initialise", async (req, res) => {
         return res.status(500).send("There has been an issue");
     }
 });
-
-function idRules(id: string) {
-    const splitId = id.split("-");
-    if (splitId[0] != "GH") {
-        return false;
-    }
-    if (splitId[1].length < 12) {
-        return false;
-    }else if (splitId[1].length > 12) {
-        return false;
-    }
-    return true;
-}

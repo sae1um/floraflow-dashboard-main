@@ -16,7 +16,7 @@ See `README.md` for a feature overview, `ROADMAP.md` for planned/in-progress wor
 
 ## Commands
 
-There is no test suite in this repo (no test runner configured in either `client` or `server`).
+Both `client/` and `server/` use **Vitest** — run `npm test` (single run) or `npm run test:watch` in either directory. Coverage so far is pure-function unit tests only (helpers, the zod schema, device-ID validation); component tests, API route tests, and DB-integration tests are not written yet. See [`testing.md`](testing.md) at the repo root for the full picture, the test-file layout, and the known-bug convention (`it.fails` + `TODO(bug)`).
 
 ### Client (`cd client`)
 - `npm run dev` — start Vite dev server
