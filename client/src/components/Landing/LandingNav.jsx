@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Leaf, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import { useUser } from "@clerk/clerk-react";
 
 const navLinks = [
     { href: "#features", label: "Features" },
@@ -29,7 +30,7 @@ function ScrollLink({ href, className, onClick, children }) {
 
 export default function LandingNav() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+    const { isSignedIn, isLoaded } = useUser();
     return (
         <>
             <div className="h-[3px] bg-gradient-to-r from-emerald-800 via-emerald-500 to-emerald-800" />
@@ -54,21 +55,31 @@ export default function LandingNav() {
                         </ScrollLink>
                     ))}
                 </nav>
-
-                <div className="hidden min-[860px]:flex items-center gap-2.5">
-                    <Link
-                        to="/login"
-                        className="rounded-lg px-4 py-2.5 text-[13.5px] font-semibold text-gray-700 hover:bg-gray-100 transition-colors just"
-                    >
-                        Sign In
-                    </Link>
-                    <Link
-                        to="/register"
-                        className="rounded-lg bg-red-600 px-4.5 py-2.5 text-[13.5px] font-semibold text-white hover:bg-emerald-700 transition-colors"
-                    >
-                        Get Started
-                    </Link>
-                </div>
+                {isSignedIn & isLoaded ? (
+                    <div className="hidden min-[860px]:flex items-center gap-2.5">
+                        <Link
+                            to="/dashboard"
+                            className="rounded-lg px-4 py-2.5 text-[13.5px] font-semibold text-gray-700 hover:bg-gray-100 transition-colors just"
+                        >
+                            Dashboard
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="hidden min-[860px]:flex items-center gap-2.5">
+                        <Link
+                            to="/login"
+                            className="rounded-lg border px-4 py-2.5 text-[13.5px] font-semibold text-gray-700 hover:bg-gray-100 transition-colors just"
+                        >
+                            Sign In
+                        </Link>
+                        <Link
+                            to="/register"
+                            className="rounded-lg bg-emerald-600 px-4.5 py-2.5 text-[13.5px] font-semibold text-white hover:bg-emerald-700 transition-colors"
+                        >
+                            Get Started
+                        </Link>
+                    </div>
+                )}
 
                 <button
                     type="button"
@@ -107,7 +118,7 @@ export default function LandingNav() {
                             <Link
                                 to="/login"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="text-sm font-semibold text-gray-700"
+                                className="rounded-lg border py-2.5 text-center text-sm font-semibold text-gray-700"
                             >
                                 Sign In
                             </Link>

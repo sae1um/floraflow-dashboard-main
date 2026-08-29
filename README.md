@@ -31,7 +31,7 @@ The project was originally built for a computing showcase at UTC Sheffield Olymp
 | Database | Neon (Postgres) via Drizzle ORM |
 | Devices | ESP32 / microcontrollers reporting over REST |
 
-## What changed in V2
+## What is changing in V2
 
 - MySQL → PostgreSQL (Neon) with Drizzle ORM
 - Added Clerk authentication and multi-user accounts

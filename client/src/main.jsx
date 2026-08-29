@@ -45,6 +45,11 @@ const router = createBrowserRouter([
                 path: "*",
                 element: <ErrorElement />,
             },
+            {
+                // Incase someone needs to go back to the landing page ig
+                path: "landing",
+                element: <Landing />
+            }
         ],
     },
     {
@@ -76,7 +81,7 @@ const router = createBrowserRouter([
             {
                 path: "greenhouses/:id",
                 element: <GreenhouseDetailsPage />,
-            },
+            }
         ],
     },
     {
