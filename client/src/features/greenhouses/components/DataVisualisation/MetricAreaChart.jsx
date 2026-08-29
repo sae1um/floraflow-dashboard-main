@@ -12,8 +12,8 @@ import {
 } from "@/components/ui/chart";
 import { Skeleton } from "@/components/ui/skeleton";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid } from "recharts";
-import { colourClasses } from "@/lib/classes/DashboardDataCardClasses";
-import { getYDomain } from "@/lib/helpers/chartHelpers";
+import { colourClasses } from "@/features/greenhouses/classes/DashboardDataCardClasses";
+import { getYDomain } from "@/features/greenhouses/helpers/chartHelpers";
 
 export default function MetricAreaChart({
     dataPoints,

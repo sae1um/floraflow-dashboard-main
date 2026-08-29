@@ -1,8 +1,8 @@
-import { greenhouses } from "@/lib/testData/greenhouses";
+import { greenhouses } from "@/features/greenhouses/testData/greenhouses";
 import { useState } from "react";
-import SearchBar from "../SearchBar";
-import AddGreenhouseDialog from "./ui/AddGreenhouseDialog";
-import filterAndSortGhList from "@/helpers/filterSortGhList";
+import SearchBar from "@/components/common/SearchBar";
+import AddGreenhouseDialog from "./components/AddGreenhouseDialog";
+import filterAndSortGhList from "@/features/greenhouses/helpers/filterSortGhList";
 import { Button } from "@/components/ui/button";
 import {
     ArrowDown,
@@ -27,7 +27,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import GreenhouseGridArea from "./ui/GreenhouseGrid";
+import GreenhouseGridArea from "./components/GreenhouseGrid";
 
 export default function GreenhousesPage() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -59,7 +59,7 @@ export default function GreenhousesPage() {
                     <p className="text-sm text-muted-foreground">
                         {filteredAndSortedGreenhouses.length} of{" "}
                         {greenhouses.length} greenhouse
-                        {greenhouses.length !== 1 ? "s" : ""} shown
+                        {greenhouses.length !== 1 ? "s" : ""}
                     </p>
                 </div>
                 {/* Action Buttons*/}

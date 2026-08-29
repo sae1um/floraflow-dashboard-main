@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { SignOutButton, useUser } from "@clerk/clerk-react";
 import {
     DropdownMenu,
@@ -22,9 +22,9 @@ import {
     DropdownMenuItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import checkCurrentPath from "@/lib/helpers/checkCurrentPath.ts";
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import checkCurrentPath from "@/features/dashboard-shell/helpers/checkCurrentPath.ts";
 
 // CONSIDER - Add a layout option 
 /**

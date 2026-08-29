@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "../ui/badge";
-import SearchBar from "./SearchBar";
+import { Badge } from "@/components/ui/badge";
+import SearchBar from "@/components/common/SearchBar";
 
 export default function DashboardHeader() {
     const [searchValue, setSearchValue] = useState("");
@@ -14,7 +14,7 @@ export default function DashboardHeader() {
                     showIcon={true}
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
-                    placeholderText={"Search..."}
+                    placeholderText={"Search anything..."}
                 />
             </div>
             <QuickActionButons />

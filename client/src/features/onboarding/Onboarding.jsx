@@ -6,10 +6,10 @@ import {
     SetupStep,
     SuccessStep,
     NameStep,
-} from "@/components/onboarding/onboardingSteps";
+} from "@/features/onboarding/onboardingSteps";
 import { useUser } from "@clerk/clerk-react";
 import { Link, Navigate, useNavigate } from "react-router";
-import { completeOnboarding } from "@/helpers/completeOnboarding";
+import { completeOnboarding } from "@/features/onboarding/helpers/completeOnboarding";
 
 export default function OnboardingPage() {
     const { user } = useUser();

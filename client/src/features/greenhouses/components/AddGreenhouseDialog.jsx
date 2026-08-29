@@ -1,4 +1,4 @@
-import { greenhouseSchema } from "@/lib/schemas/greenhouseSchema";
+import { greenhouseSchema } from "@/features/greenhouses/schemas/greenhouseSchema";
 import "@/index.css";
 import {
     Dialog,
@@ -15,7 +15,7 @@ import { AlertCircle, CheckCircle, Loader2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { validateDevice } from "@/helpers/validateDevice";
+import { validateDevice } from "@/features/greenhouses/helpers/validateDevice";
 import z from "zod";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";

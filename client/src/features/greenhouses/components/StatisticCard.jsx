@@ -1,4 +1,4 @@
-import { colourClasses } from "@/lib/classes/DashboardDataCardClasses";
+import { colourClasses } from "@/features/greenhouses/classes/DashboardDataCardClasses";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function StatisticCard({

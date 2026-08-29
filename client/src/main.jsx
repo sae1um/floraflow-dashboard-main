@@ -5,16 +5,16 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import "./index.css";
 import App from "./App.jsx";
 import ErrorElement from "./pages/ErrorElement.jsx";
-import Landing from "./pages/Landing";
-import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
-import { DashboardLayout } from "./Layouts/DashboardLayout";
+import Landing from "./features/landing/Landing";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
+import { DashboardLayout } from "./features/dashboard-shell/DashboardLayout";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
-import OnboardingCheck from "./auth/OnboardingCheck";
-import OnboardingPage from "./pages/Onboarding";
-import DashboardHome from "./components/Dashboard/DashboardHome";
-import GreenhousesPage from "./components/Dashboard/GreenhousesTab/GreenhousesTab";
-import GreenhouseDetailsPage from "./components/Dashboard/GreenhousesTab/GreenhouseDetailsPage";
+import OnboardingCheck from "./features/onboarding/OnboardingCheck";
+import OnboardingPage from "./features/onboarding/Onboarding";
+import DashboardHome from "./features/dashboard-shell/DashboardHome";
+import GreenhousesPage from "./features/greenhouses/GreenhousesListPage";
+import GreenhouseDetailsPage from "./features/greenhouses/GreenhouseDetailsPage";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -48,8 +48,8 @@ const router = createBrowserRouter([
             {
                 // Incase someone needs to go back to the landing page ig
                 path: "landing",
-                element: <Landing />
-            }
+                element: <Landing />,
+            },
         ],
     },
     {
@@ -81,7 +81,7 @@ const router = createBrowserRouter([
             {
                 path: "greenhouses/:id",
                 element: <GreenhouseDetailsPage />,
-            }
+            },
         ],
     },
     {

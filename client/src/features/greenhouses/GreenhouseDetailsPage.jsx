@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router";
-import { mockGreenhouseData } from "@/lib/testData/greenhouseData";
+import { mockGreenhouseData } from "@/features/greenhouses/testData/greenhouseData";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { motion } from "motion/react";
@@ -14,20 +14,20 @@ import {
     MapPin,
     Thermometer,
     Wind,
-    Zap,
+    Waves,
 } from "lucide-react";
-import { getStatusConfig } from "@/lib/helpers/getStatusConfig";
-import StatisticCard from "./ui/StatisticCard";
-import DashboardHeading from "@/components/DashboardHeading";
-import MetricAreaChart from "./ui/DataVisualisation/MetricAreaChart";
-import DeviceInformation from "./ui/DeviceInformation";
-import { computeTrend } from "@/lib/helpers/chartHelpers";
+import { getStatusConfig } from "@/features/greenhouses/helpers/getStatusConfig";
+import StatisticCard from "./components/StatisticCard";
+import DashboardHeading from "@/features/greenhouses/components/DashboardHeading";
+import MetricAreaChart from "./components/DataVisualisation/MetricAreaChart";
+import DeviceInformation from "./components/DeviceInformation";
+import { computeTrend } from "@/features/greenhouses/helpers/chartHelpers";
 import {
     Tooltip,
     TooltipTrigger,
     TooltipContent,
 } from "@/components/ui/tooltip";
-import ConnectionBadge from "@/components/Dashboard/ui/badges/ConnectionBadge";
+import ConnectionBadge from "@/features/greenhouses/components/badges/ConnectionBadge";
 
 export default function GreenhouseDetailsPage() {
     let { id } = useParams();
@@ -184,7 +184,7 @@ export default function GreenhouseDetailsPage() {
                         label="Water Level"
                         value={greenhouse.currentStats.waterLevel}
                         unit="%"
-                        icon={Zap}
+                        icon={Waves}
                         color="teal"
                         trend={computeTrend(greenhouse.trends, "water")}
                         isLoading={isLoading}
@@ -195,49 +195,16 @@ export default function GreenhouseDetailsPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
-            >
-                <DashboardHeading title={"Historical Trends"} />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <MetricAreaChart
-                        dataPoints={greenhouse.trends}
-                        dataKey="temp"
-                        label="Temperature"
-                        unit="°C"
-                        color="orange"
-                        isLoading={isLoading}
-                    />
-                    <MetricAreaChart
-                        dataPoints={greenhouse.trends}
-                        dataKey="humidity"
-                        label="Humidity"
-                        unit="%"
-                        color="blue"
-                        isLoading={isLoading}
-                    />
-                    <MetricAreaChart
-                        dataPoints={greenhouse.trends}
-                        dataKey="co2"
-                        label="CO2 Level"
-                        unit="ppm"
-                        color="green"
-                        isLoading={isLoading}
-                    />
-                    <MetricAreaChart
-                        dataPoints={greenhouse.trends}
-                        dataKey="water"
-                        label="Water Level"
-                        unit="%"
-                        color="teal"
-                        isLoading={isLoading}
-                    />
-                </div>
-            </motion.div>
+            ></motion.div>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, delay: 0.3 }}
             >
-                <DeviceInformation greenhouse={greenhouse} highlighting={highlighting} />
+                <DeviceInformation
+                    greenhouse={greenhouse}
+                    highlighting={highlighting}
+                />
             </motion.div>
         </div>
     );

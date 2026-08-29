@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import useSetOnboardingRequest from "@/hooks/useSetOnboardingRequest";
+import useSetOnboardingRequest from "@/features/onboarding/hooks/useSetOnboardingRequest";
 import { SignOutButton, useUser } from "@clerk/clerk-react";
 import { Leaf } from "lucide-react";
 import { Navigate } from "react-router";

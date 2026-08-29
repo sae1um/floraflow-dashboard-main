@@ -13,15 +13,15 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
-import { claimDeviceOnboarding } from "@/helpers/claimDevice";
-import useSetOnboardingRequest from "@/hooks/useSetOnboardingRequest";
+import { claimDeviceOnboarding } from "@/features/greenhouses/helpers/claimDevice";
+import useSetOnboardingRequest from "@/features/onboarding/hooks/useSetOnboardingRequest";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { updateDeviceClaim } from "@/helpers/updateDeviceClaim";
+import { updateDeviceClaim } from "@/features/greenhouses/helpers/updateDeviceClaim";
 
 export const NameStep = ({
     setCurrentStep,

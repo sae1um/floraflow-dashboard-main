@@ -1,5 +1,5 @@
-import DashboardHeader from "@/components/Dashboard/DashboardHeader";
-import Sidebar from "@/components/Dashboard/Sidebar";
+import DashboardHeader from "@/features/dashboard-shell/DashboardHeader";
+import Sidebar from "@/features/dashboard-shell/Sidebar";
 import React from "react";
 import { Outlet } from "react-router";
 
